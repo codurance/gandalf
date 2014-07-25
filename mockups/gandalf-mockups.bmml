@@ -1,0 +1,63 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1151" measuredH="306" mockupW="945" mockupH="272">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Link" x="208" y="78" w="-1" h="-1" measuredW="50" measuredH="19" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>disabled</state>
+        <text>Projects</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Link" x="273" y="78" w="-1" h="-1" measuredW="47" measuredH="19" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Training</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="670" y="79" w="-1" h="-1" measuredW="100" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sandro%20Mancuso</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Icon" x="777" y="75" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>ContactIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="206" y="34" w="-1" h="-1" measuredW="92" measuredH="32" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>24</size>
+        <text>Gandalf</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="208" y="112" w="-1" h="-1" measuredW="179" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>20</size>
+        <text>Project%20Estimation</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::DataGrid" x="208" y="189" w="593" h="102" measuredW="390" measuredH="83" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Client%20%5E%2C%20Project%20Name%20%5Ev%2C%20Date%20%5Ev%2C%20People%20involved%0AFootfall%20123%2C%20Salt%20%26%20Pepper%2C%2018%20Jun%202014%2C%20Sandro%5CrMash%0AMealtek%2C%20Mobile%20platform%2C%2011%20Jul%202014%2C%20Sandro</text>
+        <value>0</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Link" x="208" y="155" w="-1" h="-1" measuredW="134" measuredH="19" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>new_project_estimations%26bm%3Bnew_project_estimations.bmml%26bm%3Bnew_project_estimations.bmml%26bm%3Bnew_project_estimations.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C121%2C136%2C140%22%20href%3D%22new_project_estimations.bmml%22%20alt%3D%22new_project_estimations%22%20id%3D%2214%22/%3E</map>
+        <text>new%20project%20estimation</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::StickyNote" x="856" y="196" w="295" h="110" measuredW="109" measuredH="123" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Clicking%20on%3A%0A%20%0AClient%20name%3A%20Leads%20to%20the%20client%20page%0AProject%20name%3A%20Leads%20to%20the%20estimation%20page</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Link" x="335" y="78" w="-1" h="-1" measuredW="42" measuredH="19" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Clients</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
