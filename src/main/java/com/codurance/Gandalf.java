@@ -8,6 +8,7 @@ import static spark.Spark.*;
 
 public class Gandalf {
 
+	public static final String STATIC_CONTENT_FOLDER = "/public";
 	private MainController mainController;
 	private ProjectEstimationController projectEstimationController;
 
@@ -17,6 +18,7 @@ public class Gandalf {
 	}
 
 	public void run() {
+		staticFileLocation(STATIC_CONTENT_FOLDER);
 		initialiseRoutes();
 	}
 

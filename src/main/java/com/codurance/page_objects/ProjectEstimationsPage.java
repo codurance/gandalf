@@ -8,7 +8,6 @@ public class ProjectEstimationsPage {
 	public static final String TEMPLATE = "project_estimations/all_estimations.jade";
 	private static final String PAGE_TITLE = "Project Estimations";
 
-
 	public String url() {
 		return URL;
 	}
