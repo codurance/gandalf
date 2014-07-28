@@ -9,7 +9,7 @@ public class GandalfLauncher {
 		gandalf().run();
 	}
 
-	private static Gandalf gandalf() {
+	public static Gandalf gandalf() {
 		MainController mainController = new MainController();
 		ProjectEstimationController projectEstimationController = new ProjectEstimationController();
 

@@ -20,6 +20,7 @@
 		<selenium-java.version>2.41.0</selenium-java.version>
 		<cucumber-jvm.version>1.1.5</cucumber-jvm.version>
 
+		<journeyTestSuite>**/JourneyTestSuite.class</journeyTestSuite>
 		<surefireArgs>-Xms512m -Xmx512m -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:MaxPermSize=512m</surefireArgs>
 	</properties>
 
@@ -155,6 +156,7 @@
 						<configuration>
 							<argLine>${surefireArgs}</argLine>
 							<includes>
+								<include>${journeyTestSuite}</include>
 								<include>**/*Spec.scala</include>
 								<include>**/*Should.*</include>
 								<include>**/*Test.*</include>

@@ -1,8 +1,8 @@
-package journey.projects;
+package journey;
 
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-public class JourneyTests {
+public class BaseJourneyTests {
 
 	private String BASE_URL = "http://localhost:4567";
 

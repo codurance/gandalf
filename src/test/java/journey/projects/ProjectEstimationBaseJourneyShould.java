@@ -1,12 +1,13 @@
 package journey.projects;
 
 import com.codurance.page_objects.ProjectEstimationsPage;
+import journey.BaseJourneyTests;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ProjectEstimationJourneyShould extends JourneyTests {
+public class ProjectEstimationBaseJourneyShould extends BaseJourneyTests {
 
 	private ProjectEstimationsPage projectEstimationsPage = new ProjectEstimationsPage();
 
