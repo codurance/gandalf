@@ -8,7 +8,7 @@ import static spark.Spark.*;
 
 public class Gandalf {
 
-	public static final String STATIC_CONTENT_FOLDER = "/public";
+	public static final String STATIC_CONTENT_FOLDER = "/public/";
 	private MainController mainController;
 	private ProjectEstimationController projectEstimationController;
 
