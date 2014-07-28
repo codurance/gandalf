@@ -4,7 +4,7 @@ import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProjectEstimationController;
 import com.codurance.page_objects.ProjectEstimationsPage;
 
-import static spark.Spark.get;
+import static spark.Spark.*;
 
 public class Gandalf {
 
