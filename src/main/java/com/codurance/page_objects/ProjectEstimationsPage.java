@@ -22,7 +22,7 @@ public class ProjectEstimationsPage {
 
 	public Map<String, Object> model() {
 		Map<String, Object> model = new HashMap<>();
-		model.put("pageTile", PAGE_TITLE);
+		model.put("pageTitle", PAGE_TITLE);
 		return model;
 	}
 }
