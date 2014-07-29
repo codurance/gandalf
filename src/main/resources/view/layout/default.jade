@@ -6,6 +6,7 @@ html
         meta(content="width=device-width, initial-scale=1", name="viewport")
         link(href="bootstrap-3.2.0/css/bootstrap.min.css", rel="stylesheet")
         link(href="css/overrides.css", rel="stylesheet")
+        link(href="css/gandalf.css", rel="stylesheet")
         title= pageTitle
     body
         div(class="navbar navbar-default navbar-static-top", role="navigation")
@@ -27,7 +28,7 @@ html
         div(class="o-page-header")
             h3= pageTitle
 
-        div(id="body")
+        div(class="container body", role="main")
             block content
 
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
