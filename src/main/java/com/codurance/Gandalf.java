@@ -2,6 +2,7 @@ package com.codurance;
 
 import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProjectEstimationController;
+import com.codurance.page_objects.MainPage;
 import com.codurance.page_objects.ProjectEstimationsPage;
 
 import static spark.Spark.*;
@@ -35,7 +36,7 @@ public class Gandalf {
 	}
 
 	private void initialiseMainRoutes() {
-		get("/",(request, response) -> {
+		get(MainPage.URL,(request, response) -> {
 			return mainController.displayMainPage(request, response);
 		});
 	}

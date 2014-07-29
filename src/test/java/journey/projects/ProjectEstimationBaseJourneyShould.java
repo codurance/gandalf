@@ -15,7 +15,7 @@ public class ProjectEstimationBaseJourneyShould extends BaseJourneyTests {
 	display_page_with_all_project_estimations() {
 		navigateTo(projectEstimationsPage.url());
 
-		assertThat(pageTitle(), is(projectEstimationsPage.pageTile()));
+		assertThat(pageTitle(), is(projectEstimationsPage.pageTitle()));
 	}
 
 }
