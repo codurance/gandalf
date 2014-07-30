@@ -2,3 +2,19 @@ extends ../../layout/default
 
 block content
     h1 Project Estimations
+
+    div(ng-app="app-estimations", class="container")
+
+        div(ng-controller="EstimationsController as estimations")
+
+            div(class="table-header")
+                span(class="table-cell") Client
+                span(class="table-cell") Project Name
+                span(class="table-cell") Last Updated
+                span(class="table-cell") People Involved
+            div(class="table-rows-fixed")
+                div(ng-repeat="estimation in estimations.all", class="table-row")
+                    div(class="table-cell") {{estimation.client}}
+                    div(class="table-cell") {{estimation.projectName}}
+                    div(class="table-cell") {{estimation.lastUpdated}}
+                    div(class="table-cell") {{estimation.peopleInvolved}}
