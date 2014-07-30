@@ -28,16 +28,16 @@
         <text>Gandalf</text>
       </controlProperties>
     </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="208" y="112" w="-1" h="-1" measuredW="179" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="208" y="112" w="-1" h="-1" measuredW="189" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <bold>true</bold>
         <size>20</size>
-        <text>Project%20Estimation</text>
+        <text>Project%20Estimations</text>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::DataGrid" x="208" y="189" w="593" h="102" measuredW="390" measuredH="83" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::DataGrid" x="208" y="189" w="593" h="102" measuredW="409" measuredH="83" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Client%20%5E%2C%20Project%20Name%20%5Ev%2C%20Date%20%5Ev%2C%20People%20involved%0AFootfall%20123%2C%20Salt%20%26%20Pepper%2C%2018%20Jun%202014%2C%20Sandro%5CrMash%0AMealtek%2C%20Mobile%20platform%2C%2011%20Jul%202014%2C%20Sandro</text>
+        <text>Client%20%5E%2C%20Project%20Name%20%5Ev%2C%20Last%20updated%20%5Ev%2C%20People%20involved%0AFootfall%20123%2C%20Salt%20%26%20Pepper%2C%2018%20Jun%202014%2C%20Sandro%5CrMash%0AMealtek%2C%20Mobile%20platform%2C%2011%20Jul%202014%2C%20Sandro</text>
         <value>0</value>
         <verticalScrollbar>true</verticalScrollbar>
       </controlProperties>

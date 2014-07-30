@@ -33,6 +33,22 @@ public class Gandalf {
 			return projectEstimationController.displayProjectEstimations(request, response);
 		});
 
+		get("/project-estimations/all", (request, response) -> {
+			return "[" +
+					"{" +
+						"\"client\":\"Footfall123\"," +
+						"\"project-name\": \"Salt\"," +
+						"\"last-updated\": \"10th Jun 2014\"," +
+						"\"people-involved\": [\"sandro@codurance.com\", \"mash@codurance.com\"]"  +
+					"},{" +
+						"\"client\":\"Mealtek\"," +
+						"\"project-name\": \"Mobile platform\"," +
+						"\"last-updated\": \"29th Jul 2014\"," +
+						"\"people-involved\": [\"sandro@codurance.com\"]" +
+					"}" +
+					"]";
+		});
+
 	}
 
 	private void initialiseMainRoutes() {
