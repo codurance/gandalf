@@ -4,6 +4,11 @@ block content
 
     div(ng-app="app-estimations")
 
+        div(class="navbar-collapse collapse")
+            ul(class="nav navbar-nav")
+                li
+                    a(href="/new-project-estimation") new project estimation
+
         div(ng-controller="EstimationsController as estimations")
 
             div(class="table-fixed-height")
