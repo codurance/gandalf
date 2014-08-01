@@ -19,7 +19,7 @@ block content
                     span(class="table-cell") People Involved
                 div(ng-repeat="estimate in estimates.all", class="table-row")
                     div(class="table-cell")
-                        a(href="#") {{estimate.projectName}}
+                        a(href="/project-estimate/{{estimate.id}}") {{estimate.projectName}}
                     div(class="table-cell") {{estimate.client}}
                     div(class="table-cell") {{estimate.lastUpdated}}
                     div(class="table-cell")
