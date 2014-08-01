@@ -1,11 +1,10 @@
 package com.codurance;
 
 import com.codurance.controllers.MainController;
-import com.codurance.controllers.ProjectEstimationController;
+import com.codurance.controllers.ProjectEstimatesController;
 import com.codurance.page_objects.MainPage;
-import com.codurance.page_objects.ProjectEstimationsPage;
+import com.codurance.page_objects.ProjectEstimatesPage;
 import com.eclipsesource.json.JsonArray;
-import com.eclipsesource.json.JsonObject;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,11 +15,11 @@ public class Gandalf {
 
 	public static final String STATIC_CONTENT_FOLDER = "/public/";
 	private MainController mainController;
-	private ProjectEstimationController projectEstimationController;
+	private ProjectEstimatesController projectEstimatesController;
 
-	public Gandalf(MainController mainController, ProjectEstimationController projectEstimationController) {
+	public Gandalf(MainController mainController, ProjectEstimatesController projectEstimatesController) {
 		this.mainController = mainController;
-		this.projectEstimationController = projectEstimationController;
+		this.projectEstimatesController = projectEstimatesController;
 	}
 
 	public void run() {
@@ -30,17 +29,17 @@ public class Gandalf {
 
 	private void initialiseRoutes() {
 		initialiseMainRoutes();
-		initialiseProjectEstimationsRoutes();
+		initialiseProjectEstimatesRoutes();
 	}
 
-	private void initialiseProjectEstimationsRoutes() {
-		get(ProjectEstimationsPage.URL, (request, response) -> {
-			return projectEstimationController.displayProjectEstimations(request, response);
+	private void initialiseProjectEstimatesRoutes() {
+		get(ProjectEstimatesPage.URL, (request, response) -> {
+			return projectEstimatesController.displayProjectEstimates(request, response);
 		});
 
-		get("/project-estimations/all", (request, response) -> {
+		get("/project-estimates/all", (request, response) -> {
 			try {
-				JsonArray jsonArray = JsonArray.readFrom(new FileReader("./src/main/resources/data/estimations.json"));
+				JsonArray jsonArray = JsonArray.readFrom(new FileReader("./src/main/resources/data/estimates.json"));
 				return jsonArray.toString();
 			} catch (IOException e) {
 				e.printStackTrace();
