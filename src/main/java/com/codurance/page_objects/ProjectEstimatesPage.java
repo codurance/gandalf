@@ -9,7 +9,7 @@ public class ProjectEstimatesPage extends BasePage {
 		return URL;
 	}
 
-	public String pageTitle() {
+	public String title() {
 		return PAGE_TITLE;
 	}
 

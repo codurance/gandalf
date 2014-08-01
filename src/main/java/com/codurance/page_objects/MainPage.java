@@ -12,7 +12,7 @@ public class MainPage extends BasePage {
 	}
 
 	@Override
-	public String pageTitle() {
+	public String title() {
 		return PAGE_TITLE;
 	}
 

@@ -3,6 +3,7 @@ package com.codurance;
 import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProjectEstimatesController;
 import com.codurance.page_objects.MainPage;
+import com.codurance.page_objects.ProjectEstimatePage;
 import com.codurance.page_objects.ProjectEstimatesPage;
 import com.eclipsesource.json.JsonArray;
 
@@ -45,6 +46,10 @@ public class Gandalf {
 				e.printStackTrace();
 				return null;
 			}
+		});
+
+		get(ProjectEstimatePage.URL, (request, response) -> {
+			return "Hello";
 		});
 
 	}
