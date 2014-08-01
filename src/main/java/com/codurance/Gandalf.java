@@ -2,6 +2,7 @@ package com.codurance;
 
 import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProjectEstimatesController;
+import com.codurance.model.estimates.EstimateId;
 import com.codurance.page_objects.MainPage;
 import com.codurance.page_objects.ProjectEstimatePage;
 import com.codurance.page_objects.ProjectEstimatesPage;
@@ -49,7 +50,8 @@ public class Gandalf {
 		});
 
 		get(ProjectEstimatePage.URL, (request, response) -> {
-			return "Hello";
+			EstimateId estimateId = new EstimateId(request.params(":estimateId"));
+			return projectEstimatesController.displayEstimateWithMatching(estimateId);
 		});
 
 	}
