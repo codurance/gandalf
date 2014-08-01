@@ -13,13 +13,14 @@ block content
 
             div(class="table-fixed-height")
                 div(class="table-header")
-                    span(class="table-cell") Client
                     span(class="table-cell") Project Name
+                    span(class="table-cell") Client
                     span(class="table-cell") Last Updated
                     span(class="table-cell") People Involved
                 div(ng-repeat="estimation in estimations.all", class="table-row")
+                    div(class="table-cell")
+                        a(href="#") {{estimation.projectName}}
                     div(class="table-cell") {{estimation.client}}
-                    div(class="table-cell") {{estimation.projectName}}
                     div(class="table-cell") {{estimation.lastUpdated}}
                     div(class="table-cell")
                         div(ng-repeat="person in estimation.peopleInvolved")

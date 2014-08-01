@@ -4,6 +4,11 @@ import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProjectEstimationController;
 import com.codurance.page_objects.MainPage;
 import com.codurance.page_objects.ProjectEstimationsPage;
+import com.eclipsesource.json.JsonArray;
+import com.eclipsesource.json.JsonObject;
+
+import java.io.FileReader;
+import java.io.IOException;
 
 import static spark.Spark.*;
 
@@ -34,19 +39,13 @@ public class Gandalf {
 		});
 
 		get("/project-estimations/all", (request, response) -> {
-			return "[" +
-					"{" +
-						"\"client\":\"Footfall123\"," +
-						"\"projectName\":\"Salt\"," +
-						"\"lastUpdated\":\"10th Jun 2014\"," +
-						"\"peopleInvolved\":[\"sandro@codurance.com\", \"mash@codurance.com\"]"  +
-					"},{" +
-						"\"client\":\"Mealtek\"," +
-						"\"projectName\":\"Mobile platform\"," +
-						"\"lastUpdated\":\"29th Jul 2014\"," +
-						"\"peopleInvolved\":[\"sandro@codurance.com\"]" +
-					"}" +
-					"]";
+			try {
+				JsonArray jsonArray = JsonArray.readFrom(new FileReader("./src/main/resources/data/estimations.json"));
+				return jsonArray.toString();
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
+			}
 		});
 
 	}
