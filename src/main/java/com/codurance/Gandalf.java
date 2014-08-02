@@ -31,12 +31,12 @@ public class Gandalf {
 
 	private void initialiseRoutes() {
 		initialiseMainRoutes();
-		initialiseProjectEstimatesRoutes();
+		initialiseProposalsRoutes();
 	}
 
-	private void initialiseProjectEstimatesRoutes() {
+	private void initialiseProposalsRoutes() {
 		get(ProposalsPage.URL, (request, response) -> {
-			return proposalController.displayProjectEstimates(request, response);
+			return proposalController.displayProposals(request, response);
 		});
 
 		get("/proposals/all", (request, response) -> {
@@ -51,7 +51,7 @@ public class Gandalf {
 
 		get(ProposalPage.URL, (request, response) -> {
 			ProposalId proposalId = new ProposalId(request.params(":proposalId"));
-			return proposalController.displayEstimateWithMatching(proposalId);
+			return proposalController.displayProposalMatching(proposalId);
 		});
 
 	}
