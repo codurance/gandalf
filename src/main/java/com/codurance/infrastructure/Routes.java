@@ -1,7 +1,5 @@
 package com.codurance.infrastructure;
 
-import com.codurance.controllers.MainController;
-import com.codurance.controllers.ProposalController;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.view.MainPage;
 import com.codurance.view.ProposalPage;
