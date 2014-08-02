@@ -94,8 +94,8 @@
     </control>
     <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="709" y="509" w="-1" h="-1" measuredW="63" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
-        <href>proposal%26bm%3Bproposal.bmml%26bm%3Bproposal.bmml%26bm%3Bproposal.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22503%2C475%2C566%2C502%22%20href%3D%22proposal.bmml%22%20alt%3D%22proposal%22%20id%3D%2219%22/%3E</map>
+        <href>proposal_estimates%26bm%3Bproposal_estimates.bmml%26bm%3Bproposal_estimates.bmml%26bm%3Bproposal_estimates.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22503%2C475%2C566%2C502%22%20href%3D%22proposal_estimates.bmml%22%20alt%3D%22proposal_estimates%22%20id%3D%2219%22/%3E</map>
         <text>Create</text>
       </controlProperties>
     </control>
