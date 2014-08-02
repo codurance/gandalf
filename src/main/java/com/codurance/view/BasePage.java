@@ -5,6 +5,8 @@ import java.util.Map;
 
 public abstract class BasePage {
 
+	protected static final String PROPOSAL_TEMPLATE_ROOT_FOLDER = "proposal/";
+
 	public abstract String url();
 
 	public abstract String title();

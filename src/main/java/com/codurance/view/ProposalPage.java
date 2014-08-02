@@ -2,7 +2,7 @@ package com.codurance.view;
 
 public class ProposalPage extends BasePage {
 	public static final String URL = "/project-estimate/:estimateId";
-	public static final String TEMPLATE = "project_estimates/project_estimate.jade";
+	public static final String TEMPLATE = PROPOSAL_TEMPLATE_ROOT_FOLDER + "proposal.jade";
 	private static final String PAGE_TITLE = "Proposal";
 
 	@Override
