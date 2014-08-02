@@ -1,9 +1,9 @@
 <mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1151" measuredH="306" mockupW="945" mockupH="272">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::Link" x="208" y="78" w="-1" h="-1" measuredW="50" measuredH="19" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Link" x="208" y="78" w="-1" h="-1" measuredW="59" measuredH="19" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <state>disabled</state>
-        <text>Projects</text>
+        <text>Proposals</text>
       </controlProperties>
     </control>
     <control controlID="1" controlTypeID="com.balsamiq.mockups::Link" x="273" y="78" w="-1" h="-1" measuredW="47" measuredH="19" zOrder="1" locked="false" isInGroup="-1">
@@ -28,11 +28,11 @@
         <text>Gandalf</text>
       </controlProperties>
     </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="208" y="112" w="-1" h="-1" measuredW="189" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="208" y="112" w="-1" h="-1" measuredW="94" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <bold>true</bold>
         <size>20</size>
-        <text>Project%20Estimations</text>
+        <text>Proposals</text>
       </controlProperties>
     </control>
     <control controlID="13" controlTypeID="com.balsamiq.mockups::DataGrid" x="208" y="189" w="593" h="102" measuredW="409" measuredH="83" zOrder="6" locked="false" isInGroup="-1">
@@ -42,11 +42,11 @@
         <verticalScrollbar>true</verticalScrollbar>
       </controlProperties>
     </control>
-    <control controlID="14" controlTypeID="com.balsamiq.mockups::Link" x="208" y="155" w="-1" h="-1" measuredW="134" measuredH="19" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Link" x="208" y="155" w="-1" h="-1" measuredW="79" measuredH="19" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
-        <href>new_project_estimations%26bm%3Bnew_project_estimations.bmml%26bm%3Bnew_project_estimations.bmml%26bm%3Bnew_project_estimations.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C121%2C136%2C140%22%20href%3D%22new_project_estimations.bmml%22%20alt%3D%22new_project_estimations%22%20id%3D%2214%22/%3E</map>
-        <text>new%20project%20estimation</text>
+        <href>new_proposal%26bm%3Bnew_proposal.bmml%26bm%3Bnew_proposal.bmml%26bm%3Bnew_proposal.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C121%2C81%2C140%22%20href%3D%22new_proposal.bmml%22%20alt%3D%22new_proposal%22%20id%3D%2214%22/%3E</map>
+        <text>new%20proposal</text>
       </controlProperties>
     </control>
     <control controlID="15" controlTypeID="com.balsamiq.mockups::StickyNote" x="856" y="196" w="295" h="110" measuredW="109" measuredH="123" zOrder="8" locked="false" isInGroup="-1">

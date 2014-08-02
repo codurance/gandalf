@@ -30,11 +30,11 @@
         <text>Gandalf</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="126" y="111" w="-1" h="-1" measuredW="390" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="126" y="111" w="-1" h="-1" measuredW="367" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <bold>true</bold>
         <size>20</size>
-        <text>Footfall123%3A%20Estimations%20for%20Sat%20%26%20Pepper</text>
+        <text>Proposal%20for%20Footfall123%20-%20Project%3A%20Salt</text>
       </controlProperties>
     </control>
     <control controlID="8" controlTypeID="com.balsamiq.mockups::Link" x="253" y="77" w="-1" h="-1" measuredW="42" measuredH="19" zOrder="6" locked="false" isInGroup="-1">
