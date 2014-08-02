@@ -1,7 +1,7 @@
 package com.codurance;
 
 import com.codurance.controllers.MainController;
-import com.codurance.controllers.ProjectEstimatesController;
+import com.codurance.controllers.ProposalController;
 
 public class GandalfLauncher {
 
@@ -11,9 +11,9 @@ public class GandalfLauncher {
 
 	public static Gandalf gandalf() {
 		MainController mainController = new MainController();
-		ProjectEstimatesController projectEstimatesController = new ProjectEstimatesController();
+		ProposalController proposalController = new ProposalController();
 
-		Gandalf gandalf = new Gandalf(mainController, projectEstimatesController);
+		Gandalf gandalf = new Gandalf(mainController, proposalController);
 
 		return gandalf;
 	}

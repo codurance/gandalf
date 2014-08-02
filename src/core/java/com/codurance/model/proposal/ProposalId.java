@@ -1,10 +1,10 @@
 package com.codurance.model.proposal;
 
-public class EstimateId {
+public class ProposalId {
 
 	private String value;
 
-	public EstimateId(String value) {
+	public ProposalId(String value) {
 		this.value = value;
 	}
 }

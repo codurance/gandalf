@@ -1,8 +1,8 @@
 package com.codurance;
 
 import com.codurance.controllers.MainController;
-import com.codurance.controllers.ProjectEstimatesController;
-import com.codurance.model.proposal.EstimateId;
+import com.codurance.controllers.ProposalController;
+import com.codurance.model.proposal.ProposalId;
 import com.codurance.page_objects.MainPage;
 import com.codurance.page_objects.ProjectEstimatePage;
 import com.codurance.page_objects.ProjectEstimatesPage;
@@ -17,11 +17,11 @@ public class Gandalf {
 
 	public static final String STATIC_CONTENT_FOLDER = "/public/";
 	private MainController mainController;
-	private ProjectEstimatesController projectEstimatesController;
+	private ProposalController proposalController;
 
-	public Gandalf(MainController mainController, ProjectEstimatesController projectEstimatesController) {
+	public Gandalf(MainController mainController, ProposalController proposalController) {
 		this.mainController = mainController;
-		this.projectEstimatesController = projectEstimatesController;
+		this.proposalController = proposalController;
 	}
 
 	public void run() {
@@ -36,7 +36,7 @@ public class Gandalf {
 
 	private void initialiseProjectEstimatesRoutes() {
 		get(ProjectEstimatesPage.URL, (request, response) -> {
-			return projectEstimatesController.displayProjectEstimates(request, response);
+			return proposalController.displayProjectEstimates(request, response);
 		});
 
 		get("/project-estimates/all", (request, response) -> {
@@ -50,8 +50,8 @@ public class Gandalf {
 		});
 
 		get(ProjectEstimatePage.URL, (request, response) -> {
-			EstimateId estimateId = new EstimateId(request.params(":estimateId"));
-			return projectEstimatesController.displayEstimateWithMatching(estimateId);
+			ProposalId proposalId = new ProposalId(request.params(":estimateId"));
+			return proposalController.displayEstimateWithMatching(proposalId);
 		});
 
 	}
