@@ -3,9 +3,9 @@ package com.codurance;
 import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProposalController;
 import com.codurance.model.proposal.ProposalId;
-import com.codurance.page_objects.MainPage;
-import com.codurance.page_objects.ProjectEstimatePage;
-import com.codurance.page_objects.ProjectEstimatesPage;
+import com.codurance.view.MainPage;
+import com.codurance.view.ProjectEstimatePage;
+import com.codurance.view.ProjectEstimatesPage;
 import com.eclipsesource.json.JsonArray;
 
 import java.io.FileReader;

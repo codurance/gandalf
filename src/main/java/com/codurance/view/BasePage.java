@@ -1,4 +1,4 @@
-package com.codurance.page_objects;
+package com.codurance.view;
 
 import java.util.HashMap;
 import java.util.Map;

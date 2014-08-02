@@ -1,11 +1,8 @@
 package com.codurance.controllers;
 
-import com.codurance.page_objects.MainPage;
+import com.codurance.view.MainPage;
 import spark.Request;
 import spark.Response;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainController extends BaseController {
 

@@ -1,7 +1,7 @@
 package journey.projects;
 
-import com.codurance.page_objects.ProjectEstimatePage;
-import com.codurance.page_objects.ProjectEstimatesPage;
+import com.codurance.view.ProjectEstimatePage;
+import com.codurance.view.ProjectEstimatesPage;
 import journey.BaseJourneyTests;
 import org.junit.Test;
 

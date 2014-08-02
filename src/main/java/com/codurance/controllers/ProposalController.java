@@ -1,8 +1,8 @@
 package com.codurance.controllers;
 
 import com.codurance.model.proposal.ProposalId;
-import com.codurance.page_objects.ProjectEstimatePage;
-import com.codurance.page_objects.ProjectEstimatesPage;
+import com.codurance.view.ProjectEstimatePage;
+import com.codurance.view.ProjectEstimatesPage;
 import spark.Request;
 import spark.Response;
 

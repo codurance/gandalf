@@ -1,4 +1,4 @@
-package com.codurance.page_objects;
+package com.codurance.view;
 
 public class ProjectEstimatePage extends BasePage {
 	public static final String URL = "/project-estimate/:estimateId";
