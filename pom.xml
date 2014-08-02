@@ -69,7 +69,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.noodlesandwich</groupId>
-			<artifactId>rekord</artifactId>
+			<artifactId>rekord-core</artifactId>
 			<version>${rekord-version}</version>
 		</dependency>
 
