@@ -1,4 +1,4 @@
-package com.codurance.model.estimates;
+package com.codurance.model.proposal;
 
 public class EstimateId {
 

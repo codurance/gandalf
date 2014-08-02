@@ -2,7 +2,7 @@ package com.codurance;
 
 import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProjectEstimatesController;
-import com.codurance.model.estimates.EstimateId;
+import com.codurance.model.proposal.EstimateId;
 import com.codurance.page_objects.MainPage;
 import com.codurance.page_objects.ProjectEstimatePage;
 import com.codurance.page_objects.ProjectEstimatesPage;

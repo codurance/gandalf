@@ -1,6 +1,6 @@
 package com.codurance.controllers;
 
-import com.codurance.model.estimates.EstimateId;
+import com.codurance.model.proposal.EstimateId;
 import com.codurance.page_objects.ProjectEstimatePage;
 import com.codurance.page_objects.ProjectEstimatesPage;
 import spark.Request;
