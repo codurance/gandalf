@@ -1,7 +1,7 @@
 package journey.projects;
 
-import com.codurance.view.ProjectEstimatePage;
-import com.codurance.view.ProjectEstimatesPage;
+import com.codurance.view.ProposalPage;
+import com.codurance.view.ProposalsPage;
 import journey.BaseJourneyTests;
 import org.junit.Test;
 
@@ -10,21 +10,21 @@ import static org.junit.Assert.assertThat;
 
 public class ProjectEstimationJourneyShould extends BaseJourneyTests {
 
-	private ProjectEstimatesPage projectEstimatesPage = new ProjectEstimatesPage();
-	private ProjectEstimatePage projectEstimatePage = new ProjectEstimatePage();
+	private ProposalsPage proposalsPage = new ProposalsPage();
+	private ProposalPage proposalPage = new ProposalPage();
 
 	@Test public void
 	display_page_with_all_project_estimates() {
-		navigateTo(projectEstimatesPage.url());
+		navigateTo(proposalsPage.url());
 
-		assertThat(pageTitle(), is(projectEstimatesPage.title()));
+		assertThat(pageTitle(), is(proposalsPage.title()));
 	}
 
 	@Test public void
 	display_project_estimate() {
-		navigateTo(projectEstimatePage.url());
+		navigateTo(proposalPage.url());
 
-		assertThat(pageTitle(), is(projectEstimatePage.title()));
+		assertThat(pageTitle(), is(proposalPage.title()));
 	}
 
 }

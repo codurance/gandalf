@@ -4,8 +4,8 @@ import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProposalController;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.view.MainPage;
-import com.codurance.view.ProjectEstimatePage;
-import com.codurance.view.ProjectEstimatesPage;
+import com.codurance.view.ProposalPage;
+import com.codurance.view.ProposalsPage;
 import com.eclipsesource.json.JsonArray;
 
 import java.io.FileReader;
@@ -35,7 +35,7 @@ public class Gandalf {
 	}
 
 	private void initialiseProjectEstimatesRoutes() {
-		get(ProjectEstimatesPage.URL, (request, response) -> {
+		get(ProposalsPage.URL, (request, response) -> {
 			return proposalController.displayProjectEstimates(request, response);
 		});
 
@@ -49,7 +49,7 @@ public class Gandalf {
 			}
 		});
 
-		get(ProjectEstimatePage.URL, (request, response) -> {
+		get(ProposalPage.URL, (request, response) -> {
 			ProposalId proposalId = new ProposalId(request.params(":estimateId"));
 			return proposalController.displayEstimateWithMatching(proposalId);
 		});
