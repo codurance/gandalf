@@ -39,7 +39,7 @@ public class Gandalf {
 			return proposalController.displayProposals(request, response);
 		});
 
-		get("/proposals/all", (request, response) -> {
+		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) -> {
 			try {
 				JsonArray jsonArray = JsonArray.readFrom(new FileReader("./src/main/resources/data/proposals.json"));
 				return jsonArray.toString();
