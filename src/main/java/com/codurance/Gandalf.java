@@ -41,7 +41,7 @@ public class Gandalf {
 
 		get("/project-estimates/all", (request, response) -> {
 			try {
-				JsonArray jsonArray = JsonArray.readFrom(new FileReader("./src/main/resources/data/estimates.json"));
+				JsonArray jsonArray = JsonArray.readFrom(new FileReader("./src/main/resources/data/proposals.json"));
 				return jsonArray.toString();
 			} catch (IOException e) {
 				e.printStackTrace();
