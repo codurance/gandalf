@@ -2,14 +2,14 @@ extends ../../layout/default
 
 block content
 
-    div(ng-app="app-estimates")
+    div(ng-app="app-proposals")
 
         div(class="navbar-collapse collapse")
             ul(class="nav navbar-nav")
                 li
-                    a(href="/new-project-estimate") new project estimate
+                    a(href="/proposals/new") new project estimate
 
-        div(ng-controller="EstimatesController as estimates")
+        div(ng-controller="ProposalsController as proposals")
 
             div(class="table-fixed-height")
                 div(class="table-header")
@@ -17,11 +17,11 @@ block content
                     span(class="table-cell") Client
                     span(class="table-cell") Last Updated
                     span(class="table-cell") People Involved
-                div(ng-repeat="estimate in estimates.all", class="table-row")
+                div(ng-repeat="proposal in proposals.all", class="table-row")
                     div(class="table-cell")
-                        a(href="/project-estimate/{{estimate.id}}") {{estimate.projectName}}
-                    div(class="table-cell") {{estimate.client}}
-                    div(class="table-cell") {{estimate.lastUpdated}}
+                        a(href="/proposals/proposal/{{proposal.id}}") {{proposal.projectName}}
+                    div(class="table-cell") {{proposal.client}}
+                    div(class="table-cell") {{proposal.lastUpdated}}
                     div(class="table-cell")
-                        div(ng-repeat="person in estimate.peopleInvolved")
+                        div(ng-repeat="person in proposal.peopleInvolved")
                             span {{person}}

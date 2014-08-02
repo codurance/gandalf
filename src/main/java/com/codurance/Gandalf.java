@@ -39,7 +39,7 @@ public class Gandalf {
 			return proposalController.displayProjectEstimates(request, response);
 		});
 
-		get("/project-estimates/all", (request, response) -> {
+		get("/proposals/all", (request, response) -> {
 			try {
 				JsonArray jsonArray = JsonArray.readFrom(new FileReader("./src/main/resources/data/proposals.json"));
 				return jsonArray.toString();
@@ -50,7 +50,7 @@ public class Gandalf {
 		});
 
 		get(ProposalPage.URL, (request, response) -> {
-			ProposalId proposalId = new ProposalId(request.params(":estimateId"));
+			ProposalId proposalId = new ProposalId(request.params(":proposalId"));
 			return proposalController.displayEstimateWithMatching(proposalId);
 		});
 
