@@ -26,7 +26,7 @@ public class Routes {
 	private void initialiseProposalsRoutes() {
 		get(ProposalsPage.URL, (request, response) -> {
 			return controllers.get(Controllers.proposalController)
-					.displayProposals(request, response);
+						.displayProposals(request, response);
 		});
 
 		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) -> {
@@ -48,7 +48,7 @@ public class Routes {
 	private void initialiseMainRoutes() {
 		get(MainPage.URL,(request, response) -> {
 			return controllers.get(Controllers.mainController)
-					.displayMainPage(request, response);
+						.displayMainPage(request, response);
 		});
 	}
 
