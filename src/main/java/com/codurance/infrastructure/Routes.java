@@ -4,12 +4,10 @@ import com.codurance.model.proposal.ProposalId;
 import com.codurance.view.MainPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
-import com.eclipsesource.json.JsonArray;
 import com.noodlesandwich.rekord.Rekord;
 
-import java.io.FileReader;
-import java.io.IOException;
-
+import static com.codurance.infrastructure.JsonReader.jsonArray;
+import static com.codurance.infrastructure.JsonReader.jsonObject;
 import static spark.Spark.get;
 
 public class Routes {
@@ -28,17 +26,11 @@ public class Routes {
 	private void initialiseProposalsRoutes() {
 		get(ProposalsPage.URL, (request, response) -> {
 			return controllers.get(Controllers.proposalController)
-						.displayProposals(request, response);
+					.displayProposals(request, response);
 		});
 
 		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) -> {
-			try {
-				JsonArray jsonArray = JsonArray.readFrom(new FileReader("./src/main/resources/data/proposals.json"));
-				return jsonArray.toString();
-			} catch (IOException e) {
-				e.printStackTrace();
-				return null;
-			}
+			return jsonArray("./src/main/resources/data/proposals.json");
 		});
 
 		get(ProposalPage.URL, (request, response) -> {
@@ -47,13 +39,19 @@ public class Routes {
 						.displayProposalMatching(proposalId);
 		});
 
+		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) -> {
+			return jsonObject("./src/main/resources/data/proposal.json");
+		});
+
 	}
 
 	private void initialiseMainRoutes() {
 		get(MainPage.URL,(request, response) -> {
 			return controllers.get(Controllers.mainController)
-						.displayMainPage(request, response);
+					.displayMainPage(request, response);
 		});
 	}
+
+
 
 }
