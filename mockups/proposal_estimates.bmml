@@ -96,9 +96,9 @@
         <text>3</text>
       </controlProperties>
     </control>
-    <control controlID="34" controlTypeID="com.balsamiq.mockups::TextInput" x="608" y="319" w="34" h="-1" measuredW="23" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::TextInput" x="608" y="319" w="34" h="-1" measuredW="20" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>2</text>
+        <text>1</text>
       </controlProperties>
     </control>
     <control controlID="35" controlTypeID="com.balsamiq.mockups::TextInput" x="678" y="319" w="34" h="-1" measuredW="23" measuredH="27" zOrder="18" locked="false" isInGroup="-1">
@@ -244,9 +244,9 @@
         <text>8</text>
       </controlProperties>
     </control>
-    <control controlID="68" controlTypeID="com.balsamiq.mockups::TextInput" x="608" y="526" w="34" h="-1" measuredW="23" measuredH="27" zOrder="46" locked="false" isInGroup="-1">
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::TextInput" x="608" y="526" w="34" h="-1" measuredW="22" measuredH="27" zOrder="46" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>4</text>
+        <text>3</text>
       </controlProperties>
     </control>
     <control controlID="69" controlTypeID="com.balsamiq.mockups::TextInput" x="678" y="526" w="34" h="-1" measuredW="22" measuredH="27" zOrder="47" locked="false" isInGroup="-1">
@@ -265,9 +265,9 @@
         <text>0.4</text>
       </controlProperties>
     </control>
-    <control controlID="72" controlTypeID="com.balsamiq.mockups::TextInput" x="608" y="558" w="34" h="-1" measuredW="33" measuredH="27" zOrder="50" locked="false" isInGroup="-1">
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::TextInput" x="608" y="558" w="34" h="-1" measuredW="30" measuredH="27" zOrder="50" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>0.2</text>
+        <text>0.1</text>
       </controlProperties>
     </control>
     <control controlID="73" controlTypeID="com.balsamiq.mockups::TextInput" x="678" y="558" w="34" h="-1" measuredW="33" measuredH="27" zOrder="51" locked="false" isInGroup="-1">
@@ -286,9 +286,9 @@
         <text>%A36400</text>
       </controlProperties>
     </control>
-    <control controlID="76" controlTypeID="com.balsamiq.mockups::TextInput" x="592" y="590" w="64" h="-1" measuredW="55" measuredH="27" zOrder="54" locked="false" isInGroup="-1">
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::TextInput" x="592" y="590" w="64" h="-1" measuredW="56" measuredH="27" zOrder="54" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>%A33200</text>
+        <text>%A32400</text>
       </controlProperties>
     </control>
     <control controlID="77" controlTypeID="com.balsamiq.mockups::TextInput" x="663" y="590" w="60" h="-1" measuredW="55" measuredH="27" zOrder="55" locked="false" isInGroup="-1">
