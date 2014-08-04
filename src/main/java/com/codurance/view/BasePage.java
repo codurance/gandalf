@@ -16,6 +16,10 @@ public abstract class BasePage {
 	public Map<String, Object> model() {
 		Map<String, Object> model = new HashMap<>();
 		model.put("title", title());
+		populate(model);
 		return model;
+	}
+
+	protected void populate(Map<String, Object> model) {
 	}
 }

@@ -6,6 +6,8 @@ import com.codurance.view.ProposalsPage;
 import spark.Request;
 import spark.Response;
 
+import static com.codurance.infrastructure.JsonReader.jsonObject;
+
 public class ProposalController extends BaseController {
 	public String displayProposals(Request request, Response response) {
 		ProposalsPage page = new ProposalsPage();
@@ -13,7 +15,8 @@ public class ProposalController extends BaseController {
 	}
 
 	public String displayProposalMatching(ProposalId proposalId) {
-		ProposalPage page = new ProposalPage();
+		String proposalDetails = jsonObject("./src/main/resources/data/proposal.json");
+		ProposalPage page = new ProposalPage(proposalDetails);
 		return display(page.template(), page.model());
 	}
 }

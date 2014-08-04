@@ -2,5 +2,17 @@ extends ../../layout/default
 
 block content
 
-    div
-        p Some project estimate
+    div(ng-app="app-proposals", ng-controller="ProposalController as proposal", ng-init="proposalId = 1", class="container")
+
+        p {{proposal.json.client}}
+
+        div
+            p
+                span Proposal for
+                span {{proposal.json.client}}
+                span - Project:
+                span {{proposal.json.project}}
+
+        div
+            p Some project estimate
+            p= {{proposal.json.client}}
