@@ -15,8 +15,7 @@ public class ProposalController extends BaseController {
 	}
 
 	public String displayProposalMatching(ProposalId proposalId) {
-		String proposalDetails = jsonObject("./src/main/resources/data/proposal.json");
-		ProposalPage page = new ProposalPage(proposalDetails);
+		ProposalPage page = new ProposalPage(proposalId);
 		return display(page.template(), page.model());
 	}
 }

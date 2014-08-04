@@ -1,6 +1,7 @@
 package com.codurance.view;
 
 import com.codurance.model.proposal.Proposal;
+import com.codurance.model.proposal.ProposalId;
 
 import java.util.Map;
 
@@ -9,10 +10,10 @@ public class ProposalPage extends BasePage {
 	public static final String TEMPLATE = PROPOSAL_TEMPLATE_ROOT_FOLDER + "proposal.jade";
 	private static final String PAGE_TITLE = "Proposal";
 	public static final String PROPOSAL_DATA_URL = URL + "/json";
-	private String proposalJson;
+	private ProposalId proposalId;
 
-	public ProposalPage(String proposalJson) {
-		this.proposalJson = proposalJson;
+	public ProposalPage(ProposalId proposalId) {
+		this.proposalId = proposalId;
 	}
 
 	@Override
@@ -32,7 +33,6 @@ public class ProposalPage extends BasePage {
 
 	@Override
 	protected void populate(Map<String, Object> model) {
-		model.put("proposal", proposalJson);
-		model.put("proposalJava", new Proposal());
+		model.put("proposalId", proposalId.toString());
 	}
 }

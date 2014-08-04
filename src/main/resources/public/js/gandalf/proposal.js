@@ -2,21 +2,23 @@
 
 	var app = angular.module('app', []);
 
-	app.controller('ProposalController', ['$http', function ($http) {
+	app.controller('ProposalController', ['$http', '$scope', function ($http, $scope) {
+
 		var proposal = this;
 
 		proposal.json = {};
 
-		proposal.proposalId = -1;
+		$scope.init = function(proposalId) {
+			var url = '/proposals/proposal/' + proposalId + '/json';
 
-		$http.get('/proposals/proposal/'+this.proposalId+'/json')
-				.success(function(response){
-					proposal.json = response;
-				})
-				.error(function(response){
-					alert('Error: ' + response);
-				});
-
+			$http.get(url)
+					.success(function(response){
+						proposal.json = response;
+					})
+					.error(function(response){
+						alert('Error: ' + response);
+					});
+		};
 	}]);
 
 })();

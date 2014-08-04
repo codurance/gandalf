@@ -2,9 +2,10 @@ extends ../../layout/default
 
 block content
 
-    div(ng-app="app", ng-controller="ProposalController as proposal", ng-init="proposal.proposalId = 1", class="container")
+    div(ng-app="app", ng-controller="ProposalController as proposal", ng-init="init(#{proposalId.toString()})", class="container")
 
         div
+            p= {{proposalId.toString()}}
             p
                 span Proposal for {{proposal.json.client}} - Project: {{proposal.json.project}}
 
