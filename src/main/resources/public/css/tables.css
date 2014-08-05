@@ -17,9 +17,7 @@ tr .numeric {
 }
 
 .tablecell {
-	/*display: table-cell;*/
-	/*width: 300px;*/
-	/*height: 15px;*/
+	display: table-cell;
 	padding: 8px;
 	border-top: 1px solid #dddddd;
 }
@@ -29,8 +27,7 @@ tr .numeric {
 }
 
 div.tablerow {
-	/*display: table-row;*/
-	/*height: 15px;*/
+	display: table-row;
 	padding: 8px;
 }
 
@@ -42,7 +39,6 @@ div .tableheader  {
 	font-weight: bold;
 	height: 15px;
 	border: none;
-	display: table-row;
 }
 div .tableheader > span.tablecell {
 	font-weight: bold;
