@@ -9,13 +9,20 @@
 	"contacts":[
 					{
 						"name":"Bob Builder",
-						"email":"bob.builder@footfall123.com"
+						"email":"bob.builder@coolcards.com"
 					},{
 						"name":"John Lennon",
-						"email":"john.lennon@footfall123.com"
+						"email":"john.lennon@coolcards.com"
 					}
 				],
-	"peopleInvolved":["sandro@codurance.com", "mash@codurance.com"],
+	"peopleInvolved":[
+						{
+							"name":"Mashooq Badar",
+							"email":"mash@codurance.com"
+						},{
+							"name":"Sandro Mancuso",
+							"email":"sandro@codurance.com"
+						}],
 	"estimates":[
 					{
 						"phase":"Phase 1",

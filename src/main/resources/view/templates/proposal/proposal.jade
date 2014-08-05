@@ -15,16 +15,25 @@ block content
 
         p
 
-        div(class="form-group")
+        div(class="col-md-12 form-group")
             span {{proposal.json.description }}
 
-        div(class="form-group")
-            label Contacts
-            div(class="row-fluid", ng-repeat="contact in proposal.json.contacts")
-                span {{contact.name}} - {{contact.email}}
+        div(class="span12")
+            div(class="form-group col-md-6")
+                label Contacts
+                div(class="row-fluid", ng-repeat="contact in proposal.json.contacts")
+                    span {{contact.name}} - {{contact.email}}
+            div(class="form-group col-md-6")
+                label People Involved
+                div(ng-repeat="personInvolved in proposal.json.peopleInvolved")
+                    span {{personInvolved.name}} - {{personInvolved.email}}
 
-        div(class="form-group")
+        div(class="col-md-12 form-group")
             label Notes
             div.span {{proposal.json.notes}}
+
+        div(class="col-md-12")
+            div(ng-repeat="estimate in proposal.json.estimates")
+                h4 {{estimate.phase}}
 
 
