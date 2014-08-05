@@ -7,8 +7,11 @@ block content
         div(class="o-page-header")
             h3
                 span Proposal for {{proposal.json.client}} - Project: {{proposal.json.project}}
-            span
-                em Last updated on {{proposal.json.lastUpdated}}
+            div(class="row")
+                div(class="col-md-8")
+                    em Created on {{proposal.json.createdOn}}
+                div(class="col-md-4 text-right")
+                    em Last updated on {{proposal.json.lastUpdated}}
 
         p
 
@@ -23,4 +26,5 @@ block content
         div(class="form-group")
             label Notes
             div.span {{proposal.json.notes}}
+
 
