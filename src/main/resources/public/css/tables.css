@@ -1,3 +1,4 @@
+
 #fixed {
 	height: 600px;
 	overflow: auto;
@@ -15,35 +16,35 @@ tr .numeric {
 	text-align: right;
 }
 
-.table-cell {
-	display: table-cell;
-	width: 300px;
-	height: 15px;
+.tablecell {
+	/*display: table-cell;*/
+	/*width: 300px;*/
+	/*height: 15px;*/
 	padding: 8px;
 	border-top: 1px solid #dddddd;
 }
 
-.table-header .table-cell {
+.tableheader .tablecell {
 	border-top: none;
 }
 
-div.table-row {
-	display: table-row;
-	height: 15px;
+div.tablerow {
+	/*display: table-row;*/
+	/*height: 15px;*/
 	padding: 8px;
 }
 
-.table-row:hover {
+.tablerow:hover {
 	background-color: #f5f5f5;
 }
 
-div .table-header  {
+div .tableheader  {
 	font-weight: bold;
 	height: 15px;
 	border: none;
 	display: table-row;
 }
-div .table-header > span.table-cell {
+div .tableheader > span.tablecell {
 	font-weight: bold;
 	border: none;
 }

@@ -28,17 +28,15 @@
 						"phase":"Phase 1",
 						"features": [
 										{
-											"feature":"Floating button – a button that activates the screen to scan/enter a barcode number for redemption; it ‘floats’ on top of the EPOS application; it can be repositioned and the text and appearance (colors, etc) can be customized.",
+											"description":"Floating button – a button that activates the screen to scan/enter a barcode number for redemption; it ‘floats’ on top of the EPOS application; it can be repositioned and the text and appearance (colors, etc) can be customized.",
 											"assumptions":"Customisation: text displayed, color of text and background, size of the button(width & height). Button will remember its last position on screen but that will not be configured by users",
-											"grouping":"Phase 1",
 											"pessimistic":5,
 											"optimistic":2,
 											"realistic":3
 										},
 										{
-											"feature": "Register to a location - associate the scanner with a location by entering an activation barcode; the API call sends the code to the server for validation and registers the device to the corresponding location.",
+											"description": "Register to a location - associate the scanner with a location by entering an activation barcode; the API call sends the code to the server for validation and registers the device to the corresponding location.",
 											"assumptions": "This will be done using a separate registration form, probably triggered from some sort of settings menu. This form informs if the application is already registered or not. API for this service is defined and available.",
-											"grouping": "Phase 1",
 											"pessimistic": 3,
 											"optimistic": 1,
 											"realistic": 2
@@ -89,15 +87,14 @@
 					},{
 						"phase": "Phase 2",
 						"features": [
-							{
-								"feature": "Print authentication code in the receipt",
-								"assumptions": "Integration with just one type of printer.",
-								"grouping": "Phase 2",
-								"pessimistic": 15,
-								"optimistic": 5,
-								"realistic": 10
-							}
-						],
+										{
+											"description": "Print authentication code in the receipt",
+											"assumptions": "Integration with just one type of printer.",
+											"pessimistic": 15,
+											"optimistic": 5,
+											"realistic": 10
+										}
+									],
 						"cost": {
 									"grouping": "Phase 2",
 									"days": {

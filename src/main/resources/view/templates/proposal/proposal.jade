@@ -21,7 +21,7 @@ block content
         div(class="span12")
             div(class="form-group col-md-6")
                 label Contacts
-                div(class="row-fluid", ng-repeat="contact in proposal.json.contacts")
+                div(ng-repeat="contact in proposal.json.contacts")
                     span {{contact.name}} - {{contact.email}}
             div(class="form-group col-md-6")
                 label People Involved
@@ -35,5 +35,20 @@ block content
         div(class="col-md-12")
             div(ng-repeat="estimate in proposal.json.estimates")
                 h4 {{estimate.phase}}
+
+                div(class="tablerow col-md-12")
+                    div(class="tableheader col-md-5").span Feature
+                    div(class="tableheader col-md-4").span Assumptions
+                    div(class="tableheader col-md-1").span Pes.
+                    div(class="tableheader col-md-1").span Opt.
+                    div(class="tableheader col-md-1").span Rea.
+
+                div(ng-repeat="feature in estimate.features")
+                    div(class="tablerow col-md-12")
+                        div(class="col-md-5").span {{feature.description}}
+                        div(class="col-md-4").span {{feature.assumptions}}
+                        div(class="col-md-1").span {{feature.pessimistic}}
+                        div(class="col-md-1").span {{feature.optimistic}}
+                        div(class="col-md-1").span {{feature.realistic}}
 
 
