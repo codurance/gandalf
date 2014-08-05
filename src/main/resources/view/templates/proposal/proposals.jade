@@ -14,17 +14,18 @@ block content
 
         div(ng-controller="ProposalsController as proposals")
 
-            div(class="table-fixed-height")
-                div(class="table-header")
-                    span(class="table-cell") Project Name
-                    span(class="table-cell") Client
-                    span(class="table-cell") Last Updated
-                    span(class="table-cell") People Involved
-                div(ng-repeat="proposal in proposals.all", class="table-row")
-                    div(class="table-cell")
+            div(class="tablerow col-md-12")
+                div(class="tableheader col-md-3").span Project Name
+                div(class="tableheader col-md-3").span Client
+                div(class="tableheader col-md-3").span Last Updated
+                div(class="tableheader col-md-3").span People Involved
+
+            div(ng-repeat="proposal in proposals.all")
+                div(class="tablerow col-md-12")
+                    div(class="col-md-3")
                         a(href="/proposals/proposal/{{proposal.id}}") {{proposal.projectName}}
-                    div(class="table-cell") {{proposal.client}}
-                    div(class="table-cell") {{proposal.lastUpdated}}
-                    div(class="table-cell")
+                    div(class="col-md-3") {{proposal.client}}
+                    div(class="col-md-3") {{proposal.lastUpdated}}
+                    div(class="col-md-3")
                         div(ng-repeat="person in proposal.peopleInvolved")
                             span {{person}}
