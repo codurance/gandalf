@@ -4,8 +4,19 @@ block content
 
     div(ng-app="app", ng-controller="ProposalController as proposal", ng-init="init(#{proposalId.toString()})", class="container")
 
-        div
-            p= {{proposalId.toString()}}
-            p
+        div(class="o-page-header")
+            h3
                 span Proposal for {{proposal.json.client}} - Project: {{proposal.json.project}}
+
+        div(class="form-group")
+            span {{proposal.json.description }}
+
+        div(class="form-group")
+            label Contacts
+            div(class="row-fluid", ng-repeat="contact in proposal.json.contacts")
+                span {{contact.name}} - {{contact.email}}
+
+        div(class="form-group")
+            label Notes
+            div.span {{proposal.json.notes}}
 
