@@ -9,6 +9,7 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
+		<jetty.version>9.0.0.v20130308</jetty.version>
 		<spark.version>2.0.0</spark.version>
 		<play.anorm.version>2.1.5</play.anorm.version>
 		<jade4j.version>0.4.0</jade4j.version>
@@ -37,6 +38,16 @@
 	</repositories>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.sparkjava</groupId>
 			<artifactId>spark-core</artifactId>
