@@ -53,33 +53,33 @@
 												"optimistic":0.1,
 												"realistic":0.2
 											},
-									"team-options":[
+									"teamOptions":[
 														{
 															"description":"craftsman + apprentice",
 															"team":[
 																{
 																	"craftsmen":1,
-																	"daily-rate":800
+																	"dailyRate":800
 																},{
 																	"apprentice":1,
-																	"daily-rate":0
+																	"dailyRate":0
 																}
 															],
-															"pessimistic-cost":6400,
-															"optimistic-cost":2400,
-															"realistic-cost":4000,
+															"pessimisticCost":6400,
+															"optimisticCost":2400,
+															"realisticCost":4000,
 															"selected":true
 														},{
 															"description":"2 craftsmen",
 															"team":[
 																{
 																	"craftsmen":2,
-																	"daily-rate":800
+																	"dailyRate":800
 																}
 															],
-															"pessimistic-cost":12800,
-															"optimistic-cost":4800,
-															"realistic-cost":8000,
+															"pessimisticCost":12800,
+															"optimisticCost":4800,
+															"realisticCost":8000,
 															"selected":true
 														}
 													]
@@ -107,13 +107,13 @@
 												"optimistic": 0.2,
 												"realistic": 0.5
 											},
-									"team-options": [
+									"teamOptions": [
 														{
 															"description": "2 craftsmen",
 															"team": [
 																{
 																	"craftsmen": 2,
-																	"daily-rate": 800
+																	"dailyRate": 800
 																}
 															],
 															"pessimistic-cost": 24000,

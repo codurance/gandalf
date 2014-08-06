@@ -51,4 +51,32 @@ block content
                         div(class="col-md-1").span {{feature.optimistic}}
                         div(class="col-md-1").span {{feature.realistic}}
 
+                div(class="col-md-12")
+                        div(class="col-md-3").span
+                        div(class="tableheader col-md-2").span Pessimistic
+                        div(class="tableheader col-md-2").span Optimistic
+                        div(class="tableheader col-md-2").span Realistic
+                div(class="col-md-12")
+                    div(class="col-md-3").span Days
+                    div(class="col-md-2").span {{estimate.cost.days.pessimistic}}
+                    div(class="col-md-2").span {{estimate.cost.days.optimistic}}
+                    div(class="col-md-2").span {{estimate.cost.days.realistic}}
+                div(class="col-md-12")
+                    div(class="col-md-3").span Months
+                    div(class="col-md-2").span {{estimate.cost.months.pessimistic}}
+                    div(class="col-md-2").span {{estimate.cost.months.optimistic}}
+                    div(class="col-md-2").span {{estimate.cost.months.realistic}}
+
+                div(class="col-md-12")
+                    div(class="col-md-12")
+                        h4 Team options
+                    div(ng-repeat="teamOption in estimate.cost.teamOptions")
+                        div(class="tablerow col-md-12")
+                            div(class="col-md-3").span {{teamOption.description}}
+                            div(class="col-md-6 container-fluid")
+                                div(ng-repeat="teamMember in teamOption.team")
+                                    div(ng-show="teamMember.craftsmen").span {{teamMember.craftsmen}} craftsmen at {{teamMember.dailyRate}}
+                                    div(ng-show="teamMember.apprentice").span {{teamMember.apprentice}} apprentice at {{teamMember.dailyRate}}
+
+
 
