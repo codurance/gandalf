@@ -8,6 +8,12 @@ html
         link(href="/css/overrides.css", rel="stylesheet")
         link(href="/css/gandalf.css", rel="stylesheet")
         link(href="/css/tables.css", rel="stylesheet")
+        script(src="/js/jquery/dist/jquery.min.js")
+        script(src="/js/bootstrap/dist/js/bootstrap.min.js")
+        script(src="/js/angular/angular.js")
+        script(src="/js/gandalf/proposals.js")
+        script(src="/js/gandalf/proposal.js")
+
         title= title
     body
         div(class="navbar navbar-default navbar-static-top", role="navigation")
@@ -29,11 +35,9 @@ html
         div(class="container body", role="main")
             block content
 
-        script(src="/js/jquery/dist/jquery.min.js")
-        script(src="/js/bootstrap/dist/js/bootstrap.min.js")
-        script(src="/js/angular/angular.js")
-        script(src="/js/gandalf/proposals.js")
-        script(src="/js/gandalf/proposal.js")
+        div(class="footer")
+            div(class="container")
+                p(class="text-muted") 2014 &copy; Codurance LTD. | Company Registration No: 8712584
 
 
 
