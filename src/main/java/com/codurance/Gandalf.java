@@ -4,6 +4,7 @@ import com.codurance.infrastructure.Routes;
 
 import static spark.Spark.staticFileLocation;
 
+
 public class Gandalf {
 
 	private  static final String STATIC_CONTENT_FOLDER = "/public/";
@@ -15,7 +16,15 @@ public class Gandalf {
 	}
 
 	public void run() {
+		configureStaticFiles();
+		configureRoutes();
+	}
+
+	private void configureStaticFiles() {
 		staticFileLocation(STATIC_CONTENT_FOLDER);
+	}
+
+	private void configureRoutes() {
 		routes.initialise();
 	}
 

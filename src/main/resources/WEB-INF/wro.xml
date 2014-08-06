@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<groups xmlns="http://www.isdc.ro/wro">
+	<group name='core'>
+		<css>/js/bootstrap/dist/css/bootstrap.min.css</css>
+		<js>/js/jquery/dist/jquery.min.js</js>
+		<js>/js/bootstrap/dist/js/bootstrap.min.js</js>
+		<js>/js/angular/angular.js</js>
+	</group>
+</groups>
