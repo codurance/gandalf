@@ -116,9 +116,9 @@
 																	"dailyRate": 800
 																}
 															],
-															"pessimistic-cost": 24000,
-															"optimistic-cost": 8000,
-															"realistic-cost": 16000
+															"pessimisticCost": 24000,
+															"optimisticCost": 8000,
+															"realisticCost": 16000
 														}
 													]
 									}
