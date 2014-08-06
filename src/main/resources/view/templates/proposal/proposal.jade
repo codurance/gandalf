@@ -52,6 +52,9 @@ block content
                         div(class="col-md-1").span {{feature.realistic}}
 
                 div(class="col-md-12")
+                    hr
+
+                div(class="col-md-12")
                         div(class="col-md-3").span
                         div(class="tableheader col-md-2").span Pessimistic
                         div(class="tableheader col-md-2").span Optimistic
@@ -76,9 +79,11 @@ block content
                                 div(class="col-md-3", ng-show="teamMember.craftsmen").span {{teamMember.craftsmen}} craftsmen at {{teamMember.dailyRate | currency:"£"}}
                                 div(class="col-md-3", ng-show="teamMember.apprentice").span {{teamMember.apprentice}} apprentice at {{teamMember.dailyRate | currency:"£"}}
                         div(class="col-md-12")
-                            div(class="col-md-1").span Cost
+                            div(class="col-md-1").span Cost:
                             div(class="col-md-3").span Pessimistic: {{teamOption.pessimisticCost | currency:"£"}}
                             div(class="col-md-3").span Optimistic: {{teamOption.optimisticCost | currency:"£"}}
                             div(class="col-md-3").span Realistic: {{teamOption.realisticCost | currency:"£"}}
+                        div(class="col-md-9")
+                            hr
 
 
