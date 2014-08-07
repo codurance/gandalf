@@ -138,26 +138,8 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
-			<!--
-			<resource>
-				<directory>src/main/static</directory>
-			</resource>
-			<resource>
-				<directory>src/core/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-			-->
 		</resources>
-		<testResources>
-			<!--
-			<testResource>
-				<directory>src/test/resources</directory>
-			</testResource>
-			<testResource>
-				<directory>src/core_test/resources</directory>
-			</testResource>
-			-->
-		</testResources>
+		<testResources></testResources>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<plugins>
 			<plugin>

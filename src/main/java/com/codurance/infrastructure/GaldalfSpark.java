@@ -5,12 +5,7 @@ import com.codurance.controllers.ProposalController;
 import com.noodlesandwich.rekord.Rekord;
 import spark.servlet.SparkApplication;
 
-import static spark.SparkBase.staticFileLocation;
-
 public class GaldalfSpark implements SparkApplication {
-
-	private static final String STATIC_CONTENT_FOLDER = "/public/";
-
 
 	@Override
 	public void init() {
@@ -24,7 +19,5 @@ public class GaldalfSpark implements SparkApplication {
 		Routes routes = new Routes(controllers);
 
 		routes.initialise();
-
-//		staticFileLocation(STATIC_CONTENT_FOLDER);
 	}
 }
