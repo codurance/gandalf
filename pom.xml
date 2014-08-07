@@ -27,6 +27,8 @@
 
 		<journeyTestSuite>**/JourneyTestSuite.class</journeyTestSuite>
 		<surefireArgs>-Xms512m -Xmx512m -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:MaxPermSize=512m</surefireArgs>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<repositories>
@@ -136,6 +138,7 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
+			<!--
 			<resource>
 				<directory>src/main/static</directory>
 			</resource>
@@ -143,17 +146,28 @@
 				<directory>src/core/resources</directory>
 				<filtering>true</filtering>
 			</resource>
+			-->
 		</resources>
 		<testResources>
+			<!--
 			<testResource>
 				<directory>src/test/resources</directory>
 			</testResource>
 			<testResource>
 				<directory>src/core_test/resources</directory>
 			</testResource>
+			-->
 		</testResources>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<plugins>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
+				</configuration>
+			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.0</version>

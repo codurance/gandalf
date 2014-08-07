@@ -12,7 +12,7 @@ import static de.neuland.jade4j.Jade4J.render;
 public class BaseController {
 
 	private static final String CURRENT_FOLDER = new File(".").getAbsolutePath();
-	private static final String RESOURCES_FOLDER = CURRENT_FOLDER + "/src/main/resources/view/";
+	private static final String RESOURCES_FOLDER = CURRENT_FOLDER + "/src/main/webapp/WEB-INF/view/";
 	private static final String TEMPLATES_FOLDER = RESOURCES_FOLDER + "templates/";
 
 	public String display(String pageTemplate, Map<String, Object> model) {
