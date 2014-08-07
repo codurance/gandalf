@@ -13,16 +13,8 @@ public class GandalfLauncher {
 	}
 
 	public static Gandalf gandalf() {
-		MainController mainController = new MainController();
-		ProposalController proposalController = new ProposalController();
 
-		Rekord<Controllers> controllers = Controllers.rekord
-											.with(Controllers.mainController, mainController)
-											.with(Controllers.proposalController, proposalController);
-
-		Routes routes = new Routes(controllers);
-
-		Gandalf gandalf = new Gandalf(routes);
+		Gandalf gandalf = new Gandalf();
 
 		return gandalf;
 	}

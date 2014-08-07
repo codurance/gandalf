@@ -30,7 +30,7 @@ public class Routes {
 		});
 
 		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) -> {
-			return jsonArray("./src/main/resources/data/proposals.json");
+			return jsonArray("./src/main/webapp/data/proposals.json");
 		});
 
 		get(ProposalPage.URL, (request, response) -> {
@@ -40,7 +40,7 @@ public class Routes {
 		});
 
 		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) -> {
-			return jsonObject("./src/main/resources/data/proposal.json");
+			return jsonObject("./src/main/webapp/data/proposal.json");
 		});
 
 	}
