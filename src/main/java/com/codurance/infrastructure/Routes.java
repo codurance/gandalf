@@ -24,14 +24,11 @@ public class Routes {
 	}
 
 	private void initialiseProposalsRoutes() {
-		get(ProposalsPage.URL, (request, response) -> {
-			return controllers.get(Controllers.proposalController)
-						.displayProposals(request, response);
-		});
+		get(ProposalsPage.URL, (request, response) ->
+				controllers.get(Controllers.proposalController).displayProposals(request, response));
 
-		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) -> {
-			return jsonArray("./src/main/webapp/data/proposals.json");
-		});
+		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) ->
+				jsonArray("./src/main/webapp/data/proposals.json"));
 
 		get(ProposalPage.URL, (request, response) -> {
 			ProposalId proposalId = new ProposalId(request.params(":proposalId"));
@@ -39,17 +36,14 @@ public class Routes {
 						.displayProposalMatching(proposalId);
 		});
 
-		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) -> {
-			return jsonObject("./src/main/webapp/data/proposal.json");
-		});
+		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) ->
+				jsonObject("./src/main/webapp/data/proposal.json"));
 
 	}
 
 	private void initialiseMainRoutes() {
-		get(MainPage.URL,(request, response) -> {
-			return controllers.get(Controllers.mainController)
-						.displayMainPage(request, response);
-		});
+		get(MainPage.URL,(request, response) ->
+				controllers.get(Controllers.mainController).displayMainPage(request, response));
 	}
 
 
