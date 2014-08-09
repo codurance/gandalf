@@ -1,6 +1,8 @@
 package journey.proposal;
 
 import com.codurance.model.proposal.ProposalId;
+import com.codurance.view.BasePage;
+import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
 import journey.BaseJourneyTests;
@@ -13,6 +15,7 @@ public class ProposalJourneyShould extends BaseJourneyTests {
 
 	private ProposalsPage proposalsPage = new ProposalsPage();
 	private ProposalPage proposalPage = new ProposalPage(new ProposalId("1"));
+	private NewProposalPage newProposalPage = new NewProposalPage();
 
 	@Test public void
 	display_page_with_all_proposals() {
@@ -26,6 +29,13 @@ public class ProposalJourneyShould extends BaseJourneyTests {
 		navigateTo(proposalPage.url());
 
 		assertThat(pageTitle(), is(proposalPage.title()));
+	}
+
+	@Test public void
+	display_new_proposal_page() {
+		navigateTo(newProposalPage.url());
+
+	    assertThat(pageTitle(), is(newProposalPage.title()));
 	}
 
 }
