@@ -14,7 +14,7 @@ public class JourneyTestSuite {
 
 	@BeforeClass
 	public static void startGandalf() {
-		GandalfLauncher.gandalf().run();
+		GandalfLauncher.gandalf().start();
 	}
 
 }
