@@ -1,6 +1,7 @@
 package com.codurance.controllers;
 
 import com.codurance.model.proposal.ProposalId;
+import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
 import spark.Request;
@@ -16,6 +17,11 @@ public class ProposalController extends BaseController {
 
 	public String displayProposalMatching(ProposalId proposalId) {
 		ProposalPage page = new ProposalPage(proposalId);
+		return display(page.template(), page.model());
+	}
+
+	public String displayNewProposalPage(Request request, Response response) {
+		NewProposalPage page = new NewProposalPage();
 		return display(page.template(), page.model());
 	}
 }

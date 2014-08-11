@@ -2,6 +2,7 @@ package com.codurance.infrastructure;
 
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.view.MainPage;
+import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
 import com.noodlesandwich.rekord.Rekord;
@@ -24,6 +25,10 @@ public class Routes {
 	}
 
 	private void initialiseProposalsRoutes() {
+
+		get(NewProposalPage.URL, (request, response) ->
+				controllers.get(Controllers.proposalController).displayNewProposalPage(request, response));
+
 		get(ProposalsPage.URL, (request, response) ->
 				controllers.get(Controllers.proposalController).displayProposals(request, response));
 
