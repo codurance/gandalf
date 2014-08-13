@@ -28,7 +28,6 @@ App.controller('NewProposalController', function($scope, $http) {
 					alert('Error: ' + response);
 				});
 	};
-
 });
 
 
@@ -47,4 +46,3 @@ App.controller('ProposalController', function ($http, $scope) {
 				});
 	};
 });
-
