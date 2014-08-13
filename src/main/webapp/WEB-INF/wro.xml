@@ -13,12 +13,11 @@
 		<css>/css/overrides.css</css>
 		<css>/css/gandalf.css</css>
 		<css>/css/tables.css</css>
-		<js>/js/gandalf/proposal.js</js>
-		<js>/js/gandalf/proposals.js</js>
 	</group>
 
 	<group name="proposal">
-		<group-ref>core</group-ref>
+		<js>/js/gandalf/proposal.js</js>
+		<js>/js/gandalf/proposals.js</js>
 		<js>/js/gandalf/proposal_new.js</js>
 	</group>
 </groups>
