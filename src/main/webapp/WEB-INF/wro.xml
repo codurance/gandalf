@@ -19,6 +19,6 @@
 
 	<group name="proposal">
 		<group-ref>core</group-ref>
-		<js>/js/gandalf/proposalNew.js</js>
+		<js>/js/gandalf/proposal_new.js</js>
 	</group>
 </groups>
