@@ -4,7 +4,7 @@ block content
 
     script(src="/wro/proposal.js")
 
-    div(ng-app="app-proposals")
+    div(ng-app="App")
 
         div(class="o-page-header")
             h3= title
@@ -14,7 +14,7 @@ block content
                 li
                     a(href="/proposals/new") new proposal
 
-        div(ng-controller="ProposalsController as proposals")
+        div(ng-controller="ProposalsController", ng-init="loadProposals()")
 
             div(class="tablerow col-md-12")
                 div(class="tableheader col-md-3").span Project Name
@@ -22,7 +22,7 @@ block content
                 div(class="tableheader col-md-3").span Last Updated
                 div(class="tableheader col-md-3").span People Involved
 
-            div(ng-repeat="proposal in proposals.all")
+            div(ng-repeat="proposal in proposals")
                 div(class="tablerow col-md-12")
                     div(class="col-md-3")
                         a(href="/proposals/proposal/{{proposal.id}}") {{proposal.projectName}}
