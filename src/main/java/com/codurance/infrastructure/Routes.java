@@ -22,6 +22,7 @@ public class Routes {
 	public void initialise() {
 		initialiseMainRoutes();
 		initialiseProposalsRoutes();
+		initialiseClientsRoutes();
 	}
 
 	private void initialiseProposalsRoutes() {
@@ -44,6 +45,11 @@ public class Routes {
 		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) ->
 				jsonObject("./src/main/webapp/data/proposal.json"));
 
+	}
+
+	private void initialiseClientsRoutes() {
+		get("/clients/all", (request, response) ->
+				jsonArray("./src/main/webapp/data/clients.json"));
 	}
 
 	private void initialiseMainRoutes() {

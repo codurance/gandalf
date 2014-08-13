@@ -16,4 +16,9 @@
 		<js>/js/gandalf/proposal.js</js>
 		<js>/js/gandalf/proposals.js</js>
 	</group>
+
+	<group name="proposal">
+		<group-ref>core</group-ref>
+		<js>/js/gandalf/proposalNew.js</js>
+	</group>
 </groups>

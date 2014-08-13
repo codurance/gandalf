@@ -2,15 +2,19 @@ extends ../../layout/default
 
 block content
 
-    div(ng-app="app-proposals", ng-controller="NewProposalController as newProposal")
+    div(ng-app="App")
 
         div(class="o-page-header")
             h3= title
 
-        div(class="container")
-            form(name="form", action="#{page.submitAction", method="POST", class="css-form")
-                fieldset
-                    div
-                        label Client
-                        select(ng-model="clients", ng-options="client.name for client in clients")
+        div(ng-controller="NewProposalController as newProposal", ng-init="loadFormData()")
+
+            div(class="container")
+                form(name="form", action="#{page.submitAction", method="POST", class="css-form")
+                    fieldset
+                        div
+                            label Client
+                            select(ng-options="client.id as client.name for client in clients",
+                                   ng-model="proposal", required="true")
+                                option(value="") -- Please select --
 
