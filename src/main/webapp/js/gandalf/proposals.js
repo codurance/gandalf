@@ -31,3 +31,20 @@ App.controller('NewProposalController', function($scope, $http) {
 
 });
 
+
+App.controller('ProposalController', function ($http, $scope) {
+
+	$scope.proposal = {};
+
+	$scope.init = function(proposalId) {
+		var url = '/proposals/proposal/' + proposalId + '/json';
+		$http.get(url)
+				.success(function(response){
+					$scope.proposal = response;
+				})
+				.error(function(response){
+					alert('Error: ' + response);
+				});
+	};
+});
+

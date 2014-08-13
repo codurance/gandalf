@@ -2,40 +2,40 @@ extends ../../layout/default
 
 block content
 
-    script(src="/wro/proposal.js")
+    script(src="/wro/proposals.js")
 
-    div(ng-app="app", ng-controller="ProposalController as proposal", ng-init="init(#{proposalId.toString()})", class="container")
+    div(ng-app="App", ng-controller="ProposalController", ng-init="init(#{proposalId.toString()})", class="container")
 
         div(class="o-page-header")
             h3
-                span Proposal for {{proposal.json.client}} - Project: {{proposal.json.project}}
+                span Proposal for {{proposal.client}} - Project: {{proposal.project}}
             div(class="row")
                 div(class="col-md-8")
-                    em Created on {{proposal.json.createdOn}}
+                    em Created on {{proposal.createdOn}}
                 div(class="col-md-4 text-right")
-                    em Last updated on {{proposal.json.lastUpdated}}
+                    em Last updated on {{proposal.lastUpdated}}
 
         p
 
         div(class="col-md-12 form-group")
-            span {{proposal.json.description }}
+            span {{proposal.description }}
 
         div(class="span12")
             div(class="form-group col-md-6")
                 label Contacts
-                div(ng-repeat="contact in proposal.json.contacts")
+                div(ng-repeat="contact in proposal.contacts")
                     span {{contact.name}} - {{contact.email}}
             div(class="form-group col-md-6")
                 label People Involved
-                div(ng-repeat="personInvolved in proposal.json.peopleInvolved")
+                div(ng-repeat="personInvolved in proposal.peopleInvolved")
                     span {{personInvolved.name}} - {{personInvolved.email}}
 
         div(class="col-md-12 form-group")
             label Notes
-            div.span {{proposal.json.notes}}
+            div.span {{proposal.notes}}
 
         div(class="col-md-12")
-            div(ng-repeat="estimate in proposal.json.estimates")
+            div(ng-repeat="estimate in proposal.estimates")
                 h4 {{estimate.phase}}
 
                 div(class="tablerow col-md-12")

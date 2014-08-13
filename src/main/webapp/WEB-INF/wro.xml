@@ -15,8 +15,7 @@
 		<css>/css/tables.css</css>
 	</group>
 
-	<group name="proposal">
-		<js>/js/gandalf/proposal.js</js>
+	<group name="proposals">
 		<js>/js/gandalf/proposals.js</js>
 	</group>
 </groups>
