@@ -12,6 +12,20 @@
 		var clientsCallback = function(response){ $scope.clients = response; };
 
 		$scope.loadFormData = loadJsonData($http, '/clients/all', clientsCallback);
+
+		$scope.master = {};
+
+		$scope.update = function(proposal) {
+			$scope.master = angular.copy(proposal);
+			alert("update:" + $scope.master);
+		};
+
+		$scope.reset = function() {
+			$scope.proposal = angular.copy($scope.master);
+			alert("reset:" + $scope.proposal);
+		}
+
+		$scope.reset();
 	});
 
 

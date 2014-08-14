@@ -12,11 +12,16 @@ block content
         div(ng-controller="NewProposalController as newProposal", ng-init="loadFormData()")
 
             div(class="container")
-                form(name="form", action="#{page.submitAction", method="POST", class="css-form")
+                form(name="form", novalidate)
                     fieldset
                         div
-                            label Client
+                            label Client:
                             select(ng-options="client.id as client.name for client in clients",
-                                   ng-model="proposal", required="true")
+                                   ng-model="proposal.client.id", required="true")
                                 option(value="") -- Please select --
-
+                        div
+                            label Project:
+                            input(type="text", ng-model="proposal.project")
+                        div
+                            button(ng-click="reset()") Reset
+                            button(ng-click="update(proposal)") Save
