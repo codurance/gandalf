@@ -4,7 +4,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 public class BaseJourneyTests {
 
-	private String BASE_URL = "http://localhost:4567";
+	private String BASE_URL = "http://localhost:8080";
 
 	private HtmlUnitDriver driver = new HtmlUnitDriver();
 

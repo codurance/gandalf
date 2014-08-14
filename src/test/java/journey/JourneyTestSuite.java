@@ -12,9 +12,17 @@ import org.junit.runners.Suite;
 })
 public class JourneyTestSuite {
 
+	private static GandalfLauncher launcher;
+
 	@BeforeClass
-	public static void startGandalf() throws Exception {
-		GandalfLauncher.main(new String[] {});
+	public static void startGandalf() {
+		new Thread() {
+			public void run() {
+				launcher = new GandalfLauncher();
+				launcher.start();
+				launcher.join();
+			}
+		}.start();
 	}
 
 }
