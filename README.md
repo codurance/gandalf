@@ -11,3 +11,9 @@ To run it:
 Or just execute the [GandalfLauncher](https://github.com/sandromancuso/gandalf/blob/master/src/main/java/com/codurance/GandalfLauncher.java) class.
  
 Then go to [http://localhost:8080](http://localhost:8080)
+
+To run the tests:
+
+> mvn clean test
+
+Or just execute [JourneyTestSuite](https://github.com/codurance/gandalf/blob/master/src/test/java/journey/JourneyTestSuite.java) class.
