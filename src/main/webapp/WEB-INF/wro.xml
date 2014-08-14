@@ -13,6 +13,7 @@
 		<css>/css/overrides.css</css>
 		<css>/css/gandalf.css</css>
 		<css>/css/tables.css</css>
+		<css>/css/forms.css</css>
 	</group>
 
 	<group name="proposals">

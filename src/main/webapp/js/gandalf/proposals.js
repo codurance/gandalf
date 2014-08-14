@@ -17,13 +17,15 @@
 
 		$scope.update = function(proposal) {
 			$scope.master = angular.copy(proposal);
-			alert("update:" + $scope.master);
 		};
 
 		$scope.reset = function() {
 			$scope.proposal = angular.copy($scope.master);
-			alert("reset:" + $scope.proposal);
 		}
+
+		$scope.isUnchanged = function(proposal) {
+			return angular.equals(proposal, $scope.master);
+		};
 
 		$scope.reset();
 	});
