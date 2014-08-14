@@ -11,5 +11,3 @@ To run it:
 Or just execute the [GandalfLauncher](https://github.com/sandromancuso/gandalf/blob/master/src/main/java/com/codurance/GandalfLauncher.java) class.
  
 Then go to [http://localhost:8080](http://localhost:8080)
-
-test
