@@ -13,8 +13,8 @@ import org.junit.runners.Suite;
 public class JourneyTestSuite {
 
 	@BeforeClass
-	public static void startGandalf() {
-		GandalfLauncher.gandalf().start();
+	public static void startGandalf() throws Exception {
+		GandalfLauncher.main(new String[] {});
 	}
 
 }
