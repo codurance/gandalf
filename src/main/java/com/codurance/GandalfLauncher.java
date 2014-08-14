@@ -16,49 +16,60 @@ import static javax.servlet.DispatcherType.*;
 public class GandalfLauncher {
 
 	public static void main(String[] args) {
+		startJetty();
+	}
+
+	private static void startJetty() {
 		try {
-			startJetty();
+			Server server = createServer();
+			server.start();
+			server.join();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	private static void startJetty() throws Exception {
-		Server server = createServer();
-		server.start();
-		server.join();
-	}
-
-	private static Server createServer() throws IOException {
+	private static Server createServer() {
 		Server server = new Server(8080);
 		server.setHandler(createContext());
 		return server;
 	}
 
-	private static Handler createContext() throws IOException {
+	private static Handler createContext() {
 		WebAppContext context = createWebContext();
 		addFilters(context);
 		return context;
 	}
 
 	private static void addFilters(WebAppContext context) {
-		context.addFilter(WroFilter.class, "/wro/*", EnumSet.of(FORWARD, REQUEST, ASYNC, INCLUDE, ERROR));
+		addWroFilter(context);
+		addSparkFilter(context);
+	}
 
+	private static void addSparkFilter(WebAppContext context) {
 		FilterHolder sparkFilterHolder = new FilterHolder();
 		sparkFilterHolder.setFilter(new SparkFilter());
 		sparkFilterHolder.setInitParameter("applicationClass", "com.codurance.infrastructure.GaldalfSpark");
-		context.addFilter(sparkFilterHolder, "/*", EnumSet.of(FORWARD,REQUEST,ASYNC,INCLUDE,ERROR));
+		context.addFilter(sparkFilterHolder, "/*", EnumSet.of(FORWARD, REQUEST, ASYNC, INCLUDE, ERROR));
 	}
 
-	private static WebAppContext createWebContext() throws IOException {
+	private static void addWroFilter(WebAppContext context) {
+		context.addFilter(WroFilter.class, "/wro/*", EnumSet.of(FORWARD, REQUEST, ASYNC, INCLUDE, ERROR));
+	}
+
+	private static WebAppContext createWebContext() {
 		WebAppContext context = new WebAppContext();
 		context.setContextPath("/");
 		context.setResourceBase(resourceBase());
 		return context;
 	}
 
-	private static String resourceBase() throws IOException {
-		return new File(System.getProperty("user.dir") + "/src/main/webapp").getCanonicalPath();
+	private static String resourceBase() {
+		try {
+			return new File(System.getProperty("user.dir") + "/src/main/webapp").getCanonicalPath();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }
