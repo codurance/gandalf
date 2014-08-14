@@ -12,7 +12,7 @@ block content
         div(ng-controller="NewProposalController as newProposal", ng-init="loadFormData()")
 
             div(class="container")
-                form(name="form", novalidate, class="css-form")
+                form(name="form", novalidate, class="css-form", method="POST")
                     fieldset
                         div
                             span
@@ -30,4 +30,4 @@ block content
                                 span What's the name of the project?
 
                     button(ng-click="reset()", ng-disabled="isUnchanged(proposal)", class="btn") Reset
-                    button(ng-click="update(proposal)", ng-disabled="form.$invalid || isUnchanged(proposal)", class="btn btn-primary") Save
+                    button(ng-click="create(proposal)", ng-disabled="form.$invalid || isUnchanged(proposal)", class="btn btn-primary") Save

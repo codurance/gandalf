@@ -1,15 +1,13 @@
 package com.codurance.infrastructure;
 
 import com.codurance.model.proposal.ProposalId;
-import com.codurance.view.MainPage;
-import com.codurance.view.NewProposalPage;
-import com.codurance.view.ProposalPage;
-import com.codurance.view.ProposalsPage;
+import com.codurance.view.*;
 import com.noodlesandwich.rekord.Rekord;
 
 import static com.codurance.infrastructure.JsonReader.jsonArray;
 import static com.codurance.infrastructure.JsonReader.jsonObject;
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class Routes {
 
@@ -28,10 +26,16 @@ public class Routes {
 	private void initialiseProposalsRoutes() {
 
 		get(NewProposalPage.URL, (request, response) ->
-				controllers.get(Controllers.proposalController).displayNewProposalPage(request, response));
+				controllers.get(Controllers.proposalController)
+						.displayNewProposalPage(request, response));
+
+		post(NewProposalPage.CREATE_PROPOSAL_URL, (request, response) ->
+				controllers.get(Controllers.proposalController)
+						.createProposal(request, response));
 
 		get(ProposalsPage.URL, (request, response) ->
-				controllers.get(Controllers.proposalController).displayProposals(request, response));
+				controllers.get(Controllers.proposalController)
+						.displayProposals(request, response));
 
 		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) ->
 				jsonArray("./src/main/webapp/data/proposals.json"));
@@ -44,6 +48,12 @@ public class Routes {
 
 		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) ->
 				jsonObject("./src/main/webapp/data/proposal.json"));
+
+		get(ProposalEstimatesPage.URL, (request, response) -> {
+			ProposalId proposalId = new ProposalId(request.params(":proposalId"));
+			return controllers.get(Controllers.proposalController)
+						.displayEstimatesFor(proposalId);
+		});
 
 	}
 

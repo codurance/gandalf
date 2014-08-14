@@ -8,27 +8,32 @@
 		$scope.loadProposals = loadJsonData($http, '/proposals/all', proposalsCallback);
 	});
 
-	App.controller('NewProposalController', function($scope, $http) {
-		var clientsCallback = function(response){ $scope.clients = response; };
+	App.controller('NewProposalController', ['$http', '$scope', '$window',
+		function($http, $scope, $window) {
+			var clientsCallback = function(response){ $scope.clients = response; };
 
-		$scope.loadFormData = loadJsonData($http, '/clients/all', clientsCallback);
+			$scope.loadFormData = loadJsonData($http, '/clients/all', clientsCallback);
 
-		$scope.master = {};
+			$scope.master = {};
 
-		$scope.update = function(proposal) {
-			$scope.master = angular.copy(proposal);
-		};
+			$scope.create = function(proposal) {
+				$scope.master = angular.copy(proposal);
+				$http.post('/proposals/proposal/create', $scope.master)
+						.success(function(data, status, headers, config) {
+							$window.location.href = headers('redirectURL');
+						});
+			};
 
-		$scope.reset = function() {
-			$scope.proposal = angular.copy($scope.master);
-		}
+			$scope.reset = function() {
+				$scope.proposal = angular.copy($scope.master);
+			}
 
-		$scope.isUnchanged = function(proposal) {
-			return angular.equals(proposal, $scope.master);
-		};
+			$scope.isUnchanged = function(proposal) {
+				return angular.equals(proposal, $scope.master);
+			};
 
-		$scope.reset();
-	});
+			$scope.reset();
+		}]);
 
 
 	App.controller('ProposalController', function ($http, $scope) {
