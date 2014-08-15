@@ -40,6 +40,11 @@ label {
 	display: inline-block;
 }
 
+textarea {
+	width: 90%;
+	height: 60px;
+}
+
 .css-form input.ng-invalid.ng-dirty {
 	background-color: #FA787E;
 }

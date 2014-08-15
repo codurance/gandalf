@@ -16,6 +16,14 @@
 
 			$scope.master = {};
 
+			$scope.contacts = [{
+									"name":"",
+									"email":""
+								},{
+									"name":"",
+									"email":""
+								}];
+
 			$scope.create = function(proposal) {
 				$scope.master = angular.copy(proposal);
 				$http.post('/proposals/proposal/create', $scope.master)

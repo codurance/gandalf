@@ -11,23 +11,63 @@ block content
 
         div(ng-controller="NewProposalController as newProposal", ng-init="loadFormData()")
 
-            div(class="container")
+            div(class="container col-lg-10")
                 form(name="form", novalidate, class="css-form", method="POST")
                     fieldset
-                        div
-                            span
-                                label Client:
-                            span
-                                select(ng-options="client.id as client.name for client in clients",
-                                    ng-model="proposal.client.id", required)
-                                    option(value="") -- Please select --
-                        div
-                            span
-                                label Project:
-                            span
-                                input(type="text", ng-model="proposal.project", name="pProject", required)
-                            div(ng-show="form.pProject.$error.required")
-                                span What's the name of the project?
+                        div(class="row")
+                            div(class="col-lg-4")
+                                span
+                                    label Client:
+                                span
+                                    select(ng-options="client.id as client.name for client in clients",
+                                        ng-model="proposal.client.id", required)
+                                        option(value="") -- Please select --
+                            div(class="col-lg-4")
+                                span
+                                    label Project:
+                                span
+                                    input(type="text", ng-model="proposal.project", name="pProject", required)
+                                div(ng-show="form.pProject.$error.required")
+                                    span What's the name of the project?
+                        div(class="row")
+                            div(class="col-lg-8")
+                                div
+                                    span
+                                        label Contacts
+                            div(class="col-lg-8")
+                                div
+                                    span
+                                        label Name
+                                    span
+                                        input(type="text", ng-model="proposal.contacts[0].name", required)
+                                    span
+                                        label email
+                                    span
+                                        input(type="text", ng-model="proposal.contacts[0].email", required)
+                                div
+                                    span
+                                        label Name
+                                    span
+                                        input(type="text", ng-model="proposal.contacts[1].name")
+                                    span
+                                        label email
+                                    span
+                                        input(type="text", ng-model="proposal.contacts[1].email")
+                        div(class="row")
+                            div(class="col-lg-8")
+                                div
+                                    span
+                                        label Description
+                                div
+                                    span
+                                        textarea(ng-model="proposal.description")
+                            div(class="col-lg-8")
+                                div
+                                    span
+                                        label Notes
+                                div
+                                    span
+                                        textarea(ng-model="proposal.notes")
 
                     button(ng-click="reset()", ng-disabled="isUnchanged(proposal)", class="btn") Reset
                     button(ng-click="create(proposal)", ng-disabled="form.$invalid || isUnchanged(proposal)", class="btn btn-primary") Save
