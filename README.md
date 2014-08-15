@@ -20,9 +20,9 @@ Or just execute [JourneyTestSuite](https://github.com/codurance/gandalf/blob/mas
 
 ### Deploying into Heroku
 
-> [https://devcenter.heroku.com/articles/getting-started-with-java]()
+> [https://devcenter.heroku.com/articles/getting-started-with-java](https://devcenter.heroku.com/articles/getting-started-with-java)
 
 ### Log monitoring
 
-> [https://devcenter.heroku.com/articles/production-check#log-monitoring]()
+> [https://devcenter.heroku.com/articles/production-check#log-monitoring](https://devcenter.heroku.com/articles/production-check#log-monitoring)
 
