@@ -16,13 +16,21 @@
 
 			$scope.master = {};
 
-			$scope.contacts = [{
-									"name":"",
-									"email":""
-								},{
-									"name":"",
-									"email":""
-								}];
+			$scope.newProposal = {
+									clientId:"",
+									project:"pro name",
+									description:"",
+									notes:"",
+									contacts:[
+										{
+											name:"",
+											email:""
+										},{
+											name:"John Lennon",
+											email:"john.lennon@coolcards.com"
+										}
+									]
+								};
 
 			$scope.create = function(proposal) {
 				$scope.master = angular.copy(proposal);
@@ -33,7 +41,7 @@
 			};
 
 			$scope.reset = function() {
-				$scope.proposal = angular.copy($scope.master);
+				$scope.newProposal = angular.copy($scope.master);
 			}
 
 			$scope.isUnchanged = function(proposal) {

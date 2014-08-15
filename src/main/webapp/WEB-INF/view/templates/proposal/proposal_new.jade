@@ -20,13 +20,13 @@ block content
                                     label Client:
                                 span
                                     select(ng-options="client.id as client.name for client in clients",
-                                        ng-model="proposal.client.id", required)
+                                        ng-model="newProposal.clientId", required)
                                         option(value="") -- Please select --
                             div(class="col-lg-4")
                                 span
                                     label Project:
                                 span
-                                    input(type="text", ng-model="proposal.project", name="pProject", required)
+                                    input(type="text", ng-model="newProposal.project", name="pProject", required)
                                 div(ng-show="form.pProject.$error.required")
                                     span What's the name of the project?
                         div(class="row")
@@ -39,20 +39,20 @@ block content
                                     span
                                         label Name
                                     span
-                                        input(type="text", ng-model="proposal.contacts[0].name", required)
+                                        input(type="text", ng-model="newProposal.contacts[0].name", ng-init="newProposal.contacts = [{name:''}]", required)
                                     span
                                         label email
                                     span
-                                        input(type="text", ng-model="proposal.contacts[0].email", required)
+                                        input(type="text", ng-model="newProposal.contacts[0].email", required)
                                 div
                                     span
                                         label Name
                                     span
-                                        input(type="text", ng-model="proposal.contacts[1].name")
+                                        input(type="text", ng-model="newProposal.contacts[1].name")
                                     span
                                         label email
                                     span
-                                        input(type="text", ng-model="proposal.contacts[1].email")
+                                        input(type="text", ng-model="newProposal.contacts[1].email")
                         div(class="row")
                             div(class="col-lg-8")
                                 div
@@ -60,14 +60,16 @@ block content
                                         label Description
                                 div
                                     span
-                                        textarea(ng-model="proposal.description")
+                                        textarea(ng-model="newProposal.description")
                             div(class="col-lg-8")
                                 div
                                     span
                                         label Notes
                                 div
                                     span
-                                        textarea(ng-model="proposal.notes")
+                                        textarea(ng-model="newProposal.notes")
+                        div
+                            pre {{newProposal}}
 
-                    button(ng-click="reset()", ng-disabled="isUnchanged(proposal)", class="btn") Reset
-                    button(ng-click="create(proposal)", ng-disabled="form.$invalid || isUnchanged(proposal)", class="btn btn-primary") Save
+                    button(ng-click="reset()", ng-disabled="isUnchanged(newProposal)", class="btn") Reset
+                    button(ng-click="create(newProposal)", ng-disabled="form.$invalid || isUnchanged(proposal)", class="btn btn-primary") Save
