@@ -4,7 +4,7 @@ Gandalf
 The idea behind Gandalf is to have a pet-project for [Codurance](http://codurance.com) apprentices and craftsmen.
 It uses Java 8, AngularJS, Jade, SparkJava, and will use some other stuff in the future as well. 
 
-To run it:
+### Running Gandalf
 
 > mvn jetty:run
 
@@ -12,8 +12,17 @@ Or just execute the [GandalfLauncher](https://github.com/sandromancuso/gandalf/b
  
 Then go to [http://localhost:8080](http://localhost:8080)
 
-To run the tests:
+### Tests
 
 > mvn clean test
 
 Or just execute [JourneyTestSuite](https://github.com/codurance/gandalf/blob/master/src/test/java/journey/JourneyTestSuite.java) class.
+
+### Deploying into Heroku
+
+> [https://devcenter.heroku.com/articles/getting-started-with-java]()
+
+### Log monitoring
+
+> [https://devcenter.heroku.com/articles/production-check#log-monitoring]()
+
