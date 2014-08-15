@@ -16,6 +16,7 @@ import static javax.servlet.DispatcherType.*;
 
 public class GandalfLauncher {
 
+	public static final String DEFAULT_PORT = "8080";
 	private Server server;
 
 	public static void main(String[] args) {
@@ -40,9 +41,17 @@ public class GandalfLauncher {
 	}
 
 	private Server createServer() {
-		Server server = new Server(8080);
+		Server server = new Server(port());
 		server.setHandler(createContext());
 		return server;
+	}
+
+	private Integer port() {
+		String port = System.getenv("PORT");
+		if (port == null) {
+			port = DEFAULT_PORT;
+		}
+		return Integer.valueOf(port);
 	}
 
 	private Handler createContext() {
