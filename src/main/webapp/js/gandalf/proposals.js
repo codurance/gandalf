@@ -17,17 +17,17 @@
 			$scope.master = {};
 
 			$scope.newProposal = {
-									clientId:"",
-									project:"pro name",
-									description:"",
-									notes:"",
-									contacts:[
+									"client": {"id":""},
+									"project":"pro name",
+									"description":"",
+									"notes":"",
+									"contacts":[
 										{
-											name:"",
-											email:""
+											"name":"",
+											"email":""
 										},{
-											name:"John Lennon",
-											email:"john.lennon@coolcards.com"
+											"name":"John Lennon",
+											"email":"john.lennon@coolcards.com"
 										}
 									]
 								};
