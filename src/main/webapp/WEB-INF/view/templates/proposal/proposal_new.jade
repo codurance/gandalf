@@ -9,10 +9,10 @@ block content
         div(class="o-page-header")
             h3= title
 
-        div(ng-controller="NewProposalController as newProposal", ng-init="loadFormData()")
+        div(ng-controller="NewProposalController as proposal", ng-init="loadFormData()")
 
             div(class="container col-lg-10")
-                form(name="form", novalidate, class="css-form", method="POST")
+                form(name="form", novalidate, class="css-form", method="POST", ng-init="newProposal.contacts = [{name:'', email:''},{name:'', email:''}]")
                     fieldset
                         div(class="row")
                             div(class="col-lg-4")
@@ -20,7 +20,7 @@ block content
                                     label Client:
                                 span
                                     select(ng-options="client.id as client.name for client in clients",
-                                        ng-model="newProposal.clientId", required)
+                                        ng-model="newProposal.client.id", required)
                                         option(value="") -- Please select --
                             div(class="col-lg-4")
                                 span
@@ -39,7 +39,7 @@ block content
                                     span
                                         label Name
                                     span
-                                        input(type="text", ng-model="newProposal.contacts[0].name", ng-init="newProposal.contacts = [{name:''}]", required)
+                                        input(type="text", ng-model="newProposal.contacts[0].name", required)
                                     span
                                         label email
                                     span
@@ -72,4 +72,4 @@ block content
                             pre {{newProposal}}
 
                     button(ng-click="reset()", ng-disabled="isUnchanged(newProposal)", class="btn") Reset
-                    button(ng-click="create(newProposal)", ng-disabled="form.$invalid || isUnchanged(proposal)", class="btn btn-primary") Save
+                    button(ng-click="create(newProposal)", ng-disabled="form.$invalid || isUnchanged(newProposal)", class="btn btn-primary") Save
