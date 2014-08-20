@@ -59,7 +59,8 @@ public class Routes {
 
 	private void initialiseMainRoutes() {
 		get(MainPage.URL,(request, response) ->
-				controllers.get(Controllers.mainController).displayMainPage(request, response));
+				controllers.get(Controllers.mainController)
+					.displayMainPage(request, response));
 	}
 
 
