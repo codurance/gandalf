@@ -26,7 +26,7 @@ block content
                 div(class="tablerow col-md-12")
                     div(class="col-md-3")
                         a(href="/proposals/proposal/{{proposal.id}}") {{proposal.projectName}}
-                    div(class="col-md-3") {{proposal.client}}
+                    div(class="col-md-3") {{proposal.client.name}}
                     div(class="col-md-3") {{proposal.lastUpdated}}
                     div(class="col-md-3")
                         div(ng-repeat="person in proposal.peopleInvolved")

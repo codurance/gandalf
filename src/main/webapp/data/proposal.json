@@ -1,6 +1,9 @@
 {
 	"id":1,
-	"client":"Cool Cards",
+	"client": {
+		"id":1,
+		"name":"Cool Cards"
+	},
 	"project":"EPOS Integration",
 	"description":"Project to integrate blah...",
 	"notes":"Soft dead line for January 2015.",
