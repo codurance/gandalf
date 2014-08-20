@@ -5,10 +5,16 @@ import com.codurance.view.ProposalEstimatesPage;
 import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
+import main.com.codurance.controllers.TemplateRenderer;
 import spark.Request;
 import spark.Response;
 
 public class ProposalController extends BaseController {
+
+	public ProposalController(TemplateRenderer templateRenderer) {
+		super(templateRenderer);
+	}
+
 	public String displayProposals(Request request, Response response) {
 		ProposalsPage page = new ProposalsPage();
 		return display(page.template(), page.model());
