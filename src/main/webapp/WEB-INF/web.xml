@@ -22,7 +22,7 @@
 		<filter-class>spark.servlet.SparkFilter</filter-class>
 		<init-param>
 			<param-name>applicationClass</param-name>
-			<param-value>com.codurance.infrastructure.GaldalfSpark</param-value>
+			<param-value>com.codurance.Gandalf</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
