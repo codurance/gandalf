@@ -25,15 +25,16 @@ public class Gandalf implements SparkApplication {
 
 	@Override
 	public void init() {
+		Routes routes = new Routes(createControllers());
+		routes.initialise();
+	}
+
+	private Rekord<Controllers> createControllers() {
 		MainController mainController = new MainController();
 		ProposalController proposalController = new ProposalController();
 
-		Rekord<Controllers> controllers = Controllers.rekord
+		return Controllers.rekord
 				.with(Controllers.mainController, mainController)
 				.with(Controllers.proposalController, proposalController);
-
-		Routes routes = new Routes(controllers);
-
-		routes.initialise();
 	}
 }
