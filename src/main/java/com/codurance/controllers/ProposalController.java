@@ -14,7 +14,8 @@ public class ProposalController extends BaseController {
 		return display(page.template(), page.model());
 	}
 
-	public String displayProposalMatching(ProposalId proposalId) {
+	public String displayProposalForProposalId(Request request, Response reponse) {
+		ProposalId proposalId = new ProposalId(request.params(":proposalId"));
 		ProposalPage page = new ProposalPage(proposalId);
 		return display(page.template(), page.model());
 	}
@@ -32,7 +33,8 @@ public class ProposalController extends BaseController {
 		return "";
 	}
 
-	public String displayEstimatesFor(ProposalId proposalId) {
+	public String displayProposalEstimates(Request request, Response response) {
+		ProposalId proposalId = new ProposalId(request.params(":proposalId"));
 		ProposalEstimatesPage page = new ProposalEstimatesPage();
 		return display(page.template(), page.model());
 	}

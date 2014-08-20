@@ -1,6 +1,5 @@
 package com.codurance.infrastructure;
 
-import com.codurance.model.proposal.ProposalId;
 import com.codurance.view.*;
 import com.noodlesandwich.rekord.Rekord;
 
@@ -40,20 +39,16 @@ public class Routes {
 		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) ->
 				jsonArray("./src/main/webapp/data/proposals.json"));
 
-		get(ProposalPage.URL, (request, response) -> {
-			ProposalId proposalId = new ProposalId(request.params(":proposalId"));
-			return controllers.get(Controllers.proposalController)
-						.displayProposalMatching(proposalId);
-		});
+		get(ProposalPage.URL, (request, response) ->
+				controllers.get(Controllers.proposalController)
+					.displayProposalForProposalId(request, response));
 
 		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) ->
 				jsonObject("./src/main/webapp/data/proposal.json"));
 
-		get(ProposalEstimatesPage.URL, (request, response) -> {
-			ProposalId proposalId = new ProposalId(request.params(":proposalId"));
-			return controllers.get(Controllers.proposalController)
-						.displayEstimatesFor(proposalId);
-		});
+		get(ProposalEstimatesPage.URL, (request, response) ->
+				controllers.get(Controllers.proposalController)
+					.displayProposalEstimates(request, response));
 
 	}
 

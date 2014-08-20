@@ -68,7 +68,7 @@ public class GandalfLauncher {
 	private void addSparkFilter(WebAppContext context) {
 		FilterHolder sparkFilterHolder = new FilterHolder();
 		sparkFilterHolder.setFilter(new SparkFilter());
-		sparkFilterHolder.setInitParameter("applicationClass", "com.codurance.infrastructure.GaldalfSpark");
+		sparkFilterHolder.setInitParameter("applicationClass", "com.codurance.Gandalf");
 		context.addFilter(sparkFilterHolder, "/*", EnumSet.of(FORWARD, REQUEST, ASYNC, INCLUDE, ERROR));
 	}
 
