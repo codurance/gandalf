@@ -12,7 +12,6 @@ public class MainController extends BaseController {
 	}
 
 	public String displayMainPage(Request request, Response response) {
-		MainPage mainPage = new MainPage();
-		return display(mainPage.template(), mainPage.model());
+		return display(new MainPage());
 	}
 }

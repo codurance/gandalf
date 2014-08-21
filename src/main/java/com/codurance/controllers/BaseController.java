@@ -1,10 +1,8 @@
 package com.codurance.controllers;
 
+import com.codurance.view.BasePage;
 import main.com.codurance.controllers.TemplateRenderer;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class BaseController {
 
@@ -14,16 +12,12 @@ public class BaseController {
 		this.templateRenderer = templateRenderer;
 	}
 
-	public String display(String pageTemplate, Map<String, Object> model) {
+	protected String display(BasePage page) {
 		try {
-			return templateRenderer.render(pageTemplate, model);
+			return templateRenderer.render(page.template(), page.model());
 		} catch (Exception e) {
-			return errorPage(pageTemplate, e);
+			return errorPage(page.template(), e);
 		}
-	}
-
-	public String display(String pageTemplate) {
-		return display(pageTemplate, new HashMap<>());
 	}
 
 	private String errorPage(String pageTemplate, Exception e) {
