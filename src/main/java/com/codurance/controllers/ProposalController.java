@@ -1,5 +1,6 @@
 package com.codurance.controllers;
 
+import com.codurance.actions.RetrieveProposals;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.view.ProposalEstimatesPage;
 import com.codurance.view.NewProposalPage;
@@ -11,8 +12,12 @@ import spark.Response;
 
 public class ProposalController extends BaseController {
 
-	public ProposalController(TemplateRenderer templateRenderer) {
+	private RetrieveProposals retrieveProposals;
+
+	public ProposalController(TemplateRenderer templateRenderer,
+	                          RetrieveProposals retrieveProposals) {
 		super(templateRenderer);
+		this.retrieveProposals = retrieveProposals;
 	}
 
 	public String displayProposals(Request request, Response response) {
@@ -38,5 +43,9 @@ public class ProposalController extends BaseController {
 	public String displayProposalEstimates(Request request, Response response) {
 		ProposalId proposalId = new ProposalId(request.params(":proposalId"));
 		return display(new ProposalEstimatesPage());
+	}
+
+	public String retriveAllProposals(Request request, Response response) {
+		return retrieveProposals.all();
 	}
 }

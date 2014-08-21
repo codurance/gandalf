@@ -1,5 +1,6 @@
 package main.com.codurance.controllers;
 
+import com.codurance.actions.RetrieveProposals;
 import com.codurance.controllers.ProposalController;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.view.NewProposalPage;
@@ -23,18 +24,20 @@ public class ProposalControllerShould {
 	private static final String PROPOSALS_PAGE = "proposals page";
 	private static final String PROPOSAL_PAGE = "proposal page";
 	private static final String NEW_PROPOSAL_PAGE = "new proposal page";
+	private static final String PROPOSALS_JSON = "[{proposal1}, {proposal2}]";
 
 	private ProposalsPage proposalsPage = new ProposalsPage();
 
 	@Mock Request request;
 	@Mock Response response;
 	@Mock TemplateRenderer templateRenderer;
+	@Mock RetrieveProposals retrieveProposals;
 
 	private ProposalController proposalController;
 
 	@Before
 	public void initialise() {
-	    proposalController = new ProposalController(templateRenderer);
+	    proposalController = new ProposalController(templateRenderer, retrieveProposals);
 	}
 
 	@Test public void
@@ -45,6 +48,15 @@ public class ProposalControllerShould {
 		String page = proposalController.displayProposals(request, response);
 
 		assertThat(page, is(PROPOSALS_PAGE));
+	}
+
+	@Test public void
+	return_list_of_proposals_in_json_format() {
+		given(retrieveProposals.all()).willReturn(PROPOSALS_JSON);
+
+		String json = proposalController.retriveAllProposals(request, response);
+
+	    assertThat(json, is(PROPOSALS_JSON));
 	}
 
 	@Test public void

@@ -1,5 +1,6 @@
 package com.codurance;
 
+import com.codurance.actions.RetrieveProposals;
 import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProposalController;
 import com.codurance.infrastructure.Controllers;
@@ -34,7 +35,8 @@ public class Gandalf implements SparkApplication {
 	private Rekord<Controllers> createControllers() {
 		TemplateRenderer templateRenderer = new JadeTemplateRendered();
 		MainController mainController = new MainController(templateRenderer);
-		ProposalController proposalController = new ProposalController(templateRenderer);
+		RetrieveProposals retrieveProposals = new RetrieveProposals();
+		ProposalController proposalController = new ProposalController(templateRenderer, retrieveProposals);
 
 		return Controllers.rekord
 				.with(Controllers.mainController, mainController)
