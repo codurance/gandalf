@@ -5,7 +5,9 @@ import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProposalController;
 import com.codurance.infrastructure.Controllers;
 import com.codurance.infrastructure.Routes;
+import com.codurance.infrastructure.repositories.FileSystemProposals;
 import com.codurance.infrastructure.template.JadeTemplateRendered;
+import com.codurance.model.proposal.Proposals;
 import com.noodlesandwich.rekord.Rekord;
 import main.com.codurance.controllers.TemplateRenderer;
 import spark.servlet.SparkApplication;
@@ -35,7 +37,8 @@ public class Gandalf implements SparkApplication {
 	private Rekord<Controllers> createControllers() {
 		TemplateRenderer templateRenderer = new JadeTemplateRendered();
 		MainController mainController = new MainController(templateRenderer);
-		RetrieveProposals retrieveProposals = new RetrieveProposals();
+		Proposals fileSystemProposals = new FileSystemProposals();
+		RetrieveProposals retrieveProposals = new RetrieveProposals(fileSystemProposals);
 		ProposalController proposalController = new ProposalController(templateRenderer, retrieveProposals);
 
 		return Controllers.rekord

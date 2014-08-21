@@ -1,5 +1,6 @@
 package com.codurance.infrastructure;
 
+import com.codurance.controllers.ProposalController;
 import com.codurance.view.*;
 import com.noodlesandwich.rekord.Rekord;
 
@@ -24,31 +25,28 @@ public class Routes {
 
 	private void initialiseProposalsRoutes() {
 
+		ProposalController proposalController = controllers.get(Controllers.proposalController);
+
 		get(NewProposalPage.URL, (request, response) ->
-				controllers.get(Controllers.proposalController)
-						.displayNewProposalPage(request, response));
+				proposalController.displayNewProposalPage(request, response));
 
 		post(NewProposalPage.CREATE_PROPOSAL_URL, (request, response) ->
-				controllers.get(Controllers.proposalController)
-						.createProposal(request, response));
+				proposalController.createProposal(request, response));
 
 		get(ProposalsPage.URL, (request, response) ->
-				controllers.get(Controllers.proposalController)
-						.displayProposals(request, response));
+				proposalController.displayProposals(request, response));
 
 		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) ->
-				jsonArray("./src/main/webapp/data/proposals.json"));
+				proposalController.retriveAllProposals(request, response));
 
 		get(ProposalPage.URL, (request, response) ->
-				controllers.get(Controllers.proposalController)
-					.displayProposalForProposalId(request, response));
+				proposalController.displayProposalForProposalId(request, response));
 
 		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) ->
 				jsonObject("./src/main/webapp/data/proposal.json"));
 
 		get(ProposalEstimatesPage.URL, (request, response) ->
-				controllers.get(Controllers.proposalController)
-					.displayProposalEstimates(request, response));
+				proposalController.displayProposalEstimates(request, response));
 
 	}
 
