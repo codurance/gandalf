@@ -1,4 +1,4 @@
-package journey;
+package main.journey;
 
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 

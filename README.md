@@ -16,7 +16,7 @@ Then go to [http://localhost:8080](http://localhost:8080)
 
 > mvn clean test
 
-Or just execute [JourneyTestSuite](https://github.com/codurance/gandalf/blob/master/src/test/java/journey/JourneyTestSuite.java) class.
+Or just execute [JourneyTestSuite](https://github.com/codurance/gandalf/blob/master/src/test/java/main.journey/JourneyTestSuite.java) class.
 
 ### Deploying into Heroku
 

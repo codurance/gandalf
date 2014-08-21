@@ -1,4 +1,4 @@
-package main.com.codurance.controllers;
+package main.unit.com.codurance.controllers;
 
 import com.codurance.actions.RetrieveProposals;
 import com.codurance.controllers.ProposalController;
@@ -6,6 +6,7 @@ import com.codurance.model.proposal.ProposalId;
 import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
+import main.com.codurance.controllers.TemplateRenderer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,8 @@ public class ProposalControllerShould {
 
 	@Mock Request request;
 	@Mock Response response;
-	@Mock TemplateRenderer templateRenderer;
+	@Mock
+	TemplateRenderer templateRenderer;
 	@Mock RetrieveProposals retrieveProposals;
 
 	private ProposalController proposalController;

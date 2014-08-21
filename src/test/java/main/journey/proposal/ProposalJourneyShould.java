@@ -1,11 +1,10 @@
-package journey.proposal;
+package main.journey.proposal;
 
 import com.codurance.model.proposal.ProposalId;
-import com.codurance.view.BasePage;
 import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
-import journey.BaseJourneyTests;
+import main.journey.BaseJourneyTests;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;

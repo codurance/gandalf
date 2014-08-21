@@ -1,7 +1,7 @@
-package journey;
+package main.journey;
 
 import com.codurance.GandalfLauncher;
-import journey.proposal.ProposalJourneyShould;
+import main.journey.proposal.ProposalJourneyShould;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
