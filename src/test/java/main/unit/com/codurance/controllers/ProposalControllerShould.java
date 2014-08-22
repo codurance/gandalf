@@ -1,5 +1,6 @@
 package main.unit.com.codurance.controllers;
 
+import com.codurance.actions.RetrieveProposal;
 import com.codurance.actions.RetrieveProposals;
 import com.codurance.controllers.ProposalController;
 import com.codurance.model.proposal.ProposalId;
@@ -26,20 +27,24 @@ public class ProposalControllerShould {
 	private static final String PROPOSAL_PAGE = "proposal page";
 	private static final String NEW_PROPOSAL_PAGE = "new proposal page";
 	private static final String PROPOSALS_JSON = "[{proposal1}, {proposal2}]";
+	private static final String PROPOSAL_JSON = "{id:10}";
 
 	private ProposalsPage proposalsPage = new ProposalsPage();
 
 	@Mock Request request;
 	@Mock Response response;
-	@Mock
-	TemplateRenderer templateRenderer;
+	@Mock TemplateRenderer templateRenderer;
 	@Mock RetrieveProposals retrieveProposals;
+	@Mock
+	RetrieveProposal retrieveProposal;
 
 	private ProposalController proposalController;
 
 	@Before
 	public void initialise() {
-	    proposalController = new ProposalController(templateRenderer, retrieveProposals);
+	    proposalController = new ProposalController(templateRenderer,
+			                                        retrieveProposals,
+			                                        retrieveProposal);
 	}
 
 	@Test public void
@@ -82,6 +87,16 @@ public class ProposalControllerShould {
 		String page = proposalController.displayNewProposalPage(request, response);
 
 		assertThat(page, is(NEW_PROPOSAL_PAGE));
+	}
+
+	@Test public void
+	return_proposal_in_json_format() {
+		given(request.params(":proposalId")).willReturn("10");
+		given(retrieveProposal.by(new ProposalId("10"))).willReturn(PROPOSAL_JSON);
+
+		String proposalJson = proposalController.retrieveProposal(request, response);
+
+		assertThat(proposalJson, is(PROPOSAL_JSON));
 	}
 
 }

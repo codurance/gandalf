@@ -5,7 +5,6 @@ import com.codurance.view.*;
 import com.noodlesandwich.rekord.Rekord;
 
 import static com.codurance.infrastructure.JsonReader.jsonArray;
-import static com.codurance.infrastructure.JsonReader.jsonObject;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -43,7 +42,7 @@ public class Routes {
 				proposalController.displayProposalForProposalId(request, response));
 
 		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) ->
-				jsonObject("./src/main/webapp/data/proposal.json"));
+				proposalController.retrieveProposal(request, response));
 
 		get(ProposalEstimatesPage.URL, (request, response) ->
 				proposalController.displayProposalEstimates(request, response));

@@ -4,4 +4,5 @@ public interface Proposals {
 
 	String all();
 
+	String findById(ProposalId proposalId);
 }
