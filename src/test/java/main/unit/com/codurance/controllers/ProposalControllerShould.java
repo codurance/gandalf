@@ -1,5 +1,6 @@
 package main.unit.com.codurance.controllers;
 
+import com.codurance.actions.CreateProposal;
 import com.codurance.actions.RetrieveProposal;
 import com.codurance.actions.RetrieveProposals;
 import com.codurance.controllers.ProposalController;
@@ -19,6 +20,7 @@ import spark.Response;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProposalControllerShould {
@@ -27,7 +29,9 @@ public class ProposalControllerShould {
 	private static final String PROPOSAL_PAGE = "proposal page";
 	private static final String NEW_PROPOSAL_PAGE = "new proposal page";
 	private static final String PROPOSALS_JSON = "[{proposal1}, {proposal2}]";
-	private static final String PROPOSAL_JSON = "{id:10}";
+	private static final String PROPOSAL_JSON = "{\"id\":10}";
+	private static final String NEW_PROPOSAL_DATA = "{new_proposal_data}";
+	private static final String EMPTY = "";
 
 	private ProposalsPage proposalsPage = new ProposalsPage();
 
@@ -35,8 +39,8 @@ public class ProposalControllerShould {
 	@Mock Response response;
 	@Mock TemplateRenderer templateRenderer;
 	@Mock RetrieveProposals retrieveProposals;
-	@Mock
-	RetrieveProposal retrieveProposal;
+	@Mock RetrieveProposal retrieveProposal;
+	@Mock CreateProposal createProposal;
 
 	private ProposalController proposalController;
 
@@ -44,7 +48,8 @@ public class ProposalControllerShould {
 	public void initialise() {
 	    proposalController = new ProposalController(templateRenderer,
 			                                        retrieveProposals,
-			                                        retrieveProposal);
+			                                        retrieveProposal,
+			                                        createProposal);
 	}
 
 	@Test public void
@@ -97,6 +102,17 @@ public class ProposalControllerShould {
 		String proposalJson = proposalController.retrieveProposal(request, response);
 
 		assertThat(proposalJson, is(PROPOSAL_JSON));
+	}
+
+	@Test public void
+	redirect_to_proposal_estimations_page_after_proposal_is_created() {
+		given(request.body()).willReturn(NEW_PROPOSAL_DATA);
+		given(createProposal.create(NEW_PROPOSAL_DATA)).willReturn("{\"id\":2}");
+
+		String result = proposalController.createProposal(request, response);
+
+		verify(response).header("redirectURL", "/proposals/proposal/2/estimates");
+	    assertThat(result, is(EMPTY));
 	}
 
 }

@@ -1,27 +1,36 @@
 package com.codurance.controllers;
 
+import com.codurance.actions.CreateProposal;
 import com.codurance.actions.RetrieveProposal;
 import com.codurance.actions.RetrieveProposals;
 import com.codurance.model.proposal.ProposalId;
-import com.codurance.view.ProposalEstimatesPage;
 import com.codurance.view.NewProposalPage;
+import com.codurance.view.ProposalEstimatesPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
+import com.eclipsesource.json.JsonObject;
 import main.com.codurance.controllers.TemplateRenderer;
 import spark.Request;
 import spark.Response;
 
+import static com.eclipsesource.json.JsonObject.readFrom;
+
 public class ProposalController extends BaseController {
+
+	private static final String EMPTY = "";
 
 	private RetrieveProposals retrieveProposals;
 	private RetrieveProposal retrieveProposal;
+	private CreateProposal createProposal;
 
 	public ProposalController(TemplateRenderer templateRenderer,
 	                          RetrieveProposals retrieveProposals,
-	                          RetrieveProposal retrieveProposal) {
+	                          RetrieveProposal retrieveProposal,
+	                          CreateProposal createProposal) {
 		super(templateRenderer);
 		this.retrieveProposals = retrieveProposals;
 		this.retrieveProposal = retrieveProposal;
+		this.createProposal = createProposal;
 	}
 
 	public String displayProposals(Request request, Response response) {
@@ -38,10 +47,10 @@ public class ProposalController extends BaseController {
 	}
 
 	public String createProposal(Request request, Response response) {
-		String newProposalJson = request.body();
-		String redirectURL = ProposalEstimatesPage.URL.replace(":proposalId", "10");
+		JsonObject json = readFrom(createProposal.create(request.body()));
+		String redirectURL = ProposalEstimatesPage.URL.replace(":proposalId", json.get("id").toString());
 		response.header("redirectURL", redirectURL);
-		return "";
+		return EMPTY;
 	}
 
 	public String displayProposalEstimates(Request request, Response response) {

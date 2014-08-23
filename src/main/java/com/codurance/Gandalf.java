@@ -1,5 +1,6 @@
 package com.codurance;
 
+import com.codurance.actions.CreateProposal;
 import com.codurance.actions.RetrieveProposal;
 import com.codurance.actions.RetrieveProposals;
 import com.codurance.controllers.MainController;
@@ -42,11 +43,13 @@ public class Gandalf implements SparkApplication {
 		Proposals fileSystemProposals = new FileSystemProposals();
 		RetrieveProposals retrieveProposals = new RetrieveProposals(fileSystemProposals);
 		RetrieveProposal retrieveProposal = new RetrieveProposal(fileSystemProposals);
+		CreateProposal createProposal = new CreateProposal();
 
 		ProposalController proposalController =
 				new ProposalController(templateRenderer,
 										retrieveProposals,
-										retrieveProposal);
+										retrieveProposal,
+										createProposal);
 
 		return Controllers.rekord
 				.with(Controllers.mainController, mainController)
