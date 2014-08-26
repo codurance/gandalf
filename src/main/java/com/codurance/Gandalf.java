@@ -42,12 +42,12 @@ public class Gandalf implements SparkApplication {
 		TemplateRenderer templateRenderer = new JadeTemplateRendered();
 		MainController mainController = new MainController(templateRenderer);
 
-		Proposals fileSystemProposals = new FileSystemProposals();
-		RetrieveProposals retrieveProposals = new RetrieveProposals(fileSystemProposals);
-		RetrieveProposal retrieveProposal = new RetrieveProposal(fileSystemProposals);
+		Proposals proposals = new FileSystemProposals();
+		RetrieveProposals retrieveProposals = new RetrieveProposals(proposals);
+		RetrieveProposal retrieveProposal = new RetrieveProposal(proposals);
 
 		ProposalFactory proposalFactory = new ProposalFactory();
-		ProposalService proposalService = new ProposalService();
+		ProposalService proposalService = new ProposalService(proposals);
 
 		CreateProposal createProposal = new CreateProposal(proposalFactory, proposalService);
 
