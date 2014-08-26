@@ -17,7 +17,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import spark.Request;
 import spark.Response;
 
-import static main.unit.com.codurance.builders.ProposalBuilder.aProposal;
+import static builders.ProposalBuilder.aProposal;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
