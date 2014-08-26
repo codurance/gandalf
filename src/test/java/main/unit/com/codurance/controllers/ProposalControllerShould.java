@@ -17,6 +17,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import spark.Request;
 import spark.Response;
 
+import static main.unit.com.codurance.builders.ProposalBuilder.aProposal;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -107,7 +108,7 @@ public class ProposalControllerShould {
 	@Test public void
 	redirect_to_proposal_estimations_page_after_proposal_is_created() {
 		given(request.body()).willReturn(NEW_PROPOSAL_DATA);
-		given(createProposal.create(NEW_PROPOSAL_DATA)).willReturn("{\"id\":2}");
+		given(createProposal.create(NEW_PROPOSAL_DATA)).willReturn(aProposal().withId(2).build());
 
 		String result = proposalController.createProposal(request, response);
 
