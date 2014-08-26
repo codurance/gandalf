@@ -16,7 +16,6 @@ public class CreateProposal {
 
 	public Proposal create(String proposalData) {
 		Proposal proposal = proposalFactory.createProposalFrom(proposalData);
-		proposalService.create(proposal);
-		return null;
+		return proposalService.create(proposal);
 	}
 }
