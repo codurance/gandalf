@@ -5,7 +5,7 @@ import com.codurance.controllers.ProposalController;
 import com.codurance.view.*;
 import com.google.inject.Inject;
 
-import static com.codurance.infrastructure.JsonReader.jsonArray;
+import static com.codurance.infrastructure.JsonReader.jsonArrayAsString;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -54,7 +54,7 @@ public class Routes {
 
 	private void initialiseClientsRoutes() {
 		get("/clients/all", (request, response) ->
-				jsonArray("./src/main/webapp/data/clients.json"));
+				jsonArrayAsString("./src/main/webapp/data/clients.json"));
 	}
 
 	private void initialiseMainRoutes() {
