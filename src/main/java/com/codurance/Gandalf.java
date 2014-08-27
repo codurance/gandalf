@@ -1,19 +1,9 @@
 package com.codurance;
 
-import com.codurance.actions.CreateProposal;
-import com.codurance.actions.RetrieveProposal;
-import com.codurance.actions.RetrieveProposals;
-import com.codurance.controllers.MainController;
-import com.codurance.controllers.ProposalController;
-import com.codurance.infrastructure.Controllers;
 import com.codurance.infrastructure.Routes;
-import com.codurance.infrastructure.repositories.FileSystemProposals;
-import com.codurance.infrastructure.template.JadeTemplateRendered;
-import com.codurance.model.proposal.ProposalFactory;
-import com.codurance.model.proposal.ProposalService;
-import com.codurance.model.proposal.Proposals;
-import com.noodlesandwich.rekord.Rekord;
-import main.com.codurance.controllers.TemplateRenderer;
+import com.codurance.infrastructure.dependency_injection.GandalfModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import spark.servlet.SparkApplication;
 
 /*
@@ -34,31 +24,9 @@ public class Gandalf implements SparkApplication {
 
 	@Override
 	public void init() {
-		Routes routes = new Routes(createControllers());
+		Injector injector = Guice.createInjector(new GandalfModule());
+		Routes routes = injector.getInstance(Routes.class);
 		routes.initialise();
 	}
 
-	private Rekord<Controllers> createControllers() {
-		TemplateRenderer templateRenderer = new JadeTemplateRendered();
-		MainController mainController = new MainController(templateRenderer);
-
-		Proposals proposals = new FileSystemProposals();
-		RetrieveProposals retrieveProposals = new RetrieveProposals(proposals);
-		RetrieveProposal retrieveProposal = new RetrieveProposal(proposals);
-
-		ProposalFactory proposalFactory = new ProposalFactory();
-		ProposalService proposalService = new ProposalService(proposals);
-
-		CreateProposal createProposal = new CreateProposal(proposalFactory, proposalService);
-
-		ProposalController proposalController =
-				new ProposalController(templateRenderer,
-										retrieveProposals,
-										retrieveProposal,
-										createProposal);
-
-		return Controllers.rekord
-				.with(Controllers.mainController, mainController)
-				.with(Controllers.proposalController, proposalController);
-	}
 }

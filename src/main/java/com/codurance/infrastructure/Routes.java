@@ -1,8 +1,9 @@
 package com.codurance.infrastructure;
 
+import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProposalController;
 import com.codurance.view.*;
-import com.noodlesandwich.rekord.Rekord;
+import com.google.inject.Inject;
 
 import static com.codurance.infrastructure.JsonReader.jsonArray;
 import static spark.Spark.get;
@@ -10,10 +11,14 @@ import static spark.Spark.post;
 
 public class Routes {
 
-	private Rekord<Controllers> controllers;
+	private MainController mainController;
+	private ProposalController proposalController;
 
-	public Routes(Rekord<Controllers> controllers) {
-		this.controllers = controllers;
+	@Inject
+	public Routes(MainController mainController,
+	              ProposalController proposalController) {
+		this.mainController = mainController;
+		this.proposalController = proposalController;
 	}
 
 	public void initialise() {
@@ -23,8 +28,6 @@ public class Routes {
 	}
 
 	private void initialiseProposalsRoutes() {
-
-		ProposalController proposalController = controllers.get(Controllers.proposalController);
 
 		get(NewProposalPage.URL, (request, response) ->
 				proposalController.displayNewProposalPage(request, response));
@@ -56,10 +59,7 @@ public class Routes {
 
 	private void initialiseMainRoutes() {
 		get(MainPage.URL,(request, response) ->
-				controllers.get(Controllers.mainController)
-					.displayMainPage(request, response));
+				mainController.displayMainPage(request, response));
 	}
-
-
 
 }

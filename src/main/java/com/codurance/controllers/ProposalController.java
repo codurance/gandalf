@@ -9,6 +9,7 @@ import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalEstimatesPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
+import com.google.inject.Inject;
 import main.com.codurance.controllers.TemplateRenderer;
 import spark.Request;
 import spark.Response;
@@ -21,6 +22,7 @@ public class ProposalController extends BaseController {
 	private RetrieveProposal retrieveProposal;
 	private CreateProposal createProposal;
 
+	@Inject
 	public ProposalController(TemplateRenderer templateRenderer,
 	                          RetrieveProposals retrieveProposals,
 	                          RetrieveProposal retrieveProposal,
