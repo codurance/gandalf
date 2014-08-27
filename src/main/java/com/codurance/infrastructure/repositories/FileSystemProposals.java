@@ -6,7 +6,6 @@ import com.codurance.model.proposal.Proposals;
 import com.eclipsesource.json.JsonArray;
 
 import static com.codurance.infrastructure.JsonReader.jsonArray;
-import static com.codurance.infrastructure.JsonReader.jsonArrayAsString;
 import static com.codurance.infrastructure.JsonReader.jsonObject;
 
 public class FileSystemProposals implements Proposals {
@@ -19,7 +18,7 @@ public class FileSystemProposals implements Proposals {
 
 	@Override
 	public String all() {
-		return jsonArrayAsString("./src/main/webapp/data/proposals.json");
+		return proposals.toString();
 	}
 
 	@Override
