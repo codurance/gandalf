@@ -5,6 +5,7 @@ import com.codurance.actions.RetrieveProposal;
 import com.codurance.actions.RetrieveProposals;
 import com.codurance.controllers.ProposalController;
 import com.codurance.model.proposal.ProposalId;
+import com.codurance.model.proposal.ProposalJson;
 import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
@@ -21,6 +22,7 @@ import static builders.ProposalBuilder.aProposal;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,7 +33,7 @@ public class ProposalControllerShould {
 	private static final String NEW_PROPOSAL_PAGE = "new proposal page";
 	private static final String PROPOSALS_JSON = "[{proposal1}, {proposal2}]";
 	private static final String PROPOSAL_JSON = "{\"id\":10}";
-	private static final String NEW_PROPOSAL_DATA = "{new_proposal_data}";
+	private static final String NEW_PROPOSAL_DATA = "{\"projectName\":\"some project\"}";
 	private static final String EMPTY = "";
 
 	private ProposalsPage proposalsPage = new ProposalsPage();
@@ -108,7 +110,7 @@ public class ProposalControllerShould {
 	@Test public void
 	redirect_to_proposal_estimations_page_after_proposal_is_created() {
 		given(request.body()).willReturn(NEW_PROPOSAL_DATA);
-		given(createProposal.create(NEW_PROPOSAL_DATA)).willReturn(aProposal().withId(2).build());
+		given(createProposal.create(any(ProposalJson.class))).willReturn(aProposal().withId(2).build());
 
 		String result = proposalController.createProposal(request, response);
 

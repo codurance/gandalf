@@ -35,18 +35,18 @@ public class Proposal {
 		this.notes = notes;
 	}
 
-	public Proposal(JsonObject proposalJson) {
+	public Proposal(ProposalJson proposalJson) {
 		this.id = new ProposalId(proposalJson.get("id").asString());
 		this.clientId = new ClientId(proposalJson.get("clientId").asString());
-		this.projectName = proposalJson.get("projectName").asString();
+		this.projectName = proposalJson.getStringOrElse("projectName", "");
 		this.contacts = getContactsFrom(proposalJson);
-		this.description = proposalJson.get("description").asString();
-		this.notes = proposalJson.get("notes").asString();
+		this.description = proposalJson.getStringOrElse("description", "");
+		this.notes = proposalJson.getStringOrElse("notes", "");
 	}
 
-	private Contact[] getContactsFrom(JsonObject proposalJson) {
+	private Contact[] getContactsFrom(ProposalJson proposalJson) {
 		List<Contact> contacts = new ArrayList<>();
-		Iterator<JsonValue> jsonContacts = proposalJson.get("contacts").asArray().iterator();
+		Iterator<JsonValue> jsonContacts = proposalJson.getArray("contacts").iterator();
 		while (jsonContacts.hasNext()) {
 			JsonObject jsonContact = jsonContacts.next().asObject();
 			contacts.add(new Contact(jsonContact.get("name").asString(),
@@ -101,23 +101,24 @@ public class Proposal {
 				'}';
 	}
 
-	public JsonObject asJson() {
+	public ProposalJson asJson() {
 		JsonArray contactsJson = new JsonArray();
 		for (Contact contact : contacts) {
 				contactsJson.add(new JsonObject()
 						.add("name", contact.name())
 						.add("email", contact.email()));
 		}
-		return new JsonObject()
-						.add("id", id.toString())
-						.add("clientId", clientId.stringValue())
-						.add("projectName", projectName)
-						.add("contacts", contactsJson)
-						.add("description", description)
-						.add("notes", notes);
+		return new ProposalJson(new JsonObject()
+									.add("id", id.toString())
+									.add("clientId", clientId.stringValue())
+									.add("projectName", projectName)
+									.add("contacts", contactsJson)
+									.add("description", description)
+									.add("notes", notes));
 	}
 
-	public static Proposal fromJson(JsonObject proposalJson) {
+	public static Proposal fromJson(ProposalJson proposalJson) {
 		return new Proposal(proposalJson);
 	}
+
 }

@@ -6,8 +6,6 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 
 public class ProposalId {
 
-	public static final ProposalId NON_PERSISTED_ID = new ProposalId(-1);
-
 	private String value;
 
 	public ProposalId(String value) {
@@ -31,5 +29,9 @@ public class ProposalId {
 	@Override
 	public int hashCode() {
 		return reflectionHashCode(this);
+	}
+
+	public static ProposalId proposalId(String id) {
+		return new ProposalId(id);
 	}
 }

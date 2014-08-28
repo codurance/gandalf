@@ -5,6 +5,7 @@ import com.codurance.actions.RetrieveProposal;
 import com.codurance.actions.RetrieveProposals;
 import com.codurance.model.proposal.Proposal;
 import com.codurance.model.proposal.ProposalId;
+import com.codurance.model.proposal.ProposalJson;
 import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalEstimatesPage;
 import com.codurance.view.ProposalPage;
@@ -13,6 +14,8 @@ import com.google.inject.Inject;
 import main.com.codurance.controllers.TemplateRenderer;
 import spark.Request;
 import spark.Response;
+
+import static com.eclipsesource.json.JsonObject.readFrom;
 
 public class ProposalController extends BaseController {
 
@@ -47,9 +50,8 @@ public class ProposalController extends BaseController {
 	}
 
 	public String createProposal(Request request, Response response) {
-//		JsonObject json = readFrom(createProposal.create(request.body()));
-//		String redirectURL = ProposalEstimatesPage.URL.replace(":proposalId", json.get("id").toString());
-		Proposal proposal = createProposal.create(request.body());
+		ProposalJson proposalJson = new ProposalJson(readFrom(request.body()));
+		Proposal proposal = createProposal.create(proposalJson);
 		String redirectURL = ProposalEstimatesPage.URL.replace(":proposalId", proposal.id().toString());
 		response.header("redirectURL", redirectURL);
 		return EMPTY;

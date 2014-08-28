@@ -1,6 +1,7 @@
 package core.com.codurance.model.proposal;
 
 import com.codurance.model.proposal.Proposal;
+import com.codurance.model.proposal.ProposalJson;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class ProposalShould {
 													.add(new JsonObject()
 															.add("name", "John")
 															.add("email", "john@somewhere.com"));
-	private static final JsonObject PROPOSAL_JSON = new JsonObject()
+	private static final ProposalJson PROPOSAL_JSON = new ProposalJson()
 															.add("id", "1")
 															.add("clientId", "2")
 															.add("projectName", "Some project")
@@ -33,13 +34,13 @@ public class ProposalShould {
 												.withProjectName("Some project")
 												.withContacts(
 														aContact()
-															.withName("Sandro")
-															.withEmail("sandro@codurance.com")
-															.build(),
+																.withName("Sandro")
+																.withEmail("sandro@codurance.com")
+																.build(),
 														aContact()
-															.withName("John")
-															.withEmail("john@somewhere.com")
-															.build())
+																.withName("John")
+																.withEmail("john@somewhere.com")
+																.build())
 												.withDescription("Some description")
 												.withNotes("Some notes")
 												.build();

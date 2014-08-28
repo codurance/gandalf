@@ -21,6 +21,7 @@ public class ProposalBuilder {
 		this.id = new ProposalId(id);
 		return this;
 	}
+
 	public ProposalBuilder withClientId(String id) {
 		this.clientId = new ClientId(id);
 		return this;

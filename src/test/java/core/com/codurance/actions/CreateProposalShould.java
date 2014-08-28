@@ -3,14 +3,15 @@ package core.com.codurance.actions;
 import com.codurance.actions.CreateProposal;
 import com.codurance.model.proposal.Proposal;
 import com.codurance.model.proposal.ProposalId;
+import com.codurance.model.proposal.ProposalJson;
 import com.codurance.model.proposal.ProposalService;
+import com.eclipsesource.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static com.codurance.model.proposal.ProposalId.NON_PERSISTED_ID;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -19,8 +20,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class CreateProposalShould {
 
-	private static final String PROPOSAL_JSON_DATA = "{proposal}";
-	private static final Proposal NON_PERSISTED_PROPOSAL = new Proposal(NON_PERSISTED_ID);
+	private static final ProposalJson PROPOSAL_JSON = new ProposalJson(new JsonObject());
 	private static final Proposal NEW_PROPOSAL = new Proposal(new ProposalId(1));
 
 	@Mock ProposalService proposalService;
@@ -34,16 +34,16 @@ public class CreateProposalShould {
 
 	@Test public void
 	create_a_new_proposal() {
-		createProposal.create(PROPOSAL_JSON_DATA);
+		createProposal.create(PROPOSAL_JSON);
 
-		verify(proposalService).create(NON_PERSISTED_PROPOSAL);
+		verify(proposalService).create(PROPOSAL_JSON);
 	}
 
 	@Test public void
 	return_a_newly_created_proposal() {
-		given(proposalService.create(NON_PERSISTED_PROPOSAL)).willReturn(NEW_PROPOSAL);
+		given(proposalService.create(PROPOSAL_JSON)).willReturn(NEW_PROPOSAL);
 
-		Proposal result = createProposal.create(PROPOSAL_JSON_DATA);
+		Proposal result = createProposal.create(PROPOSAL_JSON);
 
 		assertThat(result, is(NEW_PROPOSAL));
 	}

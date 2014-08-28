@@ -11,8 +11,8 @@ public class ProposalService {
 		this.proposals = proposals;
 	}
 
-	public Proposal create(Proposal proposal) {
-		return proposals.add(proposal);
+	public Proposal create(ProposalJson proposalJson) {
+		return proposals.add(Proposal.fromJson(proposalJson));
 	}
 
 }

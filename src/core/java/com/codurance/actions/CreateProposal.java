@@ -1,8 +1,8 @@
 package com.codurance.actions;
 
 import com.codurance.model.proposal.Proposal;
+import com.codurance.model.proposal.ProposalJson;
 import com.codurance.model.proposal.ProposalService;
-import com.eclipsesource.json.JsonObject;
 import com.google.inject.Inject;
 
 public class CreateProposal {
@@ -14,8 +14,7 @@ public class CreateProposal {
 		this.proposalService = proposalService;
 	}
 
-	public Proposal create(String proposalData) {
-		Proposal proposal = Proposal.fromJson(JsonObject.readFrom(proposalData));
-		return proposalService.create(proposal);
+	public Proposal create(ProposalJson proposalJson) {
+		return proposalService.create(proposalJson);
 	}
 }
