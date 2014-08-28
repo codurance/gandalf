@@ -2,7 +2,6 @@ package core.com.codurance.actions;
 
 import com.codurance.actions.CreateProposal;
 import com.codurance.model.proposal.Proposal;
-import com.codurance.model.proposal.ProposalFactory;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.model.proposal.ProposalService;
 import org.junit.Before;
@@ -24,20 +23,17 @@ public class CreateProposalShould {
 	private static final Proposal NON_PERSISTED_PROPOSAL = new Proposal(NON_PERSISTED_ID);
 	private static final Proposal NEW_PROPOSAL = new Proposal(new ProposalId(1));
 
-	@Mock ProposalFactory proposalFactory;
 	@Mock ProposalService proposalService;
 
 	private CreateProposal createProposal;
 
 	@Before
 	public void initialise() {
-	    this.createProposal = new CreateProposal(proposalFactory, proposalService);
+	    this.createProposal = new CreateProposal(proposalService);
 	}
 
 	@Test public void
 	create_a_new_proposal() {
-		given(proposalFactory.createProposalFrom(PROPOSAL_JSON_DATA)).willReturn(NON_PERSISTED_PROPOSAL);
-
 		createProposal.create(PROPOSAL_JSON_DATA);
 
 		verify(proposalService).create(NON_PERSISTED_PROPOSAL);
@@ -45,7 +41,6 @@ public class CreateProposalShould {
 
 	@Test public void
 	return_a_newly_created_proposal() {
-		given(proposalFactory.createProposalFrom(PROPOSAL_JSON_DATA)).willReturn(NON_PERSISTED_PROPOSAL);
 		given(proposalService.create(NON_PERSISTED_PROPOSAL)).willReturn(NEW_PROPOSAL);
 
 		Proposal result = createProposal.create(PROPOSAL_JSON_DATA);
