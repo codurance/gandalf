@@ -2,8 +2,12 @@ package com.codurance.model.proposal;
 
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
+import com.eclipsesource.json.JsonValue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
@@ -29,6 +33,26 @@ public class Proposal {
 		this.contacts = (contacts != null) ? contacts : new Contact[] {};
 		this.description = description;
 		this.notes = notes;
+	}
+
+	public Proposal(JsonObject proposalJson) {
+		this.id = new ProposalId(proposalJson.get("id").asString());
+		this.clientId = new ClientId(proposalJson.get("clientId").asString());
+		this.projectName = proposalJson.get("projectName").asString();
+		this.contacts = getContactsFrom(proposalJson);
+		this.description = proposalJson.get("description").asString();
+		this.notes = proposalJson.get("notes").asString();
+	}
+
+	private Contact[] getContactsFrom(JsonObject proposalJson) {
+		List<Contact> contacts = new ArrayList<>();
+		Iterator<JsonValue> jsonContacts = proposalJson.get("contacts").asArray().iterator();
+		while (jsonContacts.hasNext()) {
+			JsonObject jsonContact = jsonContacts.next().asObject();
+			contacts.add(new Contact(jsonContact.get("name").asString(),
+					jsonContact.get("email").asString()));
+		}
+		return contacts.toArray(new Contact[contacts.size()]);
 	}
 
 	public ProposalId id() {
@@ -87,8 +111,13 @@ public class Proposal {
 		return new JsonObject()
 						.add("id", id.toString())
 						.add("clientId", clientId.stringValue())
+						.add("projectName", projectName)
 						.add("contacts", contactsJson)
 						.add("description", description)
 						.add("notes", notes);
+	}
+
+	public static Proposal fromJson(JsonObject proposalJson) {
+		return new Proposal(proposalJson);
 	}
 }

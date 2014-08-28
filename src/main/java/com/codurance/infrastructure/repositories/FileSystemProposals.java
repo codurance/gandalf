@@ -28,6 +28,7 @@ public class FileSystemProposals implements Proposals {
 
 	@Override
 	public Proposal add(Proposal nonPersistedProposal) {
+		proposals.add(nonPersistedProposal.asJson());
 		return null;
 	}
 }

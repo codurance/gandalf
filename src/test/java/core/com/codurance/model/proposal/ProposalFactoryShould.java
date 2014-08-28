@@ -32,7 +32,7 @@ public class ProposalFactoryShould {
 		System.out.println(NEW_PROPOSAL_JSON_DATA);
 		Proposal expectedProposal = aProposal()
 										.withId(-1)
-										.withClientId(1)
+										.withClientId("1")
 										.withProjectName("EPOS Integration")
 										.withContacts(
 												aContact().withName("Bob").withEmail("bob@a.com").build(),

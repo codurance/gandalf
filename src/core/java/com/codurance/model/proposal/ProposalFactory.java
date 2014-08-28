@@ -23,7 +23,7 @@ public class ProposalFactory {
 		}
 
 		return new Proposal(NON_PERSISTED_ID,
-							new ClientId(jsonObject.get("client").asObject().get("id").asInt()),
+							new ClientId(jsonObject.get("client").asObject().get("id").asString()),
 							jsonObject.get("project").asString(),
 							contacts.toArray(new Contact[contacts.size()]),
 							jsonObject.get("description").asString(),

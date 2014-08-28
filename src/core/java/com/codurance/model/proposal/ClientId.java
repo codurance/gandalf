@@ -4,9 +4,9 @@ import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 public class ClientId {
-	private int id;
+	private String id;
 
-	public ClientId(int id) {
+	public ClientId(String id) {
 		this.id = id;
 	}
 
