@@ -12,11 +12,11 @@ public class Contact {
 		this.email = email;
 	}
 
-	public String getName() {
+	public String name() {
 		return name;
 	}
 
-	public String getEmail() {
+	public String email() {
 		return email;
 	}
 

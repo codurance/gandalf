@@ -1,5 +1,8 @@
 package com.codurance.model.proposal;
 
+import com.eclipsesource.json.JsonArray;
+import com.eclipsesource.json.JsonObject;
+
 import java.util.Arrays;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
@@ -10,7 +13,7 @@ public class Proposal {
 	private final ProposalId id;
 	private ClientId clientId;
 	private String projectName;
-	private Contact[] contacts;
+	private Contact[] contacts = new Contact[] {};
 	private String description;
 	private String notes;
 
@@ -23,7 +26,7 @@ public class Proposal {
 		this.id = id;
 		this.clientId = clientId;
 		this.projectName = projectName;
-		this.contacts = contacts;
+		this.contacts = (contacts != null) ? contacts : new Contact[] {};
 		this.description = description;
 		this.notes = notes;
 	}
@@ -72,5 +75,20 @@ public class Proposal {
 				", description='" + description + '\'' +
 				", notes='" + notes + '\'' +
 				'}';
+	}
+
+	public JsonObject asJson() {
+		JsonArray contactsJson = new JsonArray();
+		for (Contact contact : contacts) {
+				contactsJson.add(new JsonObject()
+						.add("name", contact.name())
+						.add("email", contact.email()));
+		}
+		return new JsonObject()
+						.add("id", id.toString())
+						.add("clientId", clientId.stringValue())
+						.add("contacts", contactsJson)
+						.add("description", description)
+						.add("notes", notes);
 	}
 }

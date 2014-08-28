@@ -19,4 +19,8 @@ public class ClientId {
 	public int hashCode() {
 		return reflectionHashCode(this);
 	}
+
+	public String stringValue() {
+		return String.valueOf(id);
+	}
 }
