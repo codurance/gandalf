@@ -16,9 +16,15 @@ public class ProposalId {
 		this.value = valueOf(id);
 	}
 
+	public String asString() {
+		return value;
+	}
+
 	@Override
 	public String toString() {
-		return value;
+		return "ProposalId{" +
+				"value='" + value + '\'' +
+				'}';
 	}
 
 	@Override

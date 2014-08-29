@@ -52,7 +52,7 @@ public class ProposalController extends BaseController {
 	public String createProposal(Request request, Response response) {
 		ProposalJson proposalJson = new ProposalJson(readFrom(request.body()));
 		Proposal proposal = createProposal.create(proposalJson);
-		String redirectURL = ProposalEstimatesPage.URL.replace(":proposalId", proposal.id().toString());
+		String redirectURL = ProposalEstimatesPage.URL.replace(":proposalId", proposal.id().asString());
 		response.header("redirectURL", redirectURL);
 		return EMPTY;
 	}

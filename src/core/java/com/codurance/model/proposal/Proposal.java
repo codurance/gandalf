@@ -109,8 +109,8 @@ public class Proposal {
 						.add("email", contact.email()));
 		}
 		return new ProposalJson(new JsonObject()
-									.add("id", id.toString())
-									.add("clientId", clientId.stringValue())
+									.add("id", id.asString())
+									.add("clientId", clientId.asString())
 									.add("projectName", projectName)
 									.add("contacts", contactsJson)
 									.add("description", description)

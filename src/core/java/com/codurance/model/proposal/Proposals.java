@@ -6,5 +6,7 @@ public interface Proposals {
 
 	String findById(ProposalId proposalId);
 
-	Proposal add(Proposal nonPersistedProposal);
+	void add(Proposal nonPersistedProposal);
+
+	ProposalId nextId();
 }

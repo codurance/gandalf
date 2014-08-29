@@ -2,6 +2,8 @@ package com.codurance.model.proposal;
 
 import com.google.inject.Inject;
 
+import static com.codurance.model.proposal.Proposal.fromJson;
+
 public class ProposalService {
 
 	private Proposals proposals;
@@ -11,8 +13,11 @@ public class ProposalService {
 		this.proposals = proposals;
 	}
 
-	public Proposal create(ProposalJson proposalJson) {
-		return proposals.add(Proposal.fromJson(proposalJson));
+	public synchronized Proposal create(ProposalJson proposalJson) {
+		ProposalId proposalId = proposals.nextId();
+		Proposal newProposal = fromJson(proposalJson.set("id", proposalId.asString()));
+		proposals.add(newProposal);
+		return newProposal;
 	}
 
 }

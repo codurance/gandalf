@@ -17,6 +17,11 @@ public class FileSystemProposals implements Proposals {
 	}
 
 	@Override
+	public ProposalId nextId() {
+		return null;
+	}
+
+	@Override
 	public String all() {
 		return proposals.toString();
 	}
@@ -27,8 +32,8 @@ public class FileSystemProposals implements Proposals {
 	}
 
 	@Override
-	public Proposal add(Proposal nonPersistedProposal) {
+	public void add(Proposal nonPersistedProposal) {
 		proposals.add(nonPersistedProposal.asJson().jsonObject());
-		return null;
 	}
+
 }

@@ -20,7 +20,7 @@ public class ClientId {
 		return reflectionHashCode(this);
 	}
 
-	public String stringValue() {
+	public String asString() {
 		return String.valueOf(id);
 	}
 }
