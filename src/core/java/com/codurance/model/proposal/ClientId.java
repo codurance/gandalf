@@ -4,10 +4,10 @@ import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 public class ClientId {
-	private String id;
+	private int value;
 
-	public ClientId(String id) {
-		this.id = id;
+	public ClientId(int value) {
+		this.value = value;
 	}
 
 	@Override
@@ -21,6 +21,10 @@ public class ClientId {
 	}
 
 	public String asString() {
-		return String.valueOf(id);
+		return String.valueOf(value);
+	}
+
+	public int intValue() {
+		return value;
 	}
 }

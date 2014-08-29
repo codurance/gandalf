@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class ProposalServiceShould {
 
-	private static final ProposalId NEXT_PROPOSAL_ID = proposalId("11");
+	private static final ProposalId NEXT_PROPOSAL_ID = proposalId(11);
 
 	private ProposalJson newProposalJson;
 
@@ -31,7 +31,7 @@ public class ProposalServiceShould {
 	public void initialise() {
 		this.proposalService = new ProposalService(proposals);
 		given(proposals.nextId()).willReturn(NEXT_PROPOSAL_ID);
-		newProposalJson = new ProposalJson().add("clientId", "5");
+		newProposalJson = new ProposalJson().add("clientId", 5);
 	}
 
 	@Test public void
@@ -39,7 +39,7 @@ public class ProposalServiceShould {
 		proposalService.create(newProposalJson);
 
 	    verify(proposals).add(proposalArgument.capture());
-		assertThat(proposalArgument.getValue().id(), is(proposalId(NEXT_PROPOSAL_ID.asString())));
+		assertThat(proposalArgument.getValue().id(), is(NEXT_PROPOSAL_ID));
 	}
 
 	@Test public void

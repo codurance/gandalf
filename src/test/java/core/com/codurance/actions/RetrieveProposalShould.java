@@ -17,7 +17,7 @@ import static org.mockito.BDDMockito.given;
 public class RetrieveProposalShould {
 
 	private static final String PROPOSAL = "{proposal1}";
-	private static final ProposalId PROPOSAL_ID = new ProposalId("1");
+	private static final ProposalId PROPOSAL_ID = new ProposalId(1);
 
 	@Mock Proposals proposals;
 

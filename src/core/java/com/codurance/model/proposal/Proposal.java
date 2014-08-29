@@ -36,8 +36,8 @@ public class Proposal {
 	}
 
 	public Proposal(ProposalJson proposalJson) {
-		this.id = new ProposalId(proposalJson.get("id").asString());
-		this.clientId = new ClientId(proposalJson.get("clientId").asString());
+		this.id = new ProposalId(proposalJson.get("id").asInt());
+		this.clientId = new ClientId(proposalJson.get("clientId").asInt());
 		this.projectName = proposalJson.getStringOrElse("projectName", "");
 		this.contacts = getContactsFrom(proposalJson);
 		this.description = proposalJson.getStringOrElse("description", "");
@@ -109,8 +109,8 @@ public class Proposal {
 						.add("email", contact.email()));
 		}
 		return new ProposalJson(new JsonObject()
-									.add("id", id.asString())
-									.add("clientId", clientId.asString())
+									.add("id", id.intValue())
+									.add("clientId", clientId.intValue())
 									.add("projectName", projectName)
 									.add("contacts", contactsJson)
 									.add("description", description)

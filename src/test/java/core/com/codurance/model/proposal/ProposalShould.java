@@ -30,7 +30,7 @@ public class ProposalShould {
 
 	private static final Proposal PROPOSAL = aProposal()
 												.withId(1)
-												.withClientId("2")
+												.withClientId(2)
 												.withProjectName("Some project")
 												.withContacts(
 														aContact()

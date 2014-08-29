@@ -22,7 +22,7 @@ public class ProposalBuilder {
 		return this;
 	}
 
-	public ProposalBuilder withClientId(String id) {
+	public ProposalBuilder withClientId(int id) {
 		this.clientId = new ClientId(id);
 		return this;
 	}

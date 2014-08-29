@@ -15,7 +15,7 @@ public class ProposalService {
 
 	public synchronized Proposal create(ProposalJson proposalJson) {
 		ProposalId proposalId = proposals.nextId();
-		Proposal newProposal = fromJson(proposalJson.set("id", proposalId.asString()));
+		Proposal newProposal = fromJson(proposalJson.set("id", proposalId.intValue()));
 		proposals.add(newProposal);
 		return newProposal;
 	}

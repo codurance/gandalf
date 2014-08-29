@@ -1,23 +1,26 @@
 package com.codurance.model.proposal;
 
-import static java.lang.String.valueOf;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 public class ProposalId {
 
-	private String value;
+	private int value;
 
-	public ProposalId(String value) {
-		this.value = value;
+	public static ProposalId proposalId(int id) {
+		return new ProposalId(id);
 	}
 
 	public ProposalId(int id) {
-		this.value = valueOf(id);
+		this.value = id;
+	}
+
+	public int intValue() {
+		return value;
 	}
 
 	public String asString() {
-		return value;
+		return String.valueOf(value);
 	}
 
 	@Override
@@ -37,7 +40,4 @@ public class ProposalId {
 		return reflectionHashCode(this);
 	}
 
-	public static ProposalId proposalId(String id) {
-		return new ProposalId(id);
-	}
 }

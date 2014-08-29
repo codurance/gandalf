@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 public class ProposalJourneyShould extends BaseJourneyTests {
 
 	private ProposalsPage proposalsPage = new ProposalsPage();
-	private ProposalPage proposalPage = new ProposalPage(new ProposalId("1"));
+	private ProposalPage proposalPage = new ProposalPage(new ProposalId(1));
 	private NewProposalPage newProposalPage = new NewProposalPage();
 
 	@Test public void

@@ -4,9 +4,16 @@ import com.codurance.model.proposal.Proposal;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.model.proposal.Proposals;
 import com.eclipsesource.json.JsonArray;
+import com.eclipsesource.json.JsonValue;
+
+import java.util.stream.Stream;
 
 import static com.codurance.infrastructure.JsonReader.jsonArray;
 import static com.codurance.infrastructure.JsonReader.jsonObject;
+import static com.codurance.model.proposal.ProposalId.proposalId;
+import static java.util.Spliterator.DISTINCT;
+import static java.util.Spliterators.spliteratorUnknownSize;
+import static java.util.stream.StreamSupport.stream;
 
 public class InMemoryJsonProposals implements Proposals {
 
@@ -18,11 +25,18 @@ public class InMemoryJsonProposals implements Proposals {
 
 	@Override
 	public ProposalId nextId() {
-		return null;
+		Stream<JsonValue> jsonProposals = stream(
+				spliteratorUnknownSize(proposals.iterator(), DISTINCT), false);
+		Integer lastId = jsonProposals
+							.map((jsonValue) -> jsonValue.asObject().get("id").asInt())
+							.max(Integer::compare)
+							.orElseGet(() -> Integer.valueOf(0));
+		return proposalId(lastId + 1);
 	}
 
 	@Override
 	public String all() {
+		System.out.println("** all: " + proposals.toString());
 		return proposals.toString();
 	}
 
@@ -32,8 +46,10 @@ public class InMemoryJsonProposals implements Proposals {
 	}
 
 	@Override
-	public void add(Proposal nonPersistedProposal) {
-		proposals.add(nonPersistedProposal.asJson().jsonObject());
+	public void add(Proposal newProposal) {
+		System.out.println("** Before add: " + all());
+		proposals.add(newProposal.asJson().jsonObject());
+		System.out.println("** After add: " + all());
 	}
 
 }

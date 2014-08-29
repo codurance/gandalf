@@ -21,6 +21,10 @@ public class ProposalJson {
 		return new ProposalJson(newJsonObject().add(name, value));
 	}
 
+	public ProposalJson add(String name, int value) {
+		return new ProposalJson(newJsonObject().add(name, value));
+	}
+
 	public ProposalJson add(String name, JsonArray jsonArray) {
 		return new ProposalJson(newJsonObject().add(name, jsonArray));
 	}
@@ -35,6 +39,10 @@ public class ProposalJson {
 	}
 
 	public ProposalJson set(String name, String value) {
+		return new ProposalJson(newJsonObject().set(name, value));
+	}
+
+	public ProposalJson set(String name, int value) {
 		return new ProposalJson(newJsonObject().set(name, value));
 	}
 

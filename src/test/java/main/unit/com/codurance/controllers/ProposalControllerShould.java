@@ -76,7 +76,7 @@ public class ProposalControllerShould {
 
 	@Test public void
 	display_proposal_for_proposal_id() {
-		ProposalPage proposalPage = new ProposalPage(new ProposalId("10"));
+		ProposalPage proposalPage = new ProposalPage(new ProposalId(10));
 		given(request.params(":proposalId")).willReturn("10");
 		given(templateRenderer.render(proposalPage.template(), proposalPage.model()))
 				.willReturn(PROPOSAL_PAGE);
@@ -100,7 +100,7 @@ public class ProposalControllerShould {
 	@Test public void
 	return_proposal_in_json_format() {
 		given(request.params(":proposalId")).willReturn("10");
-		given(retrieveProposal.by(new ProposalId("10"))).willReturn(PROPOSAL_JSON);
+		given(retrieveProposal.by(new ProposalId(10))).willReturn(PROPOSAL_JSON);
 
 		String proposalJson = proposalController.retrieveProposal(request, response);
 

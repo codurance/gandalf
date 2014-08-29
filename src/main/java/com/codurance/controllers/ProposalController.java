@@ -16,6 +16,7 @@ import spark.Request;
 import spark.Response;
 
 import static com.eclipsesource.json.JsonObject.readFrom;
+import static java.lang.Integer.valueOf;
 
 public class ProposalController extends BaseController {
 
@@ -41,7 +42,7 @@ public class ProposalController extends BaseController {
 	}
 
 	public String displayProposalForProposalId(Request request, Response reponse) {
-		ProposalId proposalId = new ProposalId(request.params(":proposalId"));
+		ProposalId proposalId = new ProposalId(valueOf(request.params(":proposalId")));
 		return display(new ProposalPage(proposalId));
 	}
 
@@ -66,7 +67,7 @@ public class ProposalController extends BaseController {
 	}
 
 	public String retrieveProposal(Request request, Response response) {
-		ProposalId proposalId = new ProposalId(request.params(":proposalId"));
+		ProposalId proposalId = new ProposalId(valueOf(request.params(":proposalId")));
 		return retrieveProposal.by(proposalId);
 	}
 }

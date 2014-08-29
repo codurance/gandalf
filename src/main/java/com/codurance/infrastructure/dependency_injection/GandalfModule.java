@@ -8,6 +8,8 @@ import com.codurance.model.proposal.Proposals;
 import com.google.inject.AbstractModule;
 import main.com.codurance.controllers.TemplateRenderer;
 
+import static com.google.inject.Scopes.SINGLETON;
+
 public class GandalfModule extends AbstractModule {
 	@Override
 	protected void configure() {
@@ -15,7 +17,7 @@ public class GandalfModule extends AbstractModule {
 
 		bind(Routes.class);
 
-		bind(ProposalService.class).asEagerSingleton();
-		bind(Proposals.class).to(InMemoryJsonProposals.class);
+		bind(ProposalService.class).in(SINGLETON);
+		bind(Proposals.class).to(InMemoryJsonProposals.class).in(SINGLETON);
 	}
 }

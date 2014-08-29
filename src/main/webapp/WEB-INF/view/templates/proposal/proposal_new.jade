@@ -20,7 +20,7 @@ block content
                                     label Client:
                                 span
                                     select(ng-options="client.id as client.name for client in clients",
-                                        ng-model="newProposal.client.id", required)
+                                        ng-model="newProposal.clientId", required)
                                         option(value="") -- Please select --
                             div(class="col-lg-4")
                                 span
