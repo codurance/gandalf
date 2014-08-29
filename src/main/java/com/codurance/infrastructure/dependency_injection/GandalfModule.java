@@ -1,7 +1,7 @@
 package com.codurance.infrastructure.dependency_injection;
 
 import com.codurance.infrastructure.Routes;
-import com.codurance.infrastructure.repositories.FileSystemProposals;
+import com.codurance.infrastructure.repositories.InMemoryJsonProposals;
 import com.codurance.infrastructure.template.JadeTemplateRendered;
 import com.codurance.model.proposal.ProposalService;
 import com.codurance.model.proposal.Proposals;
@@ -16,6 +16,6 @@ public class GandalfModule extends AbstractModule {
 		bind(Routes.class);
 
 		bind(ProposalService.class).asEagerSingleton();
-		bind(Proposals.class).to(FileSystemProposals.class);
+		bind(Proposals.class).to(InMemoryJsonProposals.class);
 	}
 }

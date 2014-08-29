@@ -8,11 +8,11 @@ import com.eclipsesource.json.JsonArray;
 import static com.codurance.infrastructure.JsonReader.jsonArray;
 import static com.codurance.infrastructure.JsonReader.jsonObject;
 
-public class FileSystemProposals implements Proposals {
+public class InMemoryJsonProposals implements Proposals {
 
 	private JsonArray proposals;
 
-	public FileSystemProposals() {
+	public InMemoryJsonProposals() {
 		proposals = jsonArray("./src/main/webapp/data/proposals.json");
 	}
 
