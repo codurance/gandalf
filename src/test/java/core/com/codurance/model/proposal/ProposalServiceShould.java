@@ -1,5 +1,6 @@
 package core.com.codurance.model.proposal;
 
+import com.codurance.infrastructure.events.EventPublisher;
 import com.codurance.model.proposal.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,13 +24,15 @@ public class ProposalServiceShould {
 	private ProposalJson newProposalJson;
 
 	@Captor ArgumentCaptor<Proposal> proposalArgument;
+	@Captor ArgumentCaptor<ProposalCreated> event;
 	@Mock Proposals proposals;
+	@Mock EventPublisher eventPublisher;
 
 	private ProposalService proposalService;
 
 	@Before
 	public void initialise() {
-		this.proposalService = new ProposalService(proposals);
+		this.proposalService = new ProposalService(proposals, eventPublisher);
 		given(proposals.nextId()).willReturn(NEXT_PROPOSAL_ID);
 		newProposalJson = new ProposalJson().add("clientId", 5);
 	}
@@ -48,6 +51,14 @@ public class ProposalServiceShould {
 
 		verify(proposals).nextId();
 		assertThat(proposal.id(), is(NEXT_PROPOSAL_ID));
+	}
+
+	@Test public void
+	should_publish_a_proposal_created_event() {
+		Proposal proposal = proposalService.create(newProposalJson);
+
+		verify(eventPublisher).publish(event.capture());
+		assertThat(event.getValue().proposalId(), is(proposal.id()));
 	}
 
 }

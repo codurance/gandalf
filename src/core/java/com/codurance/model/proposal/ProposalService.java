@@ -1,5 +1,6 @@
 package com.codurance.model.proposal;
 
+import com.codurance.infrastructure.events.EventPublisher;
 import com.google.inject.Inject;
 
 import static com.codurance.model.proposal.Proposal.fromJson;
@@ -7,16 +8,19 @@ import static com.codurance.model.proposal.Proposal.fromJson;
 public class ProposalService {
 
 	private Proposals proposals;
+	private EventPublisher eventPublisher;
 
 	@Inject
-	public ProposalService(Proposals proposals) {
+	public ProposalService(Proposals proposals, EventPublisher eventPublisher) {
 		this.proposals = proposals;
+		this.eventPublisher = eventPublisher;
 	}
 
 	public synchronized Proposal create(ProposalJson proposalJson) {
 		ProposalId proposalId = proposals.nextId();
 		Proposal newProposal = fromJson(proposalJson.set("id", proposalId.intValue()));
 		proposals.add(newProposal);
+		eventPublisher.publish(new ProposalCreated(proposalId));
 		return newProposal;
 	}
 

@@ -36,7 +36,6 @@ public class InMemoryJsonProposals implements Proposals {
 
 	@Override
 	public String all() {
-		System.out.println("** all: " + proposals.toString());
 		return proposals.toString();
 	}
 
@@ -47,9 +46,7 @@ public class InMemoryJsonProposals implements Proposals {
 
 	@Override
 	public void add(Proposal newProposal) {
-		System.out.println("** Before add: " + all());
 		proposals.add(newProposal.asJson().jsonObject());
-		System.out.println("** After add: " + all());
 	}
 
 }
