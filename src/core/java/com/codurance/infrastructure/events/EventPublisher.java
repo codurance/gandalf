@@ -1,26 +1,17 @@
 package com.codurance.infrastructure.events;
 
+import java.util.HashSet;
 import java.util.Set;
-
-import static java.lang.Boolean.FALSE;
 
 public class EventPublisher {
 
-	private static final ThreadLocal<Set> subscribers = new ThreadLocal<>();
-
-	private static final ThreadLocal<Boolean> publishing = new ThreadLocal<Boolean>() {
-		@Override
-		protected Boolean initialValue() {
-			return FALSE;
-		}
-	};
+	private Set<DomainEventSubscriber> subscribers = new HashSet<>();
 
 	public <T> void publish(T event) {
-
+		subscribers.stream().forEach(s -> s.handle(event));
 	}
 
 	public void add(DomainEventSubscriber aSubscriber) {
-
-
+		this.subscribers.add(aSubscriber);
 	}
 }

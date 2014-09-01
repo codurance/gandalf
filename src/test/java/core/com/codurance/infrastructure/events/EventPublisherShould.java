@@ -9,12 +9,14 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EventPublisherShould {
 
-	@Mock DomainEventSubscriber subscriber;
+	@Mock DomainEventSubscriber subscriber1;
+	@Mock DomainEventSubscriber subscriber2;
 	@Mock ProposalCreated domainEvent;
 
 	private EventPublisher eventPublisher;
@@ -25,11 +27,13 @@ public class EventPublisherShould {
 	}
 
 	@Test public void
-	notify_a_subscriber_when_an_event_is_published() {
-		eventPublisher.add(subscriber);
+	notify_subscribers_when_an_event_is_published() {
+		eventPublisher.add(subscriber1);
+		eventPublisher.add(subscriber2);
 
 		eventPublisher.publish(domainEvent);
 
-		verify(subscriber).handle(domainEvent);
-	} 
+		verify(subscriber1, times(1)).handle(domainEvent);
+		verify(subscriber2, times(1)).handle(domainEvent);
+	}
 }
