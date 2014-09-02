@@ -2,7 +2,7 @@ package core.com.codurance.infrastructure.events;
 
 import com.codurance.infrastructure.events.DomainEventSubscriber;
 import com.codurance.infrastructure.events.EventPublisher;
-import com.codurance.model.proposal.ProposalCreated;
+import com.codurance.model.proposal.events.ProposalCreated;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

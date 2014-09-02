@@ -1,6 +1,7 @@
 package com.codurance.model.proposal;
 
 import com.codurance.infrastructure.events.EventPublisher;
+import com.codurance.model.proposal.events.ProposalCreated;
 import com.google.inject.Inject;
 
 import static com.codurance.model.proposal.Proposal.fromJson;

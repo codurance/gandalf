@@ -1,8 +1,8 @@
 package core.com.codurance.model.proposal;
 
-import com.codurance.model.proposal.ProposalCreated;
-import com.codurance.model.proposal.ProposalEventPublisher;
-import com.codurance.model.proposal.ProposalListUpdater;
+import com.codurance.model.proposal.events.ProposalCreated;
+import com.codurance.model.proposal.events.ProposalEventPublisher;
+import com.codurance.model.proposal.events.ProposalListUpdater;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

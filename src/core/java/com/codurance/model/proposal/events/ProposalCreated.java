@@ -1,4 +1,6 @@
-package com.codurance.model.proposal;
+package com.codurance.model.proposal.events;
+
+import com.codurance.model.proposal.ProposalId;
 
 public class ProposalCreated {
 
