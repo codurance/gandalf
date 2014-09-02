@@ -21,8 +21,8 @@ public class ProposalShould {
 															.add("name", "John")
 															.add("email", "john@somewhere.com"));
 	private static final ProposalJson PROPOSAL_JSON = new ProposalJson()
-															.add("id", "1")
-															.add("clientId", "2")
+															.add("id", 1)
+															.add("clientId", 2)
 															.add("projectName", "Some project")
 															.add("contacts", contacts)
 															.add("description", "Some description")
