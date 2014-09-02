@@ -1,4 +1,4 @@
-package core.com.codurance.model.proposal;
+package core.com.codurance.model.proposal.event;
 
 import com.codurance.model.proposal.events.ProposalCreated;
 import com.codurance.model.proposal.events.ProposalEventPublisher;
