@@ -7,6 +7,6 @@ public class ProposalEventPublisher extends EventPublisher {
 
 	@Inject
 	public ProposalEventPublisher(ProposalListUpdater proposalListUpdater) {
-		add(proposalListUpdater);
+		super(proposalListUpdater);
 	}
 }

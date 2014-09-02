@@ -23,14 +23,11 @@ public class EventPublisherShould {
 
 	@Before
 	public void initialise() {
-	    eventPublisher = new EventPublisher();
+	    eventPublisher = new EventPublisher(aSubscriber, anotherSubscriber);
 	}
 
 	@Test public void
 	notify_subscribers_when_an_event_is_published() {
-		eventPublisher.add(aSubscriber);
-		eventPublisher.add(anotherSubscriber);
-
 		eventPublisher.publish(domainEvent);
 
 		verify(aSubscriber, times(1)).handle(domainEvent);
