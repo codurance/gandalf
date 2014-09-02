@@ -16,8 +16,8 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class EventPublisherShould {
 
-	@Mock DomainEventSubscriber subscriber1;
-	@Mock DomainEventSubscriber subscriber2;
+	@Mock DomainEventSubscriber aSubscriber;
+	@Mock DomainEventSubscriber anotherSubscriber;
 	@Mock ProposalCreated domainEvent;
 
 	private EventPublisher eventPublisher;
@@ -29,22 +29,22 @@ public class EventPublisherShould {
 
 	@Test public void
 	notify_subscribers_when_an_event_is_published() {
-		eventPublisher.add(subscriber1);
-		eventPublisher.add(subscriber2);
+		eventPublisher.add(aSubscriber);
+		eventPublisher.add(anotherSubscriber);
 
 		eventPublisher.publish(domainEvent);
 
-		verify(subscriber1, times(1)).handle(domainEvent);
-		verify(subscriber2, times(1)).handle(domainEvent);
+		verify(aSubscriber, times(1)).handle(domainEvent);
+		verify(anotherSubscriber, times(1)).handle(domainEvent);
 	}
 
 	@Test public void
 	reset_subscribers() {
-		eventPublisher.add(subscriber1);
+		eventPublisher.add(aSubscriber);
 		eventPublisher.reset();
 
 		eventPublisher.publish(domainEvent);
 
-		verify(subscriber1, never()).handle(domainEvent);
+		verify(aSubscriber, never()).handle(domainEvent);
 	}
 }
