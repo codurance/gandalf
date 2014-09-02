@@ -1,8 +1,8 @@
 package core.com.codurance.model.proposal;
 
-import com.codurance.infrastructure.events.EventPublisher;
 import com.codurance.model.proposal.*;
 import com.codurance.model.proposal.events.ProposalCreated;
+import com.codurance.model.proposal.events.ProposalEventPublisher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ public class ProposalServiceShould {
 	@Captor ArgumentCaptor<Proposal> proposalArgument;
 	@Captor ArgumentCaptor<ProposalCreated> event;
 	@Mock Proposals proposals;
-	@Mock EventPublisher eventPublisher;
+	@Mock ProposalEventPublisher eventPublisher;
 
 	private ProposalService proposalService;
 

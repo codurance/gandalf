@@ -2,6 +2,7 @@ package com.codurance.model.proposal;
 
 import com.codurance.infrastructure.events.EventPublisher;
 import com.codurance.model.proposal.events.ProposalCreated;
+import com.codurance.model.proposal.events.ProposalEventPublisher;
 import com.google.inject.Inject;
 
 import static com.codurance.model.proposal.Proposal.fromJson;
@@ -12,7 +13,7 @@ public class ProposalService {
 	private EventPublisher eventPublisher;
 
 	@Inject
-	public ProposalService(Proposals proposals, EventPublisher eventPublisher) {
+	public ProposalService(Proposals proposals, ProposalEventPublisher eventPublisher) {
 		this.proposals = proposals;
 		this.eventPublisher = eventPublisher;
 	}
