@@ -25,7 +25,8 @@ public class ProposalJourneyShould extends BaseJourneyTests {
 
 	@Test public void
 	display_proposal() {
-		navigateTo(proposalPage.url());
+		String proposalPageURL = proposalPage.URL.replace(":proposalId", "1");
+		navigateTo(proposalPageURL);
 
 		assertThat(pageTitle(), is(proposalPage.title()));
 	}

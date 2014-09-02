@@ -35,9 +35,6 @@ public class Routes {
 		post(NewProposalPage.CREATE_PROPOSAL_URL, (request, response) ->
 				proposalController.createProposal(request, response));
 
-		get(ProposalsPage.URL, (request, response) ->
-				proposalController.displayProposals(request, response));
-
 		get(ProposalsPage.PROPOSALS_DATA_URL, (request, response) ->
 				proposalController.retriveAllProposals(request, response));
 
@@ -49,6 +46,9 @@ public class Routes {
 
 		get(ProposalEstimatesPage.URL, (request, response) ->
 				proposalController.displayProposalEstimates(request, response));
+
+		get(ProposalsPage.URL, (request, response) ->
+				proposalController.displayProposals(request, response));
 
 	}
 

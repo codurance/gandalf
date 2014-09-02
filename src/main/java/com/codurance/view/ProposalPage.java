@@ -1,6 +1,5 @@
 package com.codurance.view;
 
-import com.codurance.model.proposal.Proposal;
 import com.codurance.model.proposal.ProposalId;
 
 import java.util.Map;
