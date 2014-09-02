@@ -20,4 +20,12 @@ public class EventPublisher {
 	public void add(DomainEventSubscriber aSubscriber) {
 		this.subscribers.get().add(aSubscriber);
 	}
+
+	/**
+	 * In case the application uses a thread pool, EventPublisher must provide
+	 * a way to reset its subscribers.
+	 */
+	public void reset() {
+		this.subscribers.set(new HashSet<>());
+	}
 }

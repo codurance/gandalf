@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -35,5 +36,15 @@ public class EventPublisherShould {
 
 		verify(subscriber1, times(1)).handle(domainEvent);
 		verify(subscriber2, times(1)).handle(domainEvent);
+	}
+
+	@Test public void
+	reset_subscribers() {
+		eventPublisher.add(subscriber1);
+		eventPublisher.reset();
+
+		eventPublisher.publish(domainEvent);
+
+		verify(subscriber1, never()).handle(domainEvent);
 	}
 }
