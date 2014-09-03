@@ -1,7 +1,8 @@
 package core.com.codurance.actions;
 
 import com.codurance.actions.RetrieveProposals;
-import com.codurance.model.proposal.Proposals;
+import com.codurance.model.proposal.events.ProposalSummaryList;
+import com.eclipsesource.json.JsonArray;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,23 +16,23 @@ import static org.mockito.BDDMockito.given;
 @RunWith(MockitoJUnitRunner.class)
 public class RetrieveProposalsShould {
 
-	private static final String PROPOSALS = "[{proposal1}]";
+	private static final JsonArray PROPOSALS = new JsonArray().add("proposal1");
 
-	@Mock Proposals proposals;
+	@Mock ProposalSummaryList proposalSummaryList;
 
 	private RetrieveProposals retrieveProposals;
 
 	@Before
 	public void initialise() {
-	    retrieveProposals = new RetrieveProposals(proposals);
+	    retrieveProposals = new RetrieveProposals(proposalSummaryList);
 	}
 
 	@Test public void
 	return_all_proposals() {
-		given(proposals.all()).willReturn(PROPOSALS);
+		given(proposalSummaryList.allAsJson()).willReturn(PROPOSALS);
 
 		String json = retrieveProposals.all();
 
-		assertThat(json, is(PROPOSALS));
+		assertThat(json, is(PROPOSALS.toString()));
 	}
 }

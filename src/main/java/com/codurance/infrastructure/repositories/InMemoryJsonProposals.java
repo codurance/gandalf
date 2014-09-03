@@ -8,7 +8,6 @@ import com.eclipsesource.json.JsonValue;
 
 import java.util.stream.Stream;
 
-import static com.codurance.infrastructure.JsonReader.jsonArray;
 import static com.codurance.infrastructure.JsonReader.jsonObject;
 import static com.codurance.model.proposal.ProposalId.proposalId;
 import static java.util.Spliterator.DISTINCT;
@@ -17,11 +16,7 @@ import static java.util.stream.StreamSupport.stream;
 
 public class InMemoryJsonProposals implements Proposals {
 
-	private JsonArray proposals;
-
-	public InMemoryJsonProposals() {
-		proposals = jsonArray("./src/main/webapp/data/proposals.json");
-	}
+	private JsonArray proposals = new JsonArray();
 
 	@Override
 	public ProposalId nextId() {
@@ -32,11 +27,6 @@ public class InMemoryJsonProposals implements Proposals {
 							.max(Integer::compare)
 							.orElseGet(() -> Integer.valueOf(0));
 		return proposalId(lastId + 1);
-	}
-
-	@Override
-	public String all() {
-		return proposals.toString();
 	}
 
 	@Override

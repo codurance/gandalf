@@ -1,18 +1,18 @@
 package com.codurance.actions;
 
-import com.codurance.model.proposal.Proposals;
+import com.codurance.model.proposal.events.ProposalSummaryList;
 import com.google.inject.Inject;
 
 public class RetrieveProposals {
 
-	private Proposals proposals;
+	private ProposalSummaryList proposalSummaryList;
 
 	@Inject
-	public RetrieveProposals(Proposals proposals) {
-		this.proposals = proposals;
+	public RetrieveProposals(ProposalSummaryList proposalSummaryList) {
+		this.proposalSummaryList = proposalSummaryList;
 	}
 
 	public String all() {
-		return proposals.all();
+		return proposalSummaryList.allAsJson().toString();
 	}
 }
