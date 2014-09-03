@@ -4,6 +4,6 @@ import com.codurance.model.proposal.ClientId;
 
 public class ClientService {
 	public Client findBy(ClientId clientId) {
-		return null;
+		return new Client(new ClientId(1), "Client 1");
 	}
 }
