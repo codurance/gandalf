@@ -6,7 +6,7 @@ import com.google.inject.Inject;
 public class ProposalEventPublisher extends EventPublisher<ProposalEvent> {
 
 	@Inject
-	public ProposalEventPublisher(ProposalListUpdater proposalListUpdater) {
-		super(proposalListUpdater);
+	public ProposalEventPublisher(ProposalSummaryList proposalSummaryList) {
+		super(proposalSummaryList);
 	}
 }

@@ -2,7 +2,7 @@ package core.com.codurance.model.proposal.events;
 
 import com.codurance.model.proposal.events.ProposalCreated;
 import com.codurance.model.proposal.events.ProposalEventPublisher;
-import com.codurance.model.proposal.events.ProposalListUpdater;
+import com.codurance.model.proposal.events.ProposalSummaryList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,14 +14,15 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class ProposalEventPublisherShould {
 
-	@Mock ProposalListUpdater proposalListUpdater;
+	@Mock
+	ProposalSummaryList proposalSummaryList;
 	@Mock ProposalCreated proposalEvent;
 
 	private ProposalEventPublisher eventPublisher;
 
 	@Before
 	public void initialise() {
-		eventPublisher = new ProposalEventPublisher(proposalListUpdater);
+		eventPublisher = new ProposalEventPublisher(proposalSummaryList);
 	}
 
 	@Test
@@ -29,7 +30,7 @@ public class ProposalEventPublisherShould {
 	notify_proposal_event_subscribers() {
 		eventPublisher.publish(proposalEvent);
 
-		verify(proposalListUpdater).handle(proposalEvent);
+		verify(proposalSummaryList).handle(proposalEvent);
 	}
 
 }
