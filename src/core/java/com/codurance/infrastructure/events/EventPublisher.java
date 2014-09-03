@@ -5,7 +5,7 @@ import java.util.Set;
 
 import static java.util.Arrays.asList;
 
-public class EventPublisher {
+public class EventPublisher<T> {
 
 	private Set<DomainEventSubscriber> subscribers = new HashSet<>();
 
@@ -13,7 +13,7 @@ public class EventPublisher {
 		this.subscribers.addAll(asList(subscribers));
 	}
 
-	public <T> void publish(T event) {
+	public void publish(T event) {
 		subscribers.stream().forEach(s -> s.handle(event));
 	}
 

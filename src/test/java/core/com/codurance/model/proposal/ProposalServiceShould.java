@@ -59,7 +59,7 @@ public class ProposalServiceShould {
 		Proposal proposal = proposalService.create(newProposalJson);
 
 		verify(eventPublisher).publish(event.capture());
-		assertThat(event.getValue().proposalId(), is(proposal.id()));
+		assertThat(event.getValue().proposal(), is(proposal));
 	}
 
 }

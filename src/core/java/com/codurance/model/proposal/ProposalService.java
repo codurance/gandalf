@@ -22,7 +22,7 @@ public class ProposalService {
 		ProposalId proposalId = proposals.nextId();
 		Proposal newProposal = fromJson(proposalJson.set("id", proposalId.intValue()));
 		proposals.add(newProposal);
-		eventPublisher.publish(new ProposalCreated(proposalId));
+		eventPublisher.publish(new ProposalCreated(newProposal));
 		return newProposal;
 	}
 

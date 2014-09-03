@@ -1,16 +1,16 @@
 package com.codurance.model.proposal.events;
 
-import com.codurance.model.proposal.ProposalId;
+import com.codurance.model.proposal.Proposal;
 
-public class ProposalCreated {
+public class ProposalCreated implements ProposalEvent {
 
-	private ProposalId proposalId;
+	private Proposal proposal;
 
-	public ProposalCreated(ProposalId proposalId) {
-		this.proposalId = proposalId;
+	public ProposalCreated(Proposal proposal) {
+		this.proposal = proposal;
 	}
 
-	public ProposalId proposalId() {
-		return this.proposalId;
+	public Proposal proposal() {
+		return proposal;
 	}
 }
