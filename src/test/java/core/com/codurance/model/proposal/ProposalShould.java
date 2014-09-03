@@ -6,6 +6,8 @@ import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import org.junit.Test;
 
+import java.time.LocalDate;
+
 import static builders.ContactBuilder.aContact;
 import static builders.ProposalBuilder.aProposal;
 import static org.hamcrest.Matchers.is;
@@ -26,7 +28,8 @@ public class ProposalShould {
 															.add("projectName", "Some project")
 															.add("contacts", contacts)
 															.add("description", "Some description")
-															.add("notes", "Some notes");
+															.add("notes", "Some notes")
+															.add("lastUpdatedOn", "29 Jul 2014");
 
 	private static final Proposal PROPOSAL = aProposal()
 												.withId(1)
@@ -43,6 +46,7 @@ public class ProposalShould {
 																.build())
 												.withDescription("Some description")
 												.withNotes("Some notes")
+												.lastUpdatedOn(LocalDate.of(2014, 7, 29))
 												.build();
 
 	@Test public void

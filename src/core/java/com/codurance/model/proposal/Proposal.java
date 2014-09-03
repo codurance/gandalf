@@ -4,19 +4,25 @@ import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import static java.time.LocalDate.now;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 public class Proposal {
 
+	public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
+
 	private final ProposalId id;
 	private ClientId clientId;
 	private String projectName;
+	private LocalDate lastUpdatedOn;
 	private Contact[] contacts = new Contact[] {};
 	private String description;
 	private String notes;
@@ -26,10 +32,12 @@ public class Proposal {
 	}
 
 	public Proposal(ProposalId id, ClientId clientId, String projectName,
-	                Contact[] contacts, String description, String notes) {
+	                Contact[] contacts, String description, String notes,
+	                LocalDate lastUpdatedOn) {
 		this.id = id;
 		this.clientId = clientId;
 		this.projectName = projectName;
+		this.lastUpdatedOn = lastUpdatedOn;
 		this.contacts = (contacts != null) ? contacts : new Contact[] {};
 		this.description = description;
 		this.notes = notes;
@@ -42,6 +50,7 @@ public class Proposal {
 		this.contacts = getContactsFrom(proposalJson);
 		this.description = proposalJson.getStringOrElse("description", "");
 		this.notes = proposalJson.getStringOrElse("notes", "");
+		this.lastUpdatedOn = proposalJson.getDateOrElse("lastUpdatedOn", DATE_TIME_FORMATTER, now());
 	}
 
 	private Contact[] getContactsFrom(ProposalJson proposalJson) {
@@ -67,16 +76,8 @@ public class Proposal {
 		return projectName;
 	}
 
-	public Contact[] getContacts() {
-		return contacts;
-	}
-
 	public String getDescription() {
 		return description;
-	}
-
-	public String getNotes() {
-		return notes;
 	}
 
 	@Override
@@ -114,7 +115,8 @@ public class Proposal {
 									.add("projectName", projectName)
 									.add("contacts", contactsJson)
 									.add("description", description)
-									.add("notes", notes));
+									.add("notes", notes)
+									.add("lastUpdatedOn", lastUpdatedOn.format(DATE_TIME_FORMATTER)));
 	}
 
 	public static Proposal fromJson(ProposalJson proposalJson) {

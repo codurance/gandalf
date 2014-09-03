@@ -5,6 +5,10 @@ import com.codurance.model.proposal.Contact;
 import com.codurance.model.proposal.Proposal;
 import com.codurance.model.proposal.ProposalId;
 
+import java.time.LocalDate;
+
+import static java.time.LocalDate.now;
+
 public class ProposalBuilder {
 	private ProposalId id = new ProposalId(1);
 	private ClientId clientId;
@@ -12,6 +16,7 @@ public class ProposalBuilder {
 	private Contact[] contacts = new Contact[] {};
 	private String description;
 	private String notes;
+	private LocalDate lastUpdatedOn = now();
 
 	public static ProposalBuilder aProposal() {
 		return new ProposalBuilder();
@@ -24,6 +29,11 @@ public class ProposalBuilder {
 
 	public ProposalBuilder withClientId(int id) {
 		this.clientId = new ClientId(id);
+		return this;
+	}
+
+	public ProposalBuilder lastUpdatedOn(LocalDate date) {
+		this.lastUpdatedOn = date;
 		return this;
 	}
 
@@ -48,7 +58,12 @@ public class ProposalBuilder {
 	}
 
 	public Proposal build() {
-		return new Proposal(id, clientId, projectName,
-							contacts, description, notes);
+		return new Proposal(id,
+							clientId,
+							projectName,
+							contacts,
+							description,
+							notes,
+							lastUpdatedOn);
 	}
 }

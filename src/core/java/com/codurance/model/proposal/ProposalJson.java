@@ -4,7 +4,11 @@ import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import static com.eclipsesource.json.JsonObject.readFrom;
+import static java.time.LocalDate.parse;
 
 public class ProposalJson {
 	private JsonObject jsonObject;
@@ -36,6 +40,11 @@ public class ProposalJson {
 	public String getStringOrElse(String name, String elseValue) {
 		JsonValue value = get(name);
 		return (value != null) ? value.asString() : elseValue;
+	}
+
+	public LocalDate getDateOrElse(String name, DateTimeFormatter dateTimeFormat, LocalDate elseValue) {
+		JsonValue value = get(name);
+		return (value != null) ? parse(value.asString(), dateTimeFormat) : elseValue;
 	}
 
 	public ProposalJson set(String name, String value) {
@@ -82,4 +91,5 @@ public class ProposalJson {
 	public int hashCode() {
 		return jsonObject.hashCode();
 	}
+
 }
