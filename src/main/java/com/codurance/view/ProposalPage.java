@@ -32,6 +32,6 @@ public class ProposalPage extends BasePage {
 
 	@Override
 	protected void populate(Map<String, Object> model) {
-		model.put("proposalId", proposalId.toString());
+		model.put("proposalId", proposalId.intValue());
 	}
 }
