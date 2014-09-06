@@ -20,6 +20,7 @@ public class Proposal {
 	public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
 
 	private final ProposalId id;
+	private LocalDate createdOn = now();
 	private ClientId clientId;
 	private String projectName;
 	private LocalDate lastUpdatedOn;
@@ -33,10 +34,11 @@ public class Proposal {
 
 	public Proposal(ProposalId id, ClientId clientId, String projectName,
 	                Contact[] contacts, String description, String notes,
-	                LocalDate lastUpdatedOn) {
+	                LocalDate createdOn, LocalDate lastUpdatedOn) {
 		this.id = id;
 		this.clientId = clientId;
 		this.projectName = projectName;
+		this.createdOn = createdOn;
 		this.lastUpdatedOn = lastUpdatedOn;
 		this.contacts = (contacts != null) ? contacts : new Contact[] {};
 		this.description = description;
@@ -50,6 +52,7 @@ public class Proposal {
 		this.contacts = getContactsFrom(proposalJson);
 		this.description = proposalJson.getStringOrElse("description", "");
 		this.notes = proposalJson.getStringOrElse("notes", "");
+		this.createdOn = proposalJson.getDateOrElse("createdOn", DATE_TIME_FORMATTER, now());
 		this.lastUpdatedOn = proposalJson.getDateOrElse("lastUpdatedOn", DATE_TIME_FORMATTER, now());
 	}
 
@@ -116,6 +119,7 @@ public class Proposal {
 									.add("contacts", contactsJson)
 									.add("description", description)
 									.add("notes", notes)
+									.add("createdOn", createdOn.format(DATE_TIME_FORMATTER))
 									.add("lastUpdatedOn", lastUpdatedOn.format(DATE_TIME_FORMATTER)));
 	}
 

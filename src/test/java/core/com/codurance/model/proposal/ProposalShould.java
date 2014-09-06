@@ -29,6 +29,7 @@ public class ProposalShould {
 															.add("contacts", contacts)
 															.add("description", "Some description")
 															.add("notes", "Some notes")
+															.add("createdOn", "10 Jul 2014")
 															.add("lastUpdatedOn", "29 Jul 2014");
 
 	private static final Proposal PROPOSAL = aProposal()
@@ -46,6 +47,7 @@ public class ProposalShould {
 																.build())
 												.withDescription("Some description")
 												.withNotes("Some notes")
+												.createdOn(LocalDate.of(2014, 7, 10))
 												.lastUpdatedOn(LocalDate.of(2014, 7, 29))
 												.build();
 

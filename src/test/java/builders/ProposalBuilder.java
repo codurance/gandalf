@@ -17,6 +17,7 @@ public class ProposalBuilder {
 	private String description;
 	private String notes;
 	private LocalDate lastUpdatedOn = now();
+	private LocalDate createdOn = now();
 
 	public static ProposalBuilder aProposal() {
 		return new ProposalBuilder();
@@ -34,6 +35,11 @@ public class ProposalBuilder {
 
 	public ProposalBuilder lastUpdatedOn(LocalDate date) {
 		this.lastUpdatedOn = date;
+		return this;
+	}
+
+	public ProposalBuilder createdOn(LocalDate date) {
+		this.createdOn = date;
 		return this;
 	}
 
@@ -64,6 +70,7 @@ public class ProposalBuilder {
 							contacts,
 							description,
 							notes,
+							createdOn,
 							lastUpdatedOn);
 	}
 }
