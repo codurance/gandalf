@@ -53,6 +53,15 @@ block content
                                         label email
                                     span
                                         input(type="email", ng-model="newProposal.contacts[1].email")
+
+                        div(class="row")
+                            div(class="col-lg-8")
+                                div
+                                    span
+                                        label Craftsmen involved
+                            div(class="col-lg-8")
+                                select(multiple ng-model="selectedCraftsmen", ng-multiple="true", ng-options="craftsman.name for craftsman in craftsmen", required)
+
                         div(class="row")
                             div(class="col-lg-8")
                                 div
@@ -73,3 +82,4 @@ block content
 
                     button(ng-click="reset()", ng-disabled="isUnchanged(newProposal)", class="btn") Reset
                     button(ng-click="create(newProposal)", ng-disabled="form.$invalid || isUnchanged(newProposal)", class="btn btn-primary") Save
+
