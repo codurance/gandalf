@@ -11,15 +11,11 @@
 	App.controller('NewProposalController', ['$http', '$scope', '$window',
 		function($http, $scope, $window) {
 			var clientsCallback = function(response){ $scope.clients = response; };
-//			var craftsmanCallback = function(response) { $scope.craftsmen = response; };
+			var craftsmanCallback = function(response) { $scope.craftsmen = response; };
 
 			$scope.loadFormData = function() {
 				loadJsonData($http, '/clients/all', clientsCallback);
-//				loadJsonData($http, '/craftsman/all', craftsmanCallback);
-				$scope.craftsmen = [
-					{id:1, name:"Mashooq Badar"},
-					{id:2, name:"Sandro Mancuso"}
-				];
+				loadJsonData($http, '/craftsmen/all', craftsmanCallback);
 			}
 
 			$scope.selectedCraftsmen = [];

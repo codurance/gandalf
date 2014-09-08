@@ -25,6 +25,13 @@ public class Routes {
 		initialiseMainRoutes();
 		initialiseProposalsRoutes();
 		initialiseClientsRoutes();
+		initialiseCraftsmenRoutes();
+	}
+
+	private void initialiseCraftsmenRoutes() {
+		get("/craftsmen/all", (request, response) ->
+				jsonArrayAsString("./src/main/webapp/data/craftsmen.json"));
+
 	}
 
 	private void initialiseProposalsRoutes() {
