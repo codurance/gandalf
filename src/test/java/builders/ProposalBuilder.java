@@ -1,5 +1,6 @@
 package builders;
 
+import com.codurance.model.craftman.Craftsman;
 import com.codurance.model.proposal.ClientId;
 import com.codurance.model.proposal.Contact;
 import com.codurance.model.proposal.Proposal;
@@ -18,6 +19,7 @@ public class ProposalBuilder {
 	private String notes;
 	private LocalDate lastUpdatedOn = now();
 	private LocalDate createdOn = now();
+	private Craftsman[] craftsmen = new Craftsman[] {};
 
 	public static ProposalBuilder aProposal() {
 		return new ProposalBuilder();
@@ -53,6 +55,11 @@ public class ProposalBuilder {
 		return this;
 	}
 
+	public ProposalBuilder withCraftsmenInvolved(Craftsman... craftsmen) {
+		this.craftsmen = craftsmen;
+		return this;
+	}
+
 	public ProposalBuilder withDescription(String description) {
 		this.description = description;
 		return this;
@@ -68,6 +75,7 @@ public class ProposalBuilder {
 							clientId,
 							projectName,
 							contacts,
+							craftsmen,
 							description,
 							notes,
 							createdOn,

@@ -29,5 +29,5 @@ block content
                     div(class="col-md-3") {{proposal.client.name}}
                     div(class="col-md-3") {{proposal.lastUpdatedOn}}
                     div(class="col-md-3")
-                        div(ng-repeat="person in proposal.peopleInvolved")
-                            span {{person}}
+                        div(ng-repeat="craftsman in proposal.craftsmenInvolved")
+                            span {{craftsman.name}}

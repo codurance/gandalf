@@ -40,6 +40,7 @@
 
 			$scope.create = function(proposal) {
 				$scope.master = angular.copy(proposal);
+				$scope.master.craftsmenInvolved = angular.copy($scope.selectedCraftsmen);
 				$http.post('/proposals/proposal/create', $scope.master)
 						.success(function(data, status, headers, config) {
 							$window.location.href = headers('redirectURL');
