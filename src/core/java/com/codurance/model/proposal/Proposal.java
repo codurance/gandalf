@@ -99,6 +99,51 @@ public class Proposal {
 		return description;
 	}
 
+	public ProposalJson asJson() {
+		return new ProposalJson(new JsonObject()
+									.add("id", id.intValue())
+									.add("clientId", clientId.intValue())
+									.add("projectName", projectName)
+									.add("contacts", contactsJson())
+									.add("craftsmenInvolved", craftsmenJson())
+									.add("description", description)
+									.add("notes", notes)
+									.add("createdOn", createdOn.format(DATE_TIME_FORMATTER))
+									.add("lastUpdatedOn", lastUpdatedOn.format(DATE_TIME_FORMATTER)));
+	}
+
+	private JsonArray craftsmenJson() {
+		JsonArray craftsmenJson = new JsonArray();
+		for (Craftsman craftsman : craftsmen) {
+			addCraftsmanJson(craftsmenJson, craftsman);
+		}
+		return craftsmenJson;
+	}
+
+	private JsonArray contactsJson() {
+		JsonArray contactsJson = new JsonArray();
+		for (Contact contact : contacts) {
+			addContactJson(contactsJson, contact);
+		}
+		return contactsJson;
+	}
+
+	private void addCraftsmanJson(JsonArray craftsmenJson, Craftsman craftsman) {
+		craftsmenJson.add(new JsonObject()
+				.add("id", craftsman.id().intValue())
+				.add("name", craftsman.name()));
+	}
+
+	private void addContactJson(JsonArray contactsJson, Contact contact) {
+		contactsJson.add(new JsonObject()
+				.add("name", contact.name())
+				.add("email", contact.email()));
+	}
+
+	public static Proposal fromJson(ProposalJson proposalJson) {
+		return new Proposal(proposalJson);
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		return reflectionEquals(this, obj);
@@ -120,35 +165,6 @@ public class Proposal {
 				", description='" + description + '\'' +
 				", notes='" + notes + '\'' +
 				'}';
-	}
-
-	public ProposalJson asJson() {
-		JsonArray contactsJson = new JsonArray();
-		for (Contact contact : contacts) {
-				contactsJson.add(new JsonObject()
-						.add("name", contact.name())
-						.add("email", contact.email()));
-		}
-		JsonArray craftmenJson = new JsonArray();
-		for (Craftsman craftsman : craftsmen) {
-				craftmenJson.add(new JsonObject()
-						.add("id", craftsman.id().intValue())
-						.add("name", craftsman.name()));
-		}
-		return new ProposalJson(new JsonObject()
-									.add("id", id.intValue())
-									.add("clientId", clientId.intValue())
-									.add("projectName", projectName)
-									.add("contacts", contactsJson)
-									.add("craftsmenInvolved", craftmenJson)
-									.add("description", description)
-									.add("notes", notes)
-									.add("createdOn", createdOn.format(DATE_TIME_FORMATTER))
-									.add("lastUpdatedOn", lastUpdatedOn.format(DATE_TIME_FORMATTER)));
-	}
-
-	public static Proposal fromJson(ProposalJson proposalJson) {
-		return new Proposal(proposalJson);
 	}
 
 }
