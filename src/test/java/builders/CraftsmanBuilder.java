@@ -1,7 +1,7 @@
 package builders;
 
-import com.codurance.model.craftman.Craftsman;
-import com.codurance.model.craftman.CraftsmanId;
+import com.codurance.model.craftsman.Craftsman;
+import com.codurance.model.craftsman.CraftsmanId;
 
 public class CraftsmanBuilder {
 

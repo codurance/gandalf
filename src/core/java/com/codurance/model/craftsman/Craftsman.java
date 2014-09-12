@@ -1,4 +1,4 @@
-package com.codurance.model.craftman;
+package com.codurance.model.craftsman;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;

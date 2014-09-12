@@ -1,6 +1,6 @@
 package builders;
 
-import com.codurance.model.craftman.Craftsman;
+import com.codurance.model.craftsman.Craftsman;
 import com.codurance.model.proposal.ClientId;
 import com.codurance.model.proposal.Contact;
 import com.codurance.model.proposal.Proposal;

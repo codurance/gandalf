@@ -1,7 +1,7 @@
 package com.codurance.model.proposal;
 
-import com.codurance.model.craftman.Craftsman;
-import com.codurance.model.craftman.CraftsmanId;
+import com.codurance.model.craftsman.Craftsman;
+import com.codurance.model.craftsman.CraftsmanId;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
