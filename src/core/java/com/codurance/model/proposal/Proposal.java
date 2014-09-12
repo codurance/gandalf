@@ -1,7 +1,6 @@
 package com.codurance.model.proposal;
 
 import com.codurance.model.craftsman.Craftsman;
-import com.codurance.model.craftsman.CraftsmanId;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
@@ -23,7 +22,7 @@ public class Proposal {
 	public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
 
 	private final ProposalId id;
-	private Craftsman[] craftsmen = new Craftsman[] {};
+	private ProposalCraftsmen proposalCraftsmen = new ProposalCraftsmen();
 	private LocalDate createdOn = now();
 	private ClientId clientId;
 	private String projectName;
@@ -45,7 +44,7 @@ public class Proposal {
 		this.createdOn = createdOn;
 		this.lastUpdatedOn = lastUpdatedOn;
 		this.contacts = (contacts != null) ? contacts : new Contact[] {};
-		this.craftsmen = (craftsmen != null) ? craftsmen : new Craftsman[] {};
+		this.proposalCraftsmen = new ProposalCraftsmen(craftsmen);
 		this.description = description;
 		this.notes = notes;
 	}
@@ -55,22 +54,11 @@ public class Proposal {
 		this.clientId = new ClientId(proposalJson.get("clientId").asInt());
 		this.projectName = proposalJson.getStringOrElse("projectName", "");
 		this.contacts = getContactsFrom(proposalJson);
-		this.craftsmen = getCraftsmenFrom(proposalJson);
+		this.proposalCraftsmen = ProposalCraftsmen.from(proposalJson);
 		this.description = proposalJson.getStringOrElse("description", "");
 		this.notes = proposalJson.getStringOrElse("notes", "");
 		this.createdOn = proposalJson.getDateOrElse("createdOn", DATE_TIME_FORMATTER, now());
 		this.lastUpdatedOn = proposalJson.getDateOrElse("lastUpdatedOn", DATE_TIME_FORMATTER, now());
-	}
-
-	private Craftsman[] getCraftsmenFrom(ProposalJson proposalJson) {
-		List<Craftsman> craftsmen = new ArrayList<>();
-		Iterator<JsonValue> jsonCraftsmen = proposalJson.getArray("craftsmenInvolved").iterator();
-		while (jsonCraftsmen.hasNext()) {
-			JsonObject jsonCraftsman = jsonCraftsmen.next().asObject();
-			craftsmen.add(new Craftsman(new CraftsmanId(jsonCraftsman.get("id").asInt()),
-										jsonCraftsman.get("name").asString()));
-		}
-		return craftsmen.toArray(new Craftsman[craftsmen.size()]);
 	}
 
 	private Contact[] getContactsFrom(ProposalJson proposalJson) {
@@ -106,29 +94,17 @@ public class Proposal {
 									.add("clientId", clientId.intValue())
 									.add("projectName", projectName)
 									.add("contacts", contactsJson())
-									.add("craftsmenInvolved", craftsmenJson())
+									.add("craftsmenInvolved", proposalCraftsmen.json())
 									.add("description", description)
 									.add("notes", notes)
 									.add("createdOn", createdOn.format(DATE_TIME_FORMATTER))
 									.add("lastUpdatedOn", lastUpdatedOn.format(DATE_TIME_FORMATTER)));
 	}
 
-	private JsonArray craftsmenJson() {
-		JsonArray craftsmenJson = new JsonArray();
-		stream(craftsmen).forEach(craftsman -> addCraftsmanJson(craftsmenJson, craftsman));
-		return craftsmenJson;
-	}
-
 	private JsonArray contactsJson() {
 		JsonArray contactsJson = new JsonArray();
 		stream(contacts).forEach(contact -> addContactJson(contactsJson, contact));
 		return contactsJson;
-	}
-
-	private void addCraftsmanJson(JsonArray craftsmenJson, Craftsman craftsman) {
-		craftsmenJson.add(new JsonObject()
-				.add("id", craftsman.id().intValue())
-				.add("name", craftsman.name()));
 	}
 
 	private void addContactJson(JsonArray contactsJson, Contact contact) {
@@ -158,7 +134,7 @@ public class Proposal {
 				", clientId=" + clientId +
 				", projectName='" + projectName + '\'' +
 				", contacts=" + Arrays.toString(contacts) +
-				", craftsmenInvolved=" + Arrays.toString(craftsmen) +
+				", craftsmenInvolved=" + proposalCraftsmen.toString() +
 				", description='" + description + '\'' +
 				", notes='" + notes + '\'' +
 				'}';
