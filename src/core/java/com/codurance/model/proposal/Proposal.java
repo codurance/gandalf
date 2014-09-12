@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import static java.time.LocalDate.now;
+import static java.util.Arrays.stream;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
@@ -114,17 +115,13 @@ public class Proposal {
 
 	private JsonArray craftsmenJson() {
 		JsonArray craftsmenJson = new JsonArray();
-		for (Craftsman craftsman : craftsmen) {
-			addCraftsmanJson(craftsmenJson, craftsman);
-		}
+		stream(craftsmen).forEach(craftsman -> addCraftsmanJson(craftsmenJson, craftsman));
 		return craftsmenJson;
 	}
 
 	private JsonArray contactsJson() {
 		JsonArray contactsJson = new JsonArray();
-		for (Contact contact : contacts) {
-			addContactJson(contactsJson, contact);
-		}
+		stream(contacts).forEach(contact -> addContactJson(contactsJson, contact));
 		return contactsJson;
 	}
 
