@@ -1,19 +1,12 @@
 package com.codurance.model.proposal;
 
 import com.codurance.model.craftsman.Craftsman;
-import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonObject;
-import com.eclipsesource.json.JsonValue;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 import static java.time.LocalDate.now;
-import static java.util.Arrays.stream;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
@@ -23,11 +16,11 @@ public class Proposal {
 
 	private final ProposalId id;
 	private ProposalCraftsmen proposalCraftsmen = new ProposalCraftsmen();
+	private ProposalContacts proposalContacts = new ProposalContacts();
 	private LocalDate createdOn = now();
 	private ClientId clientId;
 	private String projectName;
 	private LocalDate lastUpdatedOn;
-	private Contact[] contacts = new Contact[] {};
 	private String description;
 	private String notes;
 
@@ -43,7 +36,7 @@ public class Proposal {
 		this.projectName = projectName;
 		this.createdOn = createdOn;
 		this.lastUpdatedOn = lastUpdatedOn;
-		this.contacts = (contacts != null) ? contacts : new Contact[] {};
+		this.proposalContacts = new ProposalContacts(contacts);
 		this.proposalCraftsmen = new ProposalCraftsmen(craftsmen);
 		this.description = description;
 		this.notes = notes;
@@ -53,23 +46,12 @@ public class Proposal {
 		this.id = new ProposalId(proposalJson.get("id").asInt());
 		this.clientId = new ClientId(proposalJson.get("clientId").asInt());
 		this.projectName = proposalJson.getStringOrElse("projectName", "");
-		this.contacts = getContactsFrom(proposalJson);
+		this.proposalContacts = ProposalContacts.from(proposalJson);
 		this.proposalCraftsmen = ProposalCraftsmen.from(proposalJson);
 		this.description = proposalJson.getStringOrElse("description", "");
 		this.notes = proposalJson.getStringOrElse("notes", "");
 		this.createdOn = proposalJson.getDateOrElse("createdOn", DATE_TIME_FORMATTER, now());
 		this.lastUpdatedOn = proposalJson.getDateOrElse("lastUpdatedOn", DATE_TIME_FORMATTER, now());
-	}
-
-	private Contact[] getContactsFrom(ProposalJson proposalJson) {
-		List<Contact> contacts = new ArrayList<>();
-		Iterator<JsonValue> jsonContacts = proposalJson.getArray("contacts").iterator();
-		while (jsonContacts.hasNext()) {
-			JsonObject jsonContact = jsonContacts.next().asObject();
-			contacts.add(new Contact(jsonContact.get("name").asString(),
-					jsonContact.get("email").asString()));
-		}
-		return contacts.toArray(new Contact[contacts.size()]);
 	}
 
 	public ProposalId id() {
@@ -93,24 +75,12 @@ public class Proposal {
 									.add("id", id.intValue())
 									.add("clientId", clientId.intValue())
 									.add("projectName", projectName)
-									.add("contacts", contactsJson())
+									.add("contacts", proposalContacts.json())
 									.add("craftsmenInvolved", proposalCraftsmen.json())
 									.add("description", description)
 									.add("notes", notes)
 									.add("createdOn", createdOn.format(DATE_TIME_FORMATTER))
 									.add("lastUpdatedOn", lastUpdatedOn.format(DATE_TIME_FORMATTER)));
-	}
-
-	private JsonArray contactsJson() {
-		JsonArray contactsJson = new JsonArray();
-		stream(contacts).forEach(contact -> addContactJson(contactsJson, contact));
-		return contactsJson;
-	}
-
-	private void addContactJson(JsonArray contactsJson, Contact contact) {
-		contactsJson.add(new JsonObject()
-				.add("name", contact.name())
-				.add("email", contact.email()));
 	}
 
 	public static Proposal fromJson(ProposalJson proposalJson) {
@@ -133,7 +103,7 @@ public class Proposal {
 				"id=" + id +
 				", clientId=" + clientId +
 				", projectName='" + projectName + '\'' +
-				", contacts=" + Arrays.toString(contacts) +
+				", contacts=" + proposalContacts.toString() +
 				", craftsmenInvolved=" + proposalCraftsmen.toString() +
 				", description='" + description + '\'' +
 				", notes='" + notes + '\'' +
