@@ -5,7 +5,6 @@ import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -27,24 +26,29 @@ public class ProposalContacts {
 	}
 
 	public static ProposalContacts from(ProposalJson proposalJson) {
-		List<Contact> contacts = new ArrayList<>();
-		Iterator<JsonValue> jsonContacts = proposalJson.getArray("contacts").iterator();
-		jsonContacts.forEachRemaining((JsonValue jsonContact) ->
-				contacts.add(new Contact(jsonContact.asObject().get("name").asString(),
-										 jsonContact.asObject().get("email").asString())));
-		return new ProposalContacts(contacts.toArray(new Contact[contacts.size()]));
+		return new ProposalContacts(
+						proposalJson.getArray("contacts").values().stream()
+									.map((JsonValue json) -> contactFrom(json))
+									.toArray(size -> new Contact[size]));
 	}
 
 	public JsonArray json() {
 		JsonArray contactsJson = new JsonArray();
-		contacts.forEach(contact -> addContactJson(contactsJson, contact));
+		contacts.stream()
+				.map((Contact contact) -> jsonFor(contact))
+				.forEach((JsonObject contactJson) -> contactsJson.add(contactJson));
 		return contactsJson;
 	}
 
-	private void addContactJson(JsonArray contactsJson, Contact contact) {
-		contactsJson.add(new JsonObject()
-				.add("name", contact.name())
-				.add("email", contact.email()));
+	private JsonObject jsonFor(Contact contact) {
+		return new JsonObject()
+						.add("name", contact.name())
+						.add("email", contact.email());
+	}
+
+	private static Contact contactFrom(JsonValue jsonContact) {
+		return new Contact(jsonContact.asObject().get("name").asString(),
+						   jsonContact.asObject().get("email").asString());
 	}
 
 	@Override

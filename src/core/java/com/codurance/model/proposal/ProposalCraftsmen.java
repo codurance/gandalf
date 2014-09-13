@@ -44,8 +44,8 @@ public class ProposalCraftsmen {
 
 	private JsonObject jsonFor(Craftsman craftsman) {
 		return new JsonObject()
-				.add("id", craftsman.id().intValue())
-				.add("name", craftsman.name());
+						.add("id", craftsman.id().intValue())
+						.add("name", craftsman.name());
 	}
 
 	private static Craftsman craftsmanFrom(JsonValue jsonCraftsman) {
