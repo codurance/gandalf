@@ -7,52 +7,55 @@ import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
-import static java.util.Arrays.stream;
+import static java.util.Arrays.asList;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 public class ProposalCraftsmen {
 
-	private Craftsman[] craftsmen;
+	private List<Craftsman> craftsmen = new ArrayList<>();
 
 	public ProposalCraftsmen() {
 		this(new Craftsman[] {});
 	}
 
 	public ProposalCraftsmen(Craftsman[] craftsmen) {
-		this.craftsmen = (craftsmen != null) ? craftsmen : new Craftsman[] {};
+		if (craftsmen != null) {
+			this.craftsmen = asList(craftsmen);
+		}
 	}
 
 	public static ProposalCraftsmen from(ProposalJson proposalJson) {
-		List<Craftsman> craftsmen = new ArrayList<>();
-		Iterator<JsonValue> jsonCraftsmen = proposalJson.getArray("craftsmenInvolved").iterator();
-		while (jsonCraftsmen.hasNext()) {
-			JsonObject jsonCraftsman = jsonCraftsmen.next().asObject();
-			craftsmen.add(new Craftsman(new CraftsmanId(jsonCraftsman.get("id").asInt()),
-										jsonCraftsman.get("name").asString()));
-		}
-		return new ProposalCraftsmen(craftsmen.toArray(new Craftsman[craftsmen.size()]));
+		return new ProposalCraftsmen(
+						proposalJson.getArray("craftsmenInvolved").values().stream()
+								.map((JsonValue json) -> craftsmanFrom(json))
+								.toArray(size -> new Craftsman[size]));
 	}
 
 	public JsonArray json() {
 		JsonArray craftsmenJson = new JsonArray();
-		stream(craftsmen).forEach(craftsman -> addCraftsmanJson(craftsmenJson, craftsman));
+		craftsmen.stream()
+					.map((Craftsman craftsman) -> jsonFor(craftsman))
+					.forEach((JsonObject craftsmanJson) -> craftsmenJson.add(craftsmanJson));
 		return craftsmenJson;
 	}
 
-	private void addCraftsmanJson(JsonArray craftsmenJson, Craftsman craftsman) {
-		craftsmenJson.add(new JsonObject()
+	private JsonObject jsonFor(Craftsman craftsman) {
+		return new JsonObject()
 				.add("id", craftsman.id().intValue())
-				.add("name", craftsman.name()));
+				.add("name", craftsman.name());
+	}
+
+	private static Craftsman craftsmanFrom(JsonValue jsonCraftsman) {
+		return new Craftsman(new CraftsmanId(jsonCraftsman.asObject().get("id").asInt()),
+							 jsonCraftsman.asObject().get("name").asString());
 	}
 
 	@Override
 	public String toString() {
-		return Arrays.toString(craftsmen);
+		return craftsmen.toString();
 	}
 
 	@Override
