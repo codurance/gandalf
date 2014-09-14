@@ -9,6 +9,8 @@ import java.time.format.DateTimeFormatter;
 
 import static com.eclipsesource.json.JsonObject.readFrom;
 import static java.time.LocalDate.parse;
+import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 public class ProposalJson {
 	private JsonObject jsonObject;
@@ -76,20 +78,13 @@ public class ProposalJson {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-
-		ProposalJson that = (ProposalJson) o;
-
-		if (!jsonObject.equals(that.jsonObject)) return false;
-
-		return true;
+	public boolean equals(Object obj) {
+		return reflectionEquals(this, obj);
 	}
 
 	@Override
 	public int hashCode() {
-		return jsonObject.hashCode();
+		return reflectionHashCode(this);
 	}
 
 }
