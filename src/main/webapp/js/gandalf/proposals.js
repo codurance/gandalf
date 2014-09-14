@@ -60,24 +60,23 @@
 
 
 	App.controller('ProposalController', function ($http, $scope) {
-		var proposalCallback = function(response){ $scope.proposal = response; };
-
 		$scope.init = function(proposalId) {
-			var url = '/proposals/proposal/' + proposalId + '/json';
-			loadJsonData($http, url, proposalCallback);
+			loadProposal($http, $scope, proposalId);
 		};
 	});
 
 	App.controller('ProposalEstimateController', function($http, $scope) {
-		var proposalCallback = function(response) {
-			$scope.proposal = response;
-		}
-
-		$scope.loadProposal = function(proposalId) {
-			var url = '/proposals/proposal/' + proposalId + '/json';
-			loadJsonData($http, url, proposalCallback)
+		$scope.init = function(proposalId) {
+			loadProposal($http, $scope, proposalId);
 		}
 	});
+
+	loadProposal = function($http, $scope, proposalId) {
+		var url = '/proposals/proposal/' + proposalId + '/json';
+		loadJsonData($http, url, function(response) {
+			return $scope.proposal = response;
+		})
+	}
 
 	loadJsonData = function($http, url, successCallback) {
 		$http.get(url)
