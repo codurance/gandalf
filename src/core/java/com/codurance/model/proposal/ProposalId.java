@@ -15,6 +15,10 @@ public class ProposalId {
 		this.value = id;
 	}
 
+	public ProposalId(String id) {
+		this.value = Integer.valueOf(id);
+	}
+
 	public int intValue() {
 		return value;
 	}

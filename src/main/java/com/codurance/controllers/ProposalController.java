@@ -55,11 +55,13 @@ public class ProposalController extends BaseController {
 		Proposal proposal = createProposal.create(proposalJson);
 		String redirectURL = ProposalEstimatesPage.URL.replace(":proposalId", proposal.id().asString());
 		response.header("redirectURL", redirectURL);
+		response.cookie("proposalId", proposal.id().asString());
 		return EMPTY;
 	}
 
 	public String displayProposalEstimates(Request request, Response response) {
-		return display(new ProposalEstimatesPage());
+		String proposalId = request.cookies().get("proposalId");
+		return display(new ProposalEstimatesPage(new ProposalId(proposalId)));
 	}
 
 	public String retriveAllProposals(Request request, Response response) {

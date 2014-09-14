@@ -68,6 +68,17 @@
 		};
 	});
 
+	App.controller('ProposalEstimateController', function($http, $scope) {
+		var proposalCallback = function(response) {
+			$scope.proposal = response;
+		}
+
+		$scope.loadProposal = function(proposalId) {
+			var url = '/proposals/proposal/' + proposalId + '/json';
+			loadJsonData($http, url, proposalCallback)
+		}
+	});
+
 	loadJsonData = function($http, url, successCallback) {
 		$http.get(url)
 				.success(successCallback)

@@ -4,7 +4,8 @@ block content
 
     script(src="/wro/proposals.js")
 
-    div(ng-app="ProposalApp")
+    div(ng-app="ProposalApp", ng-controller="ProposalEstimateController", ng-init="loadProposal(#{proposalId})")
 
         div(class="o-page-header")
-            h3= title
+            h3
+                span Proposal for {{proposal.client.name}} - Project: {{proposal.project}}
