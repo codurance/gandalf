@@ -22,6 +22,7 @@ public class ProposalSummaryList implements DomainEventSubscriber<ProposalEvent>
 	@Override
 	public void handle(ProposalEvent domainEvent) {
 		ProposalJson proposal = domainEvent.proposal().asJson();
+		System.out.println("handle event: " + proposal.toString());
 		Client client = clientService.findBy(new ClientId(proposal.get("clientId").asInt()));
 		JsonObject proposalSummary = new JsonObject()
 											.add("id", proposal.get("id").asInt())
@@ -29,7 +30,8 @@ public class ProposalSummaryList implements DomainEventSubscriber<ProposalEvent>
 													.add("id", client.id().intValue())
 													.add("name", client.name()))
 											.add("projectName", proposal.get("projectName").asString())
-											.add("lastUpdatedOn", proposal.get("lastUpdatedOn").asString());
+											.add("lastUpdatedOn", proposal.get("lastUpdatedOn").asString())
+											.add("craftsmenInvolved", proposal.getArray("craftsmenInvolved"));
 		proposalSummaries.add(proposalSummary);
 	}
 

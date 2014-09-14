@@ -5,7 +5,7 @@ import com.codurance.model.craftsman.CraftsmanId;
 
 public class CraftsmanBuilder {
 
-	private CraftsmanId id;
+	private CraftsmanId id = new CraftsmanId(-1);
 	private String name;
 
 	public static CraftsmanBuilder aCraftsman() {

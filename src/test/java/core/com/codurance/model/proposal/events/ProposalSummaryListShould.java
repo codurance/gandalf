@@ -16,7 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.time.LocalDate;
 
-import static builders.ContactBuilder.aContact;
+import static builders.CraftsmanBuilder.aCraftsman;
 import static builders.ProposalBuilder.aProposal;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -37,9 +37,10 @@ public class ProposalSummaryListShould {
 												.withProjectName(PROJECT_NAME)
 												.withClientId(CLIENT_ID.intValue())
 												.lastUpdatedOn(LocalDate.of(2014, 7, 29))
-												.withContacts(
-														aContact()
-																.withEmail("sandro@codurance.com")
+												.withCraftsmenInvolved(
+														aCraftsman()
+																.withId(20)
+																.withName("Sandro Mancuso")
 																.build())
 												.build();
 	private static final JsonArray SINGLE_PROPOSAL_JSON =
@@ -50,8 +51,11 @@ public class ProposalSummaryListShould {
 																.add("id", CLIENT_ID.intValue())
 																.add("name", CLIENT_NAME))
 														.add("projectName", PROJECT_NAME)
-														.add("lastUpdatedOn", "29 Jul 2014"));
-//														.add("peopleInvolved", new JsonArray().add("sandro@codurance.com")));
+														.add("lastUpdatedOn", "29 Jul 2014")
+														.add("craftsmenInvolved", new JsonArray()
+																.add(new JsonObject()
+																		.add("id", 20)
+																		.add("name", "Sandro Mancuso"))));
 
 	@Mock ClientService clientService;
 
