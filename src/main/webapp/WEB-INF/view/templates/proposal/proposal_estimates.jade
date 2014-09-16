@@ -9,3 +9,36 @@ block content
         div(class="o-page-header")
             h3
                 span Proposal for {{proposal.client.name}} - Project: {{proposal.project}}
+
+        div(class="row")
+
+            div(class="tablerow col-md-12")
+                div(class="tableheader col-md-4").span Feature
+                div(class="tableheader col-md-3").span Assumptions
+                div(class="tableheader col-md-1").span Pes.
+                div(class="tableheader col-md-1").span Opt.
+                div(class="tableheader col-md-1").span Rea.
+                div(class="tableheader col-md-1").span Phase
+
+            div(ng-repeat="feature in proposal.features")
+                div(class="tablerow col-md-12")
+                    div(class="col-md-4").span {{feature.description}}
+                    div(class="col-md-3").span {{feature.assumptions}}
+                    div(class="col-md-1").span {{feature.pessimistic}}
+                    div(class="col-md-1").span {{feature.optimistic}}
+                    div(class="col-md-1").span {{feature.realistic}}
+                    div(class="col-md-1").span {{feature.phase}}
+
+            div(class="tablerow col-md-12")
+                div(class="col-md-4")
+                    textarea(ng-model="newFeature.description", required)
+                div(class="col-md-3")
+                    textarea(ng-model="newFeature.assumptions")
+                div(class="col-md-1")
+                    input(type="text", ng-model="newFeature.pessimistic", required, size=3)
+                div(class="col-md-1")
+                    input(type="text", ng-model="newFeature.optimistic", required, size=3)
+                div(class="col-md-1")
+                    input(type="text", ng-model="newFeature.realistic", required, size=3)
+                div(class="col-md-1")
+                    input(type="text", ng-model="newFeature.phase", required, size=10)
