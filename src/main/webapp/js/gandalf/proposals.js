@@ -69,6 +69,20 @@
 		$scope.init = function(proposalId) {
 			loadProposal($http, $scope, proposalId);
 		}
+
+		$scope.newFeature = {
+			"description":"",
+			"assumptions":"",
+			"pessimistic":"1",
+			"optimistic":"1",
+			"realistic":"1",
+			"phase":"1"
+		};
+
+		$scope.create = function(proposalId, newFeature) {
+			alert("ProposalID: [" + proposalId + "] - feature: [" + newFeature + "]");
+		};
+
 	});
 
 	loadProposal = function($http, $scope, proposalId) {
