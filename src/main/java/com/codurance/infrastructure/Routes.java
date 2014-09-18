@@ -54,6 +54,9 @@ public class Routes {
 		get(ProposalEstimatesPage.URL, (request, response) ->
 				proposalController.displayProposalEstimates(request, response));
 
+		post(ProposalEstimatesPage.ADD_FEATURE_URL, (request, response) ->
+				proposalController.addFeature(request, response));
+
 		get(ProposalsPage.URL, (request, response) ->
 				proposalController.displayProposals(request, response));
 

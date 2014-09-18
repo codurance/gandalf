@@ -80,7 +80,14 @@
 		};
 
 		$scope.create = function(proposalId, newFeature) {
-			alert("ProposalID: [" + proposalId + "] - feature: [" + newFeature + "]");
+			var data = {};
+			data.proposalId = proposalId;
+			data.feature = newFeature;
+			$http.post('/proposals/proposal/feature/add', data)
+					.success(function(data, status, headers, config) {
+						alert("Feature added.");
+//						$window.location.href = headers('redirectURL');
+					});
 		};
 
 	});

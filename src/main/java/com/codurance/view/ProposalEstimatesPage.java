@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class ProposalEstimatesPage extends BasePage {
 	public static final String URL = "/proposals/proposal/:proposalId/estimates";
+	public static final String ADD_FEATURE_URL = "proposals/proposal/feature/add";
 	private static final String TEMPLATE = PROPOSAL_TEMPLATE_ROOT_FOLDER + "proposal_estimates.jade";
 	private static final String TITLE = "Proposal Estimates";
 	private ProposalId proposalId;
