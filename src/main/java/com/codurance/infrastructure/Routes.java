@@ -56,14 +56,14 @@ public class Routes {
 		get(ProposalPage.PROPOSAL_DATA_URL, (request, response) ->
 				proposalController.retrieveProposal(request, response));
 
-		get(ProposalEstimatesPage.URL, (request, response) ->
-				proposalController.displayProposalEstimates(request, response));
-
 		get(ProposalsPage.URL, (request, response) ->
 				proposalController.displayProposals(request, response));
 	}
 
 	private void initialiseProposalFeatureRoutes() {
+		get(ProposalEstimatesPage.URL, (request, response) ->
+				proposalFeatureController.displayProposalEstimates(request, response));
+
 		post(ProposalEstimatesPage.ADD_FEATURE_URL, (request, response) ->
 				proposalFeatureController.addFeature(request, response));
 	}

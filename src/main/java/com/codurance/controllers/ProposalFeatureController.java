@@ -23,6 +23,11 @@ public class ProposalFeatureController extends BaseController {
 		this.addFeatureToProposal = addFeatureToProposal;
 	}
 
+	public String displayProposalEstimates(Request request, Response response) {
+		String proposalId = request.cookies().get("proposalId");
+		return display(new ProposalEstimatesPage(new ProposalId(proposalId)));
+	}
+
 	public String addFeature(Request request, Response response) {
 		JsonObject data = readFrom(request.body());
 		ProposalId proposalId = new ProposalId(valueOf(data.get("proposalId").asInt()));

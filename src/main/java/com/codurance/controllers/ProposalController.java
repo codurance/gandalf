@@ -59,11 +59,6 @@ public class ProposalController extends BaseController {
 		return EMPTY;
 	}
 
-	public String displayProposalEstimates(Request request, Response response) {
-		String proposalId = request.cookies().get("proposalId");
-		return display(new ProposalEstimatesPage(new ProposalId(proposalId)));
-	}
-
 	public String retriveAllProposals(Request request, Response response) {
 		return retrieveProposals.all();
 	}
