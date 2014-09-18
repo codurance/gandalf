@@ -10,7 +10,6 @@ import com.codurance.view.NewProposalPage;
 import com.codurance.view.ProposalEstimatesPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
-import com.eclipsesource.json.JsonObject;
 import com.google.inject.Inject;
 import main.com.codurance.controllers.TemplateRenderer;
 import spark.Request;
@@ -74,11 +73,4 @@ public class ProposalController extends BaseController {
 		return retrieveProposal.by(proposalId);
 	}
 
-	public String addFeature(Request request, Response response) {
-		System.out.println(request.body());
-		JsonObject data = readFrom(request.body());
-		ProposalId proposalId = new ProposalId(valueOf(data.get("proposalId").asInt()));
-		System.out.println("Proposal ID: [" + proposalId + "]");
-		return display(new ProposalEstimatesPage(proposalId));
-	}
 }
