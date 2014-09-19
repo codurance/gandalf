@@ -4,6 +4,7 @@ import com.codurance.actions.AddFeatureToProposal;
 import com.codurance.controllers.ProposalFeatureController;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.model.proposal.feature.FeatureJson;
+import com.codurance.view.ProposalEstimatesPage;
 import com.eclipsesource.json.JsonObject;
 import main.com.codurance.controllers.TemplateRenderer;
 import org.junit.Before;
@@ -23,6 +24,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class ProposalFeatureControllerShould {
 
+	private static final String PROPOSAL_ESTIMATES_PAGE = "proposal estimates page";
 	@Mock Request request;
 	@Mock Response response;
 	@Mock TemplateRenderer templateRenderer;
@@ -38,6 +40,18 @@ public class ProposalFeatureControllerShould {
 	public void initialise() {
 	    this.controller = new ProposalFeatureController(templateRenderer,
 			                                            addFeatureToProposal);
+	}
+
+	@Test public void
+	display_proposal_estimates_page() {
+		given(request.cookie("proposalId")).willReturn("1");
+		ProposalEstimatesPage proposalEstimatesPage = new ProposalEstimatesPage(new ProposalId(1));
+		given(templateRenderer.render(proposalEstimatesPage.template(), proposalEstimatesPage.model()))
+				.willReturn(PROPOSAL_ESTIMATES_PAGE);
+
+		String page = controller.displayProposalEstimates(request, response);
+
+		assertThat(page, is(PROPOSAL_ESTIMATES_PAGE));
 	}
 
 	@Test

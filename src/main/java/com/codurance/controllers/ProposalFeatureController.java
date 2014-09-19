@@ -24,7 +24,7 @@ public class ProposalFeatureController extends BaseController {
 	}
 
 	public String displayProposalEstimates(Request request, Response response) {
-		String proposalId = request.cookies().get("proposalId");
+		String proposalId = request.cookie("proposalId");
 		return display(new ProposalEstimatesPage(new ProposalId(proposalId)));
 	}
 
