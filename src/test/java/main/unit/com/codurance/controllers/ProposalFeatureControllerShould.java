@@ -4,7 +4,7 @@ import com.codurance.actions.AddFeatureToProposal;
 import com.codurance.controllers.ProposalFeatureController;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.model.proposal.feature.FeatureJson;
-import com.codurance.view.ProposalEstimatesPage;
+import com.codurance.view.ProposalFeaturesPage;
 import com.eclipsesource.json.JsonObject;
 import main.com.codurance.controllers.TemplateRenderer;
 import org.junit.Before;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class ProposalFeatureControllerShould {
 
-	private static final String PROPOSAL_ESTIMATES_PAGE = "proposal estimates page";
+	private static final String PROPOSAL_FEATURES_PAGE = "proposal features page";
 	@Mock Request request;
 	@Mock Response response;
 	@Mock TemplateRenderer templateRenderer;
@@ -43,15 +43,15 @@ public class ProposalFeatureControllerShould {
 	}
 
 	@Test public void
-	display_proposal_estimates_page() {
+	display_proposal_features_page() {
 		given(request.cookie("proposalId")).willReturn("1");
-		ProposalEstimatesPage proposalEstimatesPage = new ProposalEstimatesPage(new ProposalId(1));
-		given(templateRenderer.render(proposalEstimatesPage.template(), proposalEstimatesPage.model()))
-				.willReturn(PROPOSAL_ESTIMATES_PAGE);
+		ProposalFeaturesPage proposalFeaturesPage = new ProposalFeaturesPage(new ProposalId(1));
+		given(templateRenderer.render(proposalFeaturesPage.template(), proposalFeaturesPage.model()))
+				.willReturn(PROPOSAL_FEATURES_PAGE);
 
-		String page = controller.displayProposalEstimates(request, response);
+		String page = controller.displayProposalFeatures(request, response);
 
-		assertThat(page, is(PROPOSAL_ESTIMATES_PAGE));
+		assertThat(page, is(PROPOSAL_FEATURES_PAGE));
 	}
 
 	@Test

@@ -7,7 +7,7 @@ import com.codurance.model.proposal.Proposal;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.model.proposal.ProposalJson;
 import com.codurance.view.NewProposalPage;
-import com.codurance.view.ProposalEstimatesPage;
+import com.codurance.view.ProposalFeaturesPage;
 import com.codurance.view.ProposalPage;
 import com.codurance.view.ProposalsPage;
 import com.google.inject.Inject;
@@ -53,7 +53,7 @@ public class ProposalController extends BaseController {
 	public String createProposal(Request request, Response response) {
 		ProposalJson proposalJson = new ProposalJson(readFrom(request.body()));
 		Proposal proposal = createProposal.create(proposalJson);
-		String redirectURL = ProposalEstimatesPage.URL.replace(":proposalId", proposal.id().asString());
+		String redirectURL = ProposalFeaturesPage.URL.replace(":proposalId", proposal.id().asString());
 		response.header("redirectURL", redirectURL);
 		response.cookie("proposalId", proposal.id().asString());
 		return EMPTY;

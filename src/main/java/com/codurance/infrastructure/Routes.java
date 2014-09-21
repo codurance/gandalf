@@ -61,10 +61,10 @@ public class Routes {
 	}
 
 	private void initialiseProposalFeatureRoutes() {
-		get(ProposalEstimatesPage.URL, (request, response) ->
-				proposalFeatureController.displayProposalEstimates(request, response));
+		get(ProposalFeaturesPage.URL, (request, response) ->
+				proposalFeatureController.displayProposalFeatures(request, response));
 
-		post(ProposalEstimatesPage.ADD_FEATURE_URL, (request, response) ->
+		post(ProposalFeaturesPage.ADD_FEATURE_URL, (request, response) ->
 				proposalFeatureController.addFeature(request, response));
 	}
 

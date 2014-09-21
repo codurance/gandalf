@@ -3,7 +3,7 @@ package com.codurance.controllers;
 import com.codurance.actions.AddFeatureToProposal;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.model.proposal.feature.FeatureJson;
-import com.codurance.view.ProposalEstimatesPage;
+import com.codurance.view.ProposalFeaturesPage;
 import com.eclipsesource.json.JsonObject;
 import com.google.inject.Inject;
 import main.com.codurance.controllers.TemplateRenderer;
@@ -23,9 +23,9 @@ public class ProposalFeatureController extends BaseController {
 		this.addFeatureToProposal = addFeatureToProposal;
 	}
 
-	public String displayProposalEstimates(Request request, Response response) {
+	public String displayProposalFeatures(Request request, Response response) {
 		String proposalId = request.cookie("proposalId");
-		return display(new ProposalEstimatesPage(new ProposalId(proposalId)));
+		return display(new ProposalFeaturesPage(new ProposalId(proposalId)));
 	}
 
 	public String addFeature(Request request, Response response) {
@@ -33,6 +33,6 @@ public class ProposalFeatureController extends BaseController {
 		ProposalId proposalId = new ProposalId(valueOf(data.get("proposalId").asInt()));
 		FeatureJson featureJson = new FeatureJson(data.get("feature").asObject());
 		addFeatureToProposal.addFeature(proposalId, featureJson);
-		return display(new ProposalEstimatesPage(proposalId));
+		return display(new ProposalFeaturesPage(proposalId));
 	}
 }
