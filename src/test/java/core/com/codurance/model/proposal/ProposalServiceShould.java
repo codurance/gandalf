@@ -3,6 +3,8 @@ package core.com.codurance.model.proposal;
 import com.codurance.model.proposal.*;
 import com.codurance.model.proposal.events.ProposalCreated;
 import com.codurance.model.proposal.events.ProposalEventPublisher;
+import com.codurance.model.proposal.feature.FeatureJson;
+import com.eclipsesource.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +23,8 @@ import static org.mockito.Mockito.verify;
 public class ProposalServiceShould {
 
 	private static final ProposalId NEXT_PROPOSAL_ID = proposalId(11);
+	private static final ProposalId PROPOSAL_ID = proposalId(1);
+	private static final FeatureJson NEW_FEATURE = new FeatureJson(new JsonObject());
 
 	private ProposalJson newProposalJson;
 
@@ -60,6 +64,13 @@ public class ProposalServiceShould {
 
 		verify(eventPublisher).publish(event.capture());
 		assertThat(event.getValue().proposal(), is(proposal));
+	}
+
+	@Test public void
+	should_add_a_feature_to_a_proposal() {
+		proposalService.addFeatureToProposal(PROPOSAL_ID, NEW_FEATURE);
+
+		verify(proposals).addFeatureToProposal(PROPOSAL_ID, NEW_FEATURE);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.codurance.infrastructure.repositories;
 import com.codurance.model.proposal.Proposal;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.model.proposal.Proposals;
+import com.codurance.model.proposal.feature.FeatureJson;
 import com.eclipsesource.json.JsonArray;
 import com.eclipsesource.json.JsonValue;
 
@@ -27,6 +28,11 @@ public class InMemoryJsonProposals implements Proposals {
 							.max(Integer::compare)
 							.orElseGet(() -> Integer.valueOf(0));
 		return proposalId(lastId + 1);
+	}
+
+	@Override
+	public void addFeatureToProposal(ProposalId proposalId, FeatureJson newFeature) {
+
 	}
 
 	@Override

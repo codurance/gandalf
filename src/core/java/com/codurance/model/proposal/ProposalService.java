@@ -27,8 +27,7 @@ public class ProposalService {
 		return newProposal;
 	}
 
-	public void addFeatureToProposal(ProposalId proposalId, FeatureJson featureJson) {
-
-
+	public void addFeatureToProposal(ProposalId proposalId, FeatureJson newFeature) {
+		proposals.addFeatureToProposal(proposalId, newFeature);
 	}
 }
