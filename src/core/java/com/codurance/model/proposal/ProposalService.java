@@ -3,6 +3,7 @@ package com.codurance.model.proposal;
 import com.codurance.infrastructure.events.EventPublisher;
 import com.codurance.model.proposal.events.ProposalCreated;
 import com.codurance.model.proposal.events.ProposalEventPublisher;
+import com.codurance.model.proposal.feature.FeatureJson;
 import com.google.inject.Inject;
 
 import static com.codurance.model.proposal.Proposal.fromJson;
@@ -26,4 +27,8 @@ public class ProposalService {
 		return newProposal;
 	}
 
+	public void addFeatureToProposal(ProposalId proposalId, FeatureJson featureJson) {
+
+
+	}
 }
