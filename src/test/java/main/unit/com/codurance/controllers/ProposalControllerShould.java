@@ -114,7 +114,7 @@ public class ProposalControllerShould {
 
 		String result = proposalController.createProposal(request, response);
 
-		verify(response).header("redirectURL", "/proposals/proposal/2/estimates");
+		verify(response).header("redirectURL", "/proposals/proposal/2/features");
 	    assertThat(result, is(EMPTY));
 	}
 
