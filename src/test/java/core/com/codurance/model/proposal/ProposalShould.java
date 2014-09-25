@@ -1,5 +1,6 @@
 package core.com.codurance.model.proposal;
 
+import com.codurance.infrastructure.json.JsonEntity;
 import com.codurance.model.proposal.Proposal;
 import com.codurance.model.proposal.ProposalJson;
 import com.eclipsesource.json.JsonArray;
@@ -30,16 +31,18 @@ public class ProposalShould {
 													.add(new JsonObject()
 															.add("id", 2)
 															.add("name", "Mashooq Badar"));
-	private static final ProposalJson PROPOSAL_JSON = new ProposalJson()
-															.add("id", 1)
-															.add("clientId", 2)
-															.add("projectName", "Some project")
-															.add("contacts", contacts)
-															.add("craftsmenInvolved", craftsmen)
-															.add("description", "Some description")
-															.add("notes", "Some notes")
-															.add("createdOn", "10 Jul 2014")
-															.add("lastUpdatedOn", "29 Jul 2014");
+	private static final ProposalJson PROPOSAL_JSON = new ProposalJson(
+															new JsonEntity()
+																.add("id", 1)
+																.add("clientId", 2)
+																.add("projectName", "Some project")
+																.add("contacts", contacts)
+																.add("craftsmenInvolved", craftsmen)
+																.add("description", "Some description")
+																.add("notes", "Some notes")
+																.add("createdOn", "10 Jul 2014")
+																.add("lastUpdatedOn", "29 Jul 2014")
+																.jsonObject());
 
 	private static final Proposal PROPOSAL = aProposal()
 												.withId(1)

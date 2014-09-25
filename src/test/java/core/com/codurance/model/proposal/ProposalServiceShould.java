@@ -1,5 +1,6 @@
 package core.com.codurance.model.proposal;
 
+import com.codurance.infrastructure.json.JsonEntity;
 import com.codurance.model.proposal.*;
 import com.codurance.model.proposal.events.FeatureAdded;
 import com.codurance.model.proposal.events.FeatureEventPublisher;
@@ -16,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static com.codurance.model.proposal.ProposalId.proposalId;
+import static com.codurance.model.proposal.ProposalJson.aProposalJsonWith;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -45,7 +47,7 @@ public class ProposalServiceShould {
 												   proposalEventPublisher,
 												   featureEventPublisher);
 		given(proposals.nextId()).willReturn(NEXT_PROPOSAL_ID);
-		newProposalJson = new ProposalJson().add("clientId", 5);
+		newProposalJson = aProposalJsonWith(new JsonEntity().add("clientId", 5));
 	}
 
 	@Test public void

@@ -8,6 +8,7 @@ import com.codurance.model.proposal.feature.FeatureJson;
 import com.google.inject.Inject;
 
 import static com.codurance.model.proposal.Proposal.fromJson;
+import static com.codurance.model.proposal.ProposalJson.aProposalJsonWith;
 
 public class ProposalService {
 
@@ -26,7 +27,8 @@ public class ProposalService {
 
 	public synchronized Proposal create(ProposalJson proposalJson) {
 		ProposalId proposalId = proposals.nextId();
-		Proposal newProposal = fromJson(proposalJson.set("id", proposalId.intValue()));
+		proposalJson = aProposalJsonWith(proposalJson.set("id", proposalId.intValue()));
+		Proposal newProposal = fromJson(proposalJson);
 		proposals.add(newProposal);
 		proposalEventPublisher.publish(new ProposalCreated(newProposal));
 		return newProposal;

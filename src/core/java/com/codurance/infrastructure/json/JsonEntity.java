@@ -51,6 +51,26 @@ public class JsonEntity {
 		return this.jsonObject;
 	}
 
+	public JsonEntity add(String name, String value) {
+		return new JsonEntity(newJsonObject().add(name, value));
+	}
+
+	public JsonEntity add(String name, int value) {
+		return new JsonEntity(newJsonObject().add(name, value));
+	}
+
+	public JsonEntity add(String name, JsonArray jsonArray) {
+		return new JsonEntity(newJsonObject().add(name, jsonArray));
+	}
+
+	public JsonEntity set(String name, String value) {
+		return new JsonEntity(newJsonObject().set(name, value));
+	}
+
+	public JsonEntity set(String name, int value) {
+		return new JsonEntity(newJsonObject().set(name, value));
+	}
+
 	@Override
 	public String toString() {
 		return "ProposalJson{" +
