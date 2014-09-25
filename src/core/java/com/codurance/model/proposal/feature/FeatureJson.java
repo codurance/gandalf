@@ -5,8 +5,8 @@ import com.eclipsesource.json.JsonObject;
 
 public class FeatureJson extends JsonEntity {
 
-	public FeatureJson(JsonObject featureJson) {
-		super(featureJson);
+	public FeatureJson(JsonObject jsonObject) {
+		super(jsonObject);
 	}
 
 }
