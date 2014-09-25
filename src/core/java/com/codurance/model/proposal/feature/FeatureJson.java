@@ -1,15 +1,12 @@
 package com.codurance.model.proposal.feature;
 
+import com.codurance.infrastructure.json.JsonEntity;
 import com.eclipsesource.json.JsonObject;
 
-public class FeatureJson {
-	private JsonObject featureJson;
+public class FeatureJson extends JsonEntity {
 
 	public FeatureJson(JsonObject featureJson) {
-		this.featureJson = featureJson;
+		super(featureJson);
 	}
 
-	public String getAsString(String name) {
-		return featureJson.get(name).asString();
-	}
 }

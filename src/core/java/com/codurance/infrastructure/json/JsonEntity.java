@@ -33,6 +33,10 @@ public class JsonEntity {
 		return (value != null) ? value.asString() : elseValue;
 	}
 
+	public String getAsString(String name) {
+		return jsonObject.get(name).asString();
+	}
+
 	public LocalDate getDateOrElse(String name, DateTimeFormatter dateTimeFormat, LocalDate elseValue) {
 		JsonValue value = get(name);
 		return (value != null) ? parse(value.asString(), dateTimeFormat) : elseValue;
