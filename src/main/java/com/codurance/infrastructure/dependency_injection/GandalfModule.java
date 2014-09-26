@@ -1,8 +1,10 @@
 package com.codurance.infrastructure.dependency_injection;
 
 import com.codurance.infrastructure.Routes;
+import com.codurance.infrastructure.repositories.InMemoryJsonFeatures;
 import com.codurance.infrastructure.repositories.InMemoryJsonProposals;
 import com.codurance.infrastructure.template.JadeTemplateRendered;
+import com.codurance.model.feature.Features;
 import com.codurance.model.proposal.ProposalService;
 import com.codurance.model.proposal.Proposals;
 import com.codurance.model.proposal.events.ProposalSummaryList;
@@ -21,5 +23,7 @@ public class GandalfModule extends AbstractModule {
 		bind(ProposalSummaryList.class).in(SINGLETON);
 		bind(ProposalService.class).in(SINGLETON);
 		bind(Proposals.class).to(InMemoryJsonProposals.class).in(SINGLETON);
+
+		bind(Features.class).to(InMemoryJsonFeatures.class).in(SINGLETON);
 	}
 }

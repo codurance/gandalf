@@ -3,11 +3,8 @@ package core.com.codurance.model.proposal;
 import com.codurance.infrastructure.json.JsonEntity;
 import com.codurance.model.proposal.*;
 import com.codurance.model.proposal.events.FeatureAdded;
-import com.codurance.model.proposal.events.FeatureEventPublisher;
 import com.codurance.model.proposal.events.ProposalCreated;
 import com.codurance.model.proposal.events.ProposalEventPublisher;
-import com.codurance.model.proposal.feature.FeatureJson;
-import com.eclipsesource.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,8 +24,6 @@ import static org.mockito.Mockito.verify;
 public class ProposalServiceShould {
 
 	private static final ProposalId NEXT_PROPOSAL_ID = proposalId(11);
-	private static final ProposalId PROPOSAL_ID = proposalId(1);
-	private static final FeatureJson NEW_FEATURE = new FeatureJson(new JsonObject());
 
 	private ProposalJson newProposalJson;
 
@@ -37,15 +32,13 @@ public class ProposalServiceShould {
 	@Captor ArgumentCaptor<FeatureAdded> featureEvent;
 	@Mock Proposals proposals;
 	@Mock ProposalEventPublisher proposalEventPublisher;
-	@Mock FeatureEventPublisher featureEventPublisher;
 
 	private ProposalService proposalService;
 
 	@Before
 	public void initialise() {
 		this.proposalService = new ProposalService(proposals,
-												   proposalEventPublisher,
-												   featureEventPublisher);
+												   proposalEventPublisher);
 		given(proposals.nextId()).willReturn(NEXT_PROPOSAL_ID);
 		newProposalJson = aProposalJsonWith(new JsonEntity().add("clientId", 5));
 	}
@@ -72,22 +65,6 @@ public class ProposalServiceShould {
 
 		verify(proposalEventPublisher).publish(proposalEvent.capture());
 		assertThat(proposalEvent.getValue().proposal(), is(proposal));
-	}
-
-	@Test public void
-	should_add_a_feature_to_a_proposal() {
-		proposalService.addFeatureToProposal(PROPOSAL_ID, NEW_FEATURE);
-
-		verify(proposals).addFeatureToProposal(PROPOSAL_ID, NEW_FEATURE);
-	}
-
-	@Test public void
-	should_publish_a_feature_added_event() {
-		proposalService.addFeatureToProposal(PROPOSAL_ID, NEW_FEATURE);
-
-		verify(featureEventPublisher).publish(featureEvent.capture());
-
-	    assertThat(featureEvent.getValue().feature(), is(NEW_FEATURE));
 	}
 
 }

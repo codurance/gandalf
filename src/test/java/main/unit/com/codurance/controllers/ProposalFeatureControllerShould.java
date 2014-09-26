@@ -1,9 +1,9 @@
 package main.unit.com.codurance.controllers;
 
-import com.codurance.actions.AddFeatureToProposal;
+import com.codurance.actions.AddFeature;
 import com.codurance.controllers.ProposalFeatureController;
 import com.codurance.model.proposal.ProposalId;
-import com.codurance.model.proposal.feature.FeatureJson;
+import com.codurance.model.feature.FeatureJson;
 import com.codurance.view.ProposalFeaturesPage;
 import com.eclipsesource.json.JsonObject;
 import main.com.codurance.controllers.TemplateRenderer;
@@ -29,7 +29,8 @@ public class ProposalFeatureControllerShould {
 	@Mock Response response;
 	@Mock TemplateRenderer templateRenderer;
 
-	@Mock AddFeatureToProposal addFeatureToProposal;
+	@Mock
+	AddFeature addFeature;
 
 	ArgumentCaptor<ProposalId> proposalIdArgument = ArgumentCaptor.forClass(ProposalId.class);
 	ArgumentCaptor<FeatureJson> featureJsonArgument = ArgumentCaptor.forClass(FeatureJson.class);
@@ -39,7 +40,7 @@ public class ProposalFeatureControllerShould {
 	@Before
 	public void initialise() {
 	    this.controller = new ProposalFeatureController(templateRenderer,
-			                                            addFeatureToProposal);
+			    addFeature);
 	}
 
 	@Test public void
@@ -64,7 +65,7 @@ public class ProposalFeatureControllerShould {
 
 		controller.addFeature(request, response);
 
-		verify(addFeatureToProposal).addFeature(proposalIdArgument.capture(), featureJsonArgument.capture());
+		verify(addFeature).add(proposalIdArgument.capture(), featureJsonArgument.capture());
 		assertThat(proposalIdAsInt(), is(1));
 		assertThat(featureDescription(), is("FEATURE A"));
 	}
