@@ -4,14 +4,20 @@ import com.codurance.model.feature.FeatureJson;
 import com.codurance.model.feature.FeatureService;
 import com.codurance.model.feature.Features;
 import com.codurance.model.proposal.ProposalId;
+import com.codurance.model.proposal.events.FeatureEvent;
+import com.codurance.model.proposal.events.FeatureEventPublisher;
 import com.eclipsesource.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static com.codurance.model.proposal.ProposalId.proposalId;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -21,13 +27,15 @@ public class FeatureServiceShould {
 	private static final ProposalId PROPOSAL_ID = proposalId(1);
 	private static final FeatureJson NEW_FEATURE = new FeatureJson(new JsonObject());
 
-	@Mock private Features features;
+	@Mock Features features;
+	@Mock FeatureEventPublisher featureEventPublisher;
+	@Captor ArgumentCaptor<FeatureEvent> featureEvent;
 
 	private FeatureService featureService;
 
 	@Before
 	public void initialise() {
-	    featureService = new FeatureService(features);
+	    featureService = new FeatureService(features, featureEventPublisher);
 	}
 
 	@Test public void
@@ -46,14 +54,14 @@ public class FeatureServiceShould {
 		verify(features).add(NEW_FEATURE);
 	}
 
-//	@Test public void
-//	should_publish_a_feature_added_event() {
-//		proposalService.addFeatureToProposal(PROPOSAL_ID, NEW_FEATURE);
-//
-//		verify(featureEventPublisher).publish(featureEvent.capture());
-//
-//		assertThat(featureEvent.getValue().feature(), is(NEW_FEATURE));
-//	}
-//
+	@Test public void
+	should_publish_a_feature_added_event() {
+		featureService.addFeature(PROPOSAL_ID, NEW_FEATURE);
+
+		verify(featureEventPublisher).publish(featureEvent.capture());
+
+		assertThat(featureEvent.getValue().feature(), is(NEW_FEATURE));
+	}
+
 
 }
