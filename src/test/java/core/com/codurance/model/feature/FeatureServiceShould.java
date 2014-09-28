@@ -51,7 +51,7 @@ public class FeatureServiceShould {
 	store_add_a_new_feature() {
 		featureService.addFeature(PROPOSAL_ID, NEW_FEATURE);
 
-		verify(features).add(NEW_FEATURE);
+		verify(features).add(PROPOSAL_ID, NEW_FEATURE);
 	}
 
 	@Test public void

@@ -18,7 +18,7 @@ public class FeatureService {
 
 	public void addFeature(ProposalId proposalId, FeatureJson newFeature) {
 		newFeature.set(proposalId);
-		features.add(newFeature);
+		features.add(proposalId, newFeature);
 		featureEventPublisher.publish(new FeatureAdded(newFeature));
 	}
 
