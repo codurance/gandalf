@@ -1,7 +1,7 @@
 package main.unit.com.codurance.controllers;
 
 import com.codurance.actions.AddFeature;
-import com.codurance.controllers.ProposalFeatureController;
+import com.codurance.controllers.FeatureController;
 import com.codurance.model.proposal.ProposalId;
 import com.codurance.model.feature.FeatureJson;
 import com.codurance.view.ProposalFeaturesPage;
@@ -22,7 +22,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ProposalFeatureControllerShould {
+public class FeatureControllerShould {
 
 	private static final String PROPOSAL_FEATURES_PAGE = "proposal features page";
 	@Mock Request request;
@@ -35,11 +35,11 @@ public class ProposalFeatureControllerShould {
 	ArgumentCaptor<ProposalId> proposalIdArgument = ArgumentCaptor.forClass(ProposalId.class);
 	ArgumentCaptor<FeatureJson> featureJsonArgument = ArgumentCaptor.forClass(FeatureJson.class);
 
-	private ProposalFeatureController controller;
+	private FeatureController controller;
 
 	@Before
 	public void initialise() {
-	    this.controller = new ProposalFeatureController(templateRenderer,
+	    this.controller = new FeatureController(templateRenderer,
 			    addFeature);
 	}
 

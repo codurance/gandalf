@@ -13,12 +13,12 @@ import spark.Response;
 import static com.eclipsesource.json.JsonObject.readFrom;
 import static java.lang.Integer.valueOf;
 
-public class ProposalFeatureController extends BaseController {
+public class FeatureController extends BaseController {
 	private AddFeature addFeature;
 
 	@Inject
-	public ProposalFeatureController(TemplateRenderer templateRenderer,
-	                                 AddFeature addFeature) {
+	public FeatureController(TemplateRenderer templateRenderer,
+	                         AddFeature addFeature) {
 		super(templateRenderer);
 		this.addFeature = addFeature;
 	}

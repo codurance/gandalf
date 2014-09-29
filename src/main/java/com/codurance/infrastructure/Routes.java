@@ -1,8 +1,8 @@
 package com.codurance.infrastructure;
 
+import com.codurance.controllers.FeatureController;
 import com.codurance.controllers.MainController;
 import com.codurance.controllers.ProposalController;
-import com.codurance.controllers.ProposalFeatureController;
 import com.codurance.view.*;
 import com.google.inject.Inject;
 
@@ -14,15 +14,15 @@ public class Routes {
 
 	private MainController mainController;
 	private ProposalController proposalController;
-	private ProposalFeatureController proposalFeatureController;
+	private FeatureController featureController;
 
 	@Inject
 	public Routes(MainController mainController,
 	              ProposalController proposalController,
-	              ProposalFeatureController proposalFeatureController) {
+	              FeatureController featureController) {
 		this.mainController = mainController;
 		this.proposalController = proposalController;
-		this.proposalFeatureController = proposalFeatureController;
+		this.featureController = featureController;
 	}
 
 	public void initialise() {
@@ -62,10 +62,10 @@ public class Routes {
 
 	private void initialiseProposalFeatureRoutes() {
 		get(ProposalFeaturesPage.URL, (request, response) ->
-				proposalFeatureController.displayProposalFeatures(request, response));
+				featureController.displayProposalFeatures(request, response));
 
 		post(ProposalFeaturesPage.ADD_FEATURE_URL, (request, response) ->
-				proposalFeatureController.addFeature(request, response));
+				featureController.addFeature(request, response));
 	}
 
 	private void initialiseClientsRoutes() {
