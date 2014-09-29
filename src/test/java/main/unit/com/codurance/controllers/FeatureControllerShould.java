@@ -50,7 +50,7 @@ public class FeatureControllerShould {
 		given(templateRenderer.render(proposalFeaturesPage.template(), proposalFeaturesPage.model()))
 				.willReturn(PROPOSAL_FEATURES_PAGE);
 
-		String page = controller.displayProposalFeatures(request, response);
+		String page = controller.displayFeatures(request, response);
 
 		assertThat(page, is(PROPOSAL_FEATURES_PAGE));
 	}

@@ -23,7 +23,7 @@ public class FeatureController extends BaseController {
 		this.addFeature = addFeature;
 	}
 
-	public String displayProposalFeatures(Request request, Response response) {
+	public String displayFeatures(Request request, Response response) {
 		String proposalId = request.cookie("proposalId");
 		return display(new ProposalFeaturesPage(new ProposalId(proposalId)));
 	}
