@@ -20,12 +20,16 @@ public class ProposalService {
 	}
 
 	public synchronized Proposal create(ProposalJson proposalJson) {
-		ProposalId proposalId = proposals.nextId();
-		proposalJson = aProposalJsonWith(proposalJson.set("id", proposalId.intValue()));
-		Proposal newProposal = fromJson(proposalJson);
+		Proposal newProposal = newProposalFrom(proposalJson);
 		proposals.add(newProposal);
 		proposalEventPublisher.publish(new ProposalCreated(newProposal));
 		return newProposal;
+	}
+
+	private Proposal newProposalFrom(ProposalJson proposalJson) {
+		ProposalId proposalId = proposals.nextId();
+		proposalJson = aProposalJsonWith(proposalJson.set("id", proposalId.intValue()));
+		return fromJson(proposalJson);
 	}
 
 }

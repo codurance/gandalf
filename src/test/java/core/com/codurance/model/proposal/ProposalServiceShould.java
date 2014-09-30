@@ -44,11 +44,11 @@ public class ProposalServiceShould {
 	}
 
 	@Test public void
-	should_store_a_new_proposal() {
+	store_a_new_proposal() {
 		proposalService.create(newProposalJson);
 
-	    verify(proposals).add(proposalArgument.capture());
-		assertThat(proposalArgument.getValue().id(), is(NEXT_PROPOSAL_ID));
+	    verify(proposals).add(captureNewProposal());
+		assertThat(newProposal().id(), is(NEXT_PROPOSAL_ID));
 	}
 
 	@Test public void
@@ -60,11 +60,19 @@ public class ProposalServiceShould {
 	}
 
 	@Test public void
-	should_publish_a_proposal_created_event() {
+	publish_a_proposal_created_event() {
 		Proposal proposal = proposalService.create(newProposalJson);
 
 		verify(proposalEventPublisher).publish(proposalEvent.capture());
 		assertThat(proposalEvent.getValue().proposal(), is(proposal));
+	}
+
+	private Proposal newProposal() {
+		return proposalArgument.getValue();
+	}
+
+	private Proposal captureNewProposal() {
+		return proposalArgument.capture();
 	}
 
 }
