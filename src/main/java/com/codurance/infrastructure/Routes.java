@@ -28,7 +28,7 @@ public class Routes {
 	public void initialise() {
 		initialiseMainRoutes();
 		initialiseProposalsRoutes();
-		initialiseProposalFeatureRoutes();
+		initialiseFeatureRoutes();
 		initialiseClientsRoutes();
 		initialiseCraftsmenRoutes();
 	}
@@ -60,7 +60,7 @@ public class Routes {
 				proposalController.displayProposals(request, response));
 	}
 
-	private void initialiseProposalFeatureRoutes() {
+	private void initialiseFeatureRoutes() {
 		get(ProposalFeaturesPage.URL, (request, response) ->
 				featureController.displayFeatures(request, response));
 
